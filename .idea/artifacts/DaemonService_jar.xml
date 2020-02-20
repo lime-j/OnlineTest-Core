@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DaemonService:jar">
+    <output-path>$USER_HOME$/dp/</output-path>
+    <root id="archive" name="DaemonService.jar">
+      <element id="module-output" name="DaemonService" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mysql-connector-java-8.0.18.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/amqp-client-5.7.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jedis-3.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/fastjson-1.2.62.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/c3p0-0.9.5.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mchange-commons-java-0.2.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../slf4j-api-1.7.29.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../slf4j-nop-1.7.29.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/annotations-17.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/slf4j-api-1.7.29.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/slf4j-nop-1.7.29.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/mysql-connector-java-8.0.18.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/mchange-commons-java-0.2.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/jedis-3.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/fastjson-1.2.62.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/c3p0-0.9.5.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
