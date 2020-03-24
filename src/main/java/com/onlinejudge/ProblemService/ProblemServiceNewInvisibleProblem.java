@@ -1,23 +1,26 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.StringEvent;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceNewInvisibleProblem extends StringEvent {
     private InvisibleProblem currProblem;
     private String oldPid;
     private String examID;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceNewInvisibleProblem.class);
 
-    public ProblemServiceNewInvisibleProblem(InvisibleProblem origion) {
-        this.currProblem = origion;
-        this.oldPid = origion.Pid;
-        this.examID = origion.examID;
+    public ProblemServiceNewInvisibleProblem(@NotNull InvisibleProblem origin) {
+        this.currProblem = origin;
+        this.oldPid = origin.Pid;
+        this.examID = origin.examID;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             getConnection();
             PreparedStatement sta = prepareStatement("select * from problem where pid=?");
             sta.setString(1, this.currProblem.Pid);
-            debugPrint("[ProblemService]: Find the old problem: " + sta.toString());
+            logger.info("[problemservice]: Find the old problem: " + sta.toString());
             var queryResult = sta.executeQuery();
             if (queryResult.next()) {
                 this.currProblem.ProbSubject = queryResult.getString("psubject");
@@ -44,7 +47,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             while (!this.currProblem.addPid(pid)) {
                 pid = UUID.randomUUID().toString().replace('-', 'a').substring(0, 6);
             }
-            System.out.println(String.format("Problem Pid: %s", pid));
+            logger.info(String.format("Problem Pid: %s", pid));
 //            }
             closeConnection();
 
@@ -53,19 +56,19 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
 
 
             // 将新题目对应到考试中
-            debugPrint("[ProblemService]: this.currProblem.Pid=" + pid + ", this.currProblem.examID=" + this.examID +
+            logger.info("[problemservice]: this.currProblem.Pid=" + pid + ", this.currProblem.examID=" + this.examID +
                     ", this.oldPid=" + this.oldPid);
             getConnection();
             PreparedStatement staDelete = prepareStatement("delete from examprob where eid=? and pid=?");
             staDelete.setString(1, this.examID);
             staDelete.setString(2, this.oldPid);
-            debugPrint("[ProblemService]: " + staDelete.toString());
+            logger.info("[problemservice]: " + staDelete.toString());
             staDelete.executeUpdate();
 
             PreparedStatement staInsert = prepareStatement("insert into examprob (eid, pid) values (?, ?)");
             staInsert.setString(1, this.examID);
             staInsert.setString(2, pid);
-            debugPrint("[ProblemService]: New InvisibleProblem to exam SQL:\n\t" + sta.toString());
+            logger.debug("[problemservice]: New InvisibleProblem to exam SQL:\n\t" + sta.toString());
             staInsert.executeUpdate();
             queryResult.close();
             sta.close();
@@ -74,7 +77,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             closeConnection();
             return this.currProblem.Pid;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info(e.getMessage(),e);
             return "";
         }
     }

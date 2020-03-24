@@ -1,15 +1,19 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.BooleanEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.*;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceChangeScore extends BooleanEvent {
     private String Sid;
     private int Score;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceChangeScore.class);
 
     public ProblemServiceChangeScore(String Sid, int Score) {
         this.Sid = Sid;
@@ -25,12 +29,12 @@ public class ProblemServiceChangeScore extends BooleanEvent {
                     "set sscore=?,sjudged=1 where sid=?");
             sta.setInt(1, this.Score);
             sta.setString(2, this.Sid);
-            debugPrint("[ProblemService]: ChangeScore: SQL: " + sta.toString());
+            logger.debug("[problemservice]: ChangeScore: SQL: " + sta.toString());
             sta.executeUpdate();
             closeUpdate(sta, conn);
-            debugPrint(String.format("ProblemService: Subjective Score update - \n\tsid=%s score=%d", this.Sid, this.Score));
+            logger.debug(String.format("problemservice: Subjective Score update - \n\tsid=%s score=%d", this.Sid, this.Score));
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
             return false;
         }
         return true;

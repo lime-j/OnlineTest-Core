@@ -1,48 +1,53 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
+import static com.alibaba.fastjson.JSON.parseObject;
+
 
 public class ExamServiceAddUserIntoExam extends BooleanEvent {
     private List<String> currentUserList;
     private String examID;
-
-    public ExamServiceAddUserIntoExam(List<String> Origin, String examID) {
-        this.currentUserList = Origin;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceAddUserIntoExam.class);
+    public ExamServiceAddUserIntoExam(List<String> origin, String examID) {
+        this.currentUserList = origin;
         this.examID = examID;
     }
 
     @Override
     public boolean go() {
+        ResultSet queryResult = null;
+        Connection conn = null;
+        PreparedStatement staQuery = null;
+        PreparedStatement staInsert = null;
         try {
-            var conn = DatabaseUtil.getConnection();
-            ResultSet queryResult = null;
-            PreparedStatement staQuery = conn.prepareStatement("select * from examperm where eid= ? and sid= ? ;");
+            conn = DatabaseUtil.getConnection();
+            staQuery = conn.prepareStatement("select * from examperm where eid= ? and sid= ? ;");
             for (String s : this.currentUserList) {
-                JSONObject currJSONG = JSONObject.parseObject(s);
-                String cmd;
+                JSONObject currJSONG = parseObject(s);
 
                 staQuery.setString(1, this.examID);
                 staQuery.setString(2, currJSONG.getString("uid"));
 
                 // debug only
-                debugPrint(staQuery.toString());
+                logger.debug(staQuery.toString());
                 //
-
                 queryResult = staQuery.executeQuery();
-                PreparedStatement staInsert = conn.prepareStatement("insert into examperm (eid,sid) values (?, ?)");
+                staInsert = conn.prepareStatement("insert into examperm (eid,sid) values (?, ?)");
                 if (!queryResult.next()) {
                     staInsert.setString(1, this.examID);
                     staInsert.setString(2, currJSONG.getString("uid"));
-                    debugPrint(staInsert.toString());
+                    logger.debug(staInsert.toString());
                     staInsert.executeUpdate();
                 }
                 queryResult.close();
@@ -50,8 +55,15 @@ public class ExamServiceAddUserIntoExam extends BooleanEvent {
             }
             DatabaseUtil.closeQuery(queryResult, staQuery, conn);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("SQLException",e);
             return false;
+        }finally {
+            try {
+                if (staInsert != null) staInsert.close();
+                DatabaseUtil.closeQuery(queryResult, staQuery, conn);
+            } catch (SQLException e) {
+                logger.error("SQLException",e);
+            }
         }
         return true;
     }

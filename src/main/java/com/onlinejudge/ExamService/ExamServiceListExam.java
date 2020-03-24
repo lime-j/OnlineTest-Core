@@ -1,20 +1,23 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceListExam extends ListEvent {
     private String userID;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceListExam.class);
 
     public ExamServiceListExam(String userID) {
         this.userID = userID;
@@ -25,11 +28,11 @@ public class ExamServiceListExam extends ListEvent {
         PreparedStatement stmt = null;
         try {
             conn = DatabaseUtil.getConnection();
-            debugPrint("ExamServiceListExam, conn and stmt created.");
+            logger.info("ExamServiceListExam, conn and stmt created.");
             //stmt.execute("use onlinejudge");
-            String qry = String.format("select e.ename, e.eid, e.ename, e.estart, e.eend, e.etext, e.esubject, ep.sid from examperm ep, exam e where e.eid = ep.eid and ep.sid = '%s' \n", this.userID);
+            String qry = String.format("select e.ename, e.eid, e.ename, e.estart, e.eend, e.etext, e.esubject, ep.sid from examperm ep, exam e where e.eid = ep.eid and ep.sid = '%s'", this.userID);
             stmt = prepareStatement(qry);
-            debugPrint("ExamServiceListExam, qry =" + qry);
+            logger.debug("ExamServiceListExam, qry = {}",qry);
             var queryResult = stmt.executeQuery();
             int cnt = 0;
             List<Exam> resultList = new ArrayList<>();
@@ -45,24 +48,18 @@ public class ExamServiceListExam extends ListEvent {
                 var eText = queryResult.getString("etext");
                 var eSubject = queryResult.getString("esubject");
                 resultList.add(new Exam(eID, eTitle, userID, eStartTime, eEndTime, eText, eSubject));
-                debugPrint("ExamServiceListExam, ename = " + eTitle
-                        + ", estart = " + eStartTime
-                        + ",eend = " + eEndTime
-                        + ",eID = " + eID
-                        + ",userID = " + userID
-                        + "etext = " + eText
-                        + "esubject = " + eSubject
+                logger.debug(MessageFormat.format("ExamServiceListExam, ename = {0}, estart = {1},eend = {2},eID = {3},userID = {4}etext = {5}esubject = {6}", eTitle, eStartTime, eEndTime, eID, userID, eText, eSubject)
                 );
             }
             closeQuery(queryResult, stmt, conn);
-            System.out.println("[DBG]:ExamServiceListExam, find" + cnt + "result(s)");
+            logger.info(MessageFormat.format("[DBG]:ExamServiceListExam, find{0}result(s)", cnt));
             return resultList;
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            logger.error(sqlException.getMessage(), sqlException);
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(),e);
             }
             return new ArrayList<>();
         }

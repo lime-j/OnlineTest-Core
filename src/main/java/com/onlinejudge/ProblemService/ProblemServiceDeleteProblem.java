@@ -1,6 +1,8 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.BooleanEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,7 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceDeleteProblem extends BooleanEvent {
     private String problemID;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceDeleteProblem.class);
 
     public ProblemServiceDeleteProblem(String problemID) {
         this.problemID = problemID;

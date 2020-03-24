@@ -1,6 +1,8 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,11 +12,10 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.*;
-
 public class ProblemServiceSubjectiveSubReturn extends ListEvent {
     private String examID, probID;
     private int probScore;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceSubjectiveSubReturn.class);
 
     public ProblemServiceSubjectiveSubReturn(String examID, String probID) {
         this.examID = examID;
@@ -30,7 +31,7 @@ public class ProblemServiceSubjectiveSubReturn extends ListEvent {
             PreparedStatement stmt = null;
             stmt = prepareStatement("select * from problem where pid=?");
             stmt.setString(1, this.probID);
-            debugPrint(stmt.toString());
+            logger.info(stmt.toString());
             var probData = stmt.executeQuery();
             while (probData.next()) {
                 this.probScore = probData.getInt("pscore");
@@ -41,7 +42,7 @@ public class ProblemServiceSubjectiveSubReturn extends ListEvent {
                     " spid=? and seid=? and userinfo.uid=submission.suid and submission.sjudged=0");
             stmt.setString(1, this.probID);
             stmt.setString(2, this.examID);
-            debugPrint("[ProblemService]: Subject Submission Find: SQL: " + stmt.toString());
+            logger.debug("[problemservice]: Subject Submission Find: SQL: " + stmt.toString());
             var resultset = stmt.executeQuery();
             List<SubjectiveSubmission> resltlist = new ArrayList<>();
             while (resultset.next()) {
@@ -50,7 +51,7 @@ public class ProblemServiceSubjectiveSubReturn extends ListEvent {
                         resultset.getString("suid"), this.probID, this.examID, this.probScore
                 );
                 resltlist.add(curr);
-                System.out.println(String.format("ProblemService: SubjectFind - \n\tpid=%s sid=%s", this.probID, curr.getSubID()));
+                logger.debug(String.format("problemservice: SubjectFind - \n\tpid=%s sid=%s", this.probID, curr.getSubID()));
             }
             closeQuery(resultset, stmt, conn);
             return resltlist;

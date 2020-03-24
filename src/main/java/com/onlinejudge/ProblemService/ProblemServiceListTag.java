@@ -1,4 +1,4 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
 import com.onlinejudge.util.StringListerUtil;

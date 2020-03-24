@@ -1,17 +1,20 @@
-package com.onlinejudge.UserService;
+package com.onlinejudge.userservice;
 
 import com.onlinejudge.util.BooleanEvent;
+import com.onlinejudge.util.InternalException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserServiceUpdateProperties extends BooleanEvent {
     private String userID, newProperty;
     private int updateType;
+    private static Logger logger = LoggerFactory.getLogger(UserServiceUpdateProperties.class);
 
     // type == 1, 更新性别, 为了统一, 传入的是String, 但会被prase一下
     // type == 2, 更新昵称,
@@ -22,7 +25,7 @@ public class UserServiceUpdateProperties extends BooleanEvent {
         this.updateType = updateType;
     }
 
-    public boolean go() {
+    public boolean go() throws InternalException {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -40,18 +43,18 @@ public class UserServiceUpdateProperties extends BooleanEvent {
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
             } else return false;
-            debugPrint("UserServiceUpdateProperties, sql query = " + stmt.toString());
+            logger.info("sql query = {}",stmt);
             stmt.executeUpdate();
             closeUpdate(stmt, conn);
-            debugPrint("UserServiceUpdateProperties, query is ok, quit.");
+            logger.info("UserServiceUpdateProperties, query is ok, quit.");
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                logger.error("SQLException while closing db", ex);
             }
-            e.printStackTrace();
+            logger.error("SQLException",e);
             return false;
         }
     }

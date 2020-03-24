@@ -1,4 +1,4 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 public class SubjectiveSubmission extends Submission {
 

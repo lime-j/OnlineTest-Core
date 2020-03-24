@@ -1,4 +1,4 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.BooleanEvent;
 

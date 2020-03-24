@@ -1,12 +1,15 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 
 import com.onlinejudge.util.BooleanEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
 public class ProblemServiceCreateProblem extends BooleanEvent {
     private Problem currentProblem;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblem.class);
 
     ////////////////////////////////////////////////////////////////////////////////////
     //更新（包括新建）请传送Problem类型的试题（所有内容，包括Pid（即试题id），如果为新插入试题，请令试题id为空字符串）

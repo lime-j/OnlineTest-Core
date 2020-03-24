@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: org.springframework.boot.loader.JarLauncher
-Start-Class: com.onlinejudge.DaemonService.DaemonServiceMain
-Spring-Boot-Version: 1.5.11.RELEASE
-Spring-Boot-Classes: BOOT-INF/classes/
-Spring-Boot-Lib: BOOT-INF/lib/
-

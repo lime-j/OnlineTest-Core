@@ -1,7 +1,11 @@
-package com.onlinejudge.UserService;
+package com.onlinejudge.userservice;
 
 
+import com.onlinejudge.daemonservice.DaemonServiceMain;
+import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,17 +14,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserServiceListAllUser extends ListEvent {
+    private static Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);
     // This can be only triggered by admin
-    public UserServiceListAllUser() {
-    }
+    // listing
+    public UserServiceListAllUser() {}
 
-    public List<User> go() {
+    public List<User> go() throws InternalException {
         // 建立列表
-        List<User> result = new ArrayList<User>();
+        List<User> result = new ArrayList<>();
         Connection conn = null;
         ResultSet ret = null;
         PreparedStatement stmt = null;
@@ -36,19 +40,19 @@ public class UserServiceListAllUser extends ListEvent {
                 String userName = ret.getString("uname");
                 int userSex = ret.getInt("usex");
                 int userType = ret.getInt("utype");
-                var currentUser = new User(userID, userName, userSex, userType);
-                result.add(currentUser);
+                result.add(new User(userID, userName, userSex, userType));
             }
-            debugPrint("Event ListAllUsers Finished, " + cnt + "user(s) listed");
+            logger.info("Event ListAllUsers Finished, {} user(s) listed",cnt);
             closeQuery(ret, stmt, conn);
             return result;
         } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
             try {
                 closeQuery(ret, stmt, conn);
-            } catch (Exception ee) {
-                ee.printStackTrace();
+            } catch (SQLException e) {
+                logger.error("SQL exception while closing",e);
             }
-            e.printStackTrace();
         }
         return result;
     }

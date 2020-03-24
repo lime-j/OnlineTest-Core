@@ -1,20 +1,23 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceListAllProblem extends ListEvent {
     private String subject;
     private List<String> tagList;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceListAllProblem.class);
 
     public ProblemServiceListAllProblem(String subject, List<String> tagList) {
         // 从题库中拉取题目列表（制定subject与tagList）
@@ -36,7 +39,7 @@ public class ProblemServiceListAllProblem extends ListEvent {
             stmt.setString(1, this.subject);
             for (String tag : this.tagList) {
                 stmt.setString(2, tag);
-                debugPrint(this.toString() + ", " + stmt.toString());
+                logger.info(MessageFormat.format("{0}, {1}", this.toString(), stmt.toString()));
                 result = stmt.executeQuery();
                 while (result.next()) {
                     resultList.add(new Problem(
@@ -49,12 +52,12 @@ public class ProblemServiceListAllProblem extends ListEvent {
                 result.close();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } finally {
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(),e);
             }
         }
         return resultList;

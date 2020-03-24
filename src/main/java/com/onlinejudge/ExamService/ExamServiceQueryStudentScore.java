@@ -1,20 +1,23 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.IntegerEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ExamServiceQueryStudentScore extends IntegerEvent {
     private String studentID, examID;
     private int queryType;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceQueryStudentScore.class);
 
     public ExamServiceQueryStudentScore(String examID, String studentID, int queryType) {
         this.studentID = studentID;
@@ -46,11 +49,11 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
                 endTime = result.getTimestamp("eend");
             }
             if (cnt == 0) {
-                debugPrint("ExamID:" + this.examID + " doesn't exist.");
+                logger.warn(MessageFormat.format("ExamID:{0} doesn''t exist.", this.examID));
                 return -1;
             } else if (cnt > 1) {
-                debugPrint("There are one more exam with ExamID:" + this.examID + ", something wrong must happened to database");
-                debugPrint("Please, check the database for further information");
+                logger.warn(MessageFormat.format("There are one more exam with ExamID:{0}, something wrong must happened to database", this.examID));
+                logger.warn("Please, check the database for further information");
                 return -1;
             }
             result.close();
@@ -69,7 +72,7 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
                 probIDs.add(result.getString("pid"));
             }
             if (cnt == 0) {
-                debugPrint("Oops... Seems that there are no problem(s) in this exam, what's your problem?");
+                logger.warn("Oops... Seems that there are no problem(s) in this exam, what's your problem?");
                 return -1;
             }
             result.close();
@@ -83,7 +86,7 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
                 stmt.setString(1, this.studentID);
                 stmt.setString(2, this.examID);
                 stmt.setString(3, probIDs.get(i - 1));
-                debugPrint(stmt.toString());
+                logger.debug(stmt.toString());
                 result = stmt.executeQuery();
                 int co = 0;
                 while (result.next()) {
@@ -101,18 +104,17 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
 
             }
             int ret = 0;
-            debugPrint(Integer.toString(cnt));
             for (String key : probIDs) score.putIfAbsent(key, 0);
             for (String key : probIDs) ret += score.get(key);
-            debugPrint(Integer.toString(ret));
             closeQuery(result, stmt, conn);
             return ret;
         } catch (SQLException se) {
-            debugPrint("Something wrong in SQL.");
-            se.printStackTrace();
-            return -1;
-        } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Something wrong in SQL",se);
+            try {
+                closeQuery(result, stmt, conn);
+            } catch (SQLException e) {
+                logger.error("Something wrong while closing",e);
+            }
             return -1;
         }
     }

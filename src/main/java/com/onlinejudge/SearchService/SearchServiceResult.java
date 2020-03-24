@@ -1,4 +1,4 @@
-package com.onlinejudge.SearchService;
+package com.onlinejudge.searchservice;
 
 public class SearchServiceResult {
     // SearchServiceResult 类用于生成JSON String, 约束了返回信息的类型

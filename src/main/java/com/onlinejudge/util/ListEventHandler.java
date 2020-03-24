@@ -1,10 +1,12 @@
 package com.onlinejudge.util;
 
-import com.alibaba.fastjson.JSONArray;
+import org.jetbrains.annotations.NotNull;
+
+import static com.alibaba.fastjson.JSON.toJSONString;
 
 public class ListEventHandler extends Handler {
-    public ListEventHandler(ListEvent e) {
-        this.result = JSONArray.toJSONString(e.go());
+    public ListEventHandler(@NotNull ListEvent e) throws InternalException{
+        this.result = toJSONString(e.go());
         this.result = "{\"status\":1,\"result\":" + this.result + '}';
     }
 }

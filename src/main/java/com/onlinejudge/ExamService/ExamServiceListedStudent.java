@@ -1,4 +1,4 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 public class ExamServiceListedStudent {
     private String sID;

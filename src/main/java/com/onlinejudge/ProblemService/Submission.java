@@ -1,8 +1,15 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
-import java.sql.*;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Submission {
@@ -14,7 +21,10 @@ public class Submission {
     private String SubExam;
     private int SubScore;
 
+    private static Logger logger = LoggerFactory.getLogger(Submission.class);
 
+
+    @Contract(pure = true)
     public Submission(String SubText, String SubUser, String SubProb, String SubExam, int SubScore) {
         this.Sid = "";
         this.SubText = SubText;
@@ -24,6 +34,7 @@ public class Submission {
         this.SubScore = SubScore;
     }
 
+    @Contract(pure = true)
     public Submission(String SubText, String SubUser, String SubProb, String SubExam) {
         // DeamonServiceRunnable重载
         // 提交到服务器的重载
@@ -34,6 +45,7 @@ public class Submission {
         this.SubExam = SubExam;
     }
 
+    @Contract(pure = true)
     public Submission(String Sid, String SubText, String SubTime, String SubUser, String SubProb) {
         // ObjectiveSubmission重载用
         this.Sid = Sid;
@@ -43,6 +55,7 @@ public class Submission {
         this.SubProb = SubProb;
     }
 
+    @Contract(pure = true)
     public Submission(String Sid, String SubText, String SubTime, String SubUser, String SubProb, int SubScore, String SubExam) {
         this.Sid = Sid;
         this.SubText = SubText;
@@ -103,28 +116,28 @@ public class Submission {
             sta.setInt(4, this.SubScore);
             sta.setString(5, this.SubExam);
             sta.setString(6, this.Sid);
-            debugPrint("[ProblemService]: updateSubmission: \n" + sta.toString());
+            logger.debug("[problemservice]: updateSubmission: \n" + sta.toString());
             sta.executeUpdate();
             closeQuery(QueryResult, sta, conn);
-            debugPrint("ProblemService: Submission - \n\tupdate sid=" + this.Sid);
+            logger.debug("problemservice: Submission - \n\tupdate sid=" + this.Sid);
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
             return false;
         }
     }
 
 
-    private static boolean isfaild(ResultSet rs) {
+    private static boolean isfaild(@NotNull ResultSet rs) {
         boolean flag = true;
         try {
             while (rs.next()) {
                 flag = false;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
-        System.out.println(flag);
+        logger.error(flag ? "True" : "False");
         return flag;
     }
 }

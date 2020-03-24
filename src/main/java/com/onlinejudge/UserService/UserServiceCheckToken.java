@@ -1,28 +1,23 @@
-package com.onlinejudge.UserService;
+package com.onlinejudge.userservice;
 
-import com.onlinejudge.util.BooleanEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
-
-public class UserServiceCheckToken extends BooleanEvent {
+public class UserServiceCheckToken {
     // 这个类是用来检查token跟用户的token是否一致的,
     // 如果不一致, go() 函数返回false,
-    // 否则返回true;
-    private String userID, userToken;
-
-    public UserServiceCheckToken(String userID, String userToken) {
-        this.userID = userID;
-        this.userToken = userToken;
-    }
-
-    public boolean go() {
-        var jedis = new Jedis("localhost");
-        System.out.println("[DBG]: UserServiceCheckToken, connected to redis.");
-        String token = jedis.get(this.userID);
-        System.out.println("[DBG]: UserServiceCheckToken, rightToken = " + token + ", and userToken = " + this.userToken);
+    // 否则返回true
+    private static Logger logger = LoggerFactory.getLogger(UserServiceCheckToken.class);
+    public static boolean checkToken(String userID, String userToken) throws TokenWrongException {
+        Jedis jedis = new Jedis("localhost");
+        logger.info("connected to redis.");
+        String token = jedis.get(userID);
+        logger.debug("rightToken = {}, and userToken = {}", token, userToken);
+        logger.info("query is ok, quit.");
+        boolean flag = token.equals(userToken);
         jedis.disconnect();
-        debugPrint("UserServiceCheckToken, query is ok, quit.");
-        return (token.equals(this.userToken));
+        if (flag) return flag;
+        else throw new TokenWrongException();
     }
 }

@@ -1,7 +1,9 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -10,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.*;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceCreateModifyExam extends BooleanEvent {
     private Exam handling;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceCreateModifyExam.class);
 
     public ExamServiceCreateModifyExam(Exam handling) {
         this.handling = handling;
@@ -24,16 +26,18 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
         var examID = this.handling.getExamID();
         Connection conn = null;
         PreparedStatement stmt = null;
+        ResultSet res = null;
+        ResultSet ret = null;
         try {
             conn = getConnection();
-            debugPrint("ExamServiceCreateModifyExam, conn settled.");
+            logger.info("conn settled.");
             stmt = prepareStatement("select eid from exam where eid = ?");
             stmt.setString(1, this.handling.getExamID());
-            var res = stmt.executeQuery();
+            res = stmt.executeQuery();
             int cnt = 0;
             while (res.next()) ++cnt;
             stmt.close();
-            debugPrint("ExamServiceCreateModifyExam, find " + cnt + " eid(s)");
+            logger.info("find " + cnt + " eid(s)");
             if (cnt == 0) {
                 // 更新考试表当中的信息
                 boolean flag = this.handling.getStartTime().contains("/");
@@ -56,7 +60,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 stmt.setString(5, this.handling.getUserID());
                 stmt.setString(6, this.handling.getExamText());
                 stmt.setString(7, this.handling.getExamSubject());
-                debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                logger.info(stmt.toString());
                 stmt.executeUpdate();
                 stmt.close();
 
@@ -64,7 +68,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 stmt = prepareStatement("insert into examperm values ( ? , ? )");
                 stmt.setString(1, examID);
                 stmt.setString(2, this.handling.getUserID());
-                debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                logger.info(stmt.toString());
                 stmt.executeUpdate();
                 var lst = this.handling.getProblemList();
                 stmt.close();
@@ -74,7 +78,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                     stmt.setString(1, examID);
                     stmt.setString(2, str);
                     stmt.executeUpdate();
-                    debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                    logger.debug(stmt.toString());
                 }
             } else if (cnt == 1) {
                 boolean flag = this.handling.getStartTime().contains("/");
@@ -94,15 +98,15 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 stmt.setString(5, this.handling.getExamText());
                 stmt.setString(6, this.handling.getExamSubject());
                 stmt.setString(7, this.handling.getExamID());
-                debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                logger.debug( stmt.toString());
                 stmt.executeUpdate();
                 stmt.close();
 
 
                 String qry = String.format("select pid from examprob where eid = '%s'", examID);
-                debugPrint("ExamServiceCreateModifyExam, " + qry);
+                logger.debug(qry);
                 stmt = prepareStatement(qry);
-                var ret = stmt.executeQuery();
+                ret = stmt.executeQuery();
                 // 更新 考试 - 题目 表中的信息
                 List<String> plst = new ArrayList<>();
                 var lst = this.handling.getProblemList();
@@ -142,7 +146,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                         if (a.equals(b)) {
                             stmt.close();
                             closeConnection();
-                            debugPrint("Shit! Something wrong inside the database!");
+                            logger.warn("Assertion failed.There're same elements in toBeAdd and toBeDelete.\n returning false");
                             return false;
                         }
                     }
@@ -152,7 +156,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 for (String a : toBeAdd) {
                     stmt.setString(1, examID);
                     stmt.setString(2, a);
-                    debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                    logger.debug(stmt.toString());
                     stmt.execute();
                 }
                 stmt.close();
@@ -161,7 +165,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 for (String a : toBeDelete) {
                     stmt.setString(1, examID);
                     stmt.setString(2, a);
-                    debugPrint("ExamServiceCreateModifyExam, " + stmt.toString());
+                    logger.debug(stmt.toString());
                     stmt.execute();
                 }
                 DatabaseUtil.closeQuery(ret, stmt, conn);
@@ -173,11 +177,12 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 return false;
             }
         } catch (SQLException | ParseException sql) {
-            sql.printStackTrace();
+            logger.error("ParseException",sql);
             try {
-                DatabaseUtil.closeUpdate(stmt, conn);
+                if (res != null) res.close();
+                DatabaseUtil.closeQuery(ret,stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(),e);
             }
             return false;
         }

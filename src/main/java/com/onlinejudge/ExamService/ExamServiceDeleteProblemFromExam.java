@@ -1,4 +1,4 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
@@ -24,7 +24,6 @@ public class ExamServiceDeleteProblemFromExam extends BooleanEvent {
             conn = DatabaseUtil.getConnection();
             String qry = String.format("delete from examprob where pid = '%s' and eid = '%s';", this.examID, this.probID);
             stmt = DatabaseUtil.prepareStatement(qry);
-            //stmt.execute("use onlinejudge");
             stmt.execute();
             closeUpdate(stmt, conn);
             return true;

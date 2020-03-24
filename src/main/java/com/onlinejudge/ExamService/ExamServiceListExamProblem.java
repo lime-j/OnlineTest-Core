@@ -1,22 +1,25 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
-import com.onlinejudge.ProblemService.Problem;
+import com.onlinejudge.problemservice.Problem;
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceListExamProblem extends ListEvent {
     private String examID;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceListExamProblem.class);
 
     public ExamServiceListExamProblem(String examID) {
         this.examID = examID;
@@ -32,9 +35,9 @@ public class ExamServiceListExamProblem extends ListEvent {
             String qry = String.format("select ep.pid, ptitle, ptext, ptype, pmaxsize, pmaxtime, pscore, psubject, ptag, visible, pcount " +
                     "from examprob ep, problem p where ep.pid = p.pid and ep.eid = '%s'\n", this.examID);
             stmt = prepareStatement(qry);
-            debugPrint("ExamServiceListExamProblem, conn and stmt settled.");
+            logger.info("conn and stmt settled.");
             //stmt.executeQuery("use onlinejudge");
-            debugPrint("ExamServiceListExamProblem, qry = " + qry);
+            logger.debug(MessageFormat.format("ExamServiceListExamProblem, qry = {0}", qry));
             queryResult = stmt.executeQuery();
             int cnt = 0;
             List<Problem> resultList = new ArrayList<>();
@@ -67,13 +70,13 @@ public class ExamServiceListExamProblem extends ListEvent {
                 String ptg = queryResult.getString("ptag");
                 String psg = queryResult.getString("psubject");
                 var result = new Problem(ptype, pID, ptitle, ptext, pans, psz, ptm, psc, psg, ptg);
-                debugPrint("[ExamService]: " + cnt);
+                logger.info("find {} results",cnt);
                 vis.put(cnt, result);
                 lsts.get(queryResult.getInt("ptype")).add(cnt);
             }
             stmt.close();
             closeQuery(queryResult, stmt, conn);
-            System.out.println("[DBG]: find" + cnt + "result(s)");
+            logger.info(MessageFormat.format("[DBG]: find{0}result(s)", cnt));
             if (tempBlank.size() >= 1) Collections.shuffle(tempBlank);
             if (tempChoice.size() >= 1) Collections.shuffle(tempChoice);
             if (tempProgram.size() >= 1) Collections.shuffle(tempProgram);
@@ -88,16 +91,16 @@ public class ExamServiceListExamProblem extends ListEvent {
             tmp.addAll(tempSubjective);
             tmp.addAll(tempProgramBlank);
             for (var it : tmp) {
-                debugPrint(it.toString());
+                logger.debug(it.toString());
                 resultList.add(vis.get(it));
             }
             return resultList;
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            logger.error(sqlException.getMessage(),sqlException);
             try {
                 closeQuery(queryResult, stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(),e);
             }
             return new ArrayList<>();
         }

@@ -1,4 +1,8 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
+
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,11 +16,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.stream.Stream;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Problem {
-    final private String homePath = "/tmp";
+    private static final String homePath = "/tmp";
+    private static Logger logger = LoggerFactory.getLogger(Problem.class);
+
     //    final private String homePath=System.getProperties().getProperty("user.home");
     public int ProbType; //试题类型，1==选择题，2==填空题，3==程序题，4==程序填空，5==
     public String Pid;//试题id
@@ -73,20 +78,20 @@ public class Problem {
         }
     }
 
-    private static boolean isfaild(ResultSet rs) {
+    private static boolean isfaild(@NotNull ResultSet rs) {
         boolean flag = true;
         try {
             while (rs.next()) {
                 flag = false;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
-        System.out.println(flag);
+        logger.debug(flag ? "True" : "False");
         return flag;
     }
 
-    public String getProbData(String KeyName) {
+    public String getProbData(@NotNull String KeyName) {
         // only support the following keyname:
         // pid
         // ptitle
@@ -116,9 +121,9 @@ public class Problem {
             getConnection();
             PreparedStatement sta = prepareStatement("select * from problem where pid=?");
             sta.setString(1, NewValue);
-            debugPrint("[ProblemService]: addPid: SQL: " + sta.toString());
-            ResultSet QueryResult = sta.executeQuery();
-            if (isfaild(QueryResult)) {
+            logger.debug("[problemservice]: addPid: SQL: " + sta.toString());
+            ResultSet queryResult = sta.executeQuery();
+            if (isfaild(queryResult)) {
                 this.Pid = NewValue;
             } else {
                 return false;
@@ -130,23 +135,25 @@ public class Problem {
         return false;
     }
 
+    @NotNull
     private String getProbAns() {
         String ansFile = this.homePath + "/OnlineJudge/ans/" + this.Pid + ".ans";
-        debugPrint(ansFile);
+        logger.info(ansFile);
         String tmp = readLineByLine(ansFile);
-        debugPrint(tmp);
+        logger.info(tmp);
         return tmp;
         // ans路径：$HOME/OnlineJudge/ans/$Pid.ans
     }
 
 
+    @NotNull
     private static String readLineByLine(String filePath) {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s).append("\n"));
         } catch (NoSuchFileException e) {
-            debugPrint("[ProblemService]: Warning: Here's not a ans file: " + filePath);
+            logger.warn("Here's not a ans file: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -188,12 +195,12 @@ public class Problem {
                 // 当前试题为新添加试题，执行insert
                 sta = prepareStatement("insert into problem (ptitle, ptext, ptype, pscore, pmaxsize, pmaxtime, psubject, ptag, pid) " +
                         "values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                debugPrint("[ProblemService]: " + this.toString() + " - \n\tadding problem pid=" + this.Pid);
+                logger.info("[problemservice]: " + this.toString() + " - \n\tadding problem pid=" + this.Pid);
             } else {
                 //当前试题为试题内容更新，使用update
                 sta = prepareStatement("update problem set ptitle = ?, ptext = ?, ptype = ?, pscore = ?, " +
                         "pmaxsize = ?, pmaxtime = ?, psubject = ?, ptag = ? where pid = ?");
-                debugPrint("[ProblemService]: ProblemUpdate - \n\tupdating problem pid=" + this.Pid);
+                logger.info("[problemservice]: ProblemUpdate - \n\tupdating problem pid=" + this.Pid);
             }
             sta.setString(1, this.ProbTile);
             sta.setString(2, this.ProbText);
@@ -205,12 +212,12 @@ public class Problem {
             sta.setString(8, this.ProbTag);
             sta.setString(9, this.Pid);
             if (!writeAnsFile()) {
-                debugPrint("[ProblemService]:" + this.toString() + ": Write Ans file faild!");
+                logger.warn("[problemservice]:" + this.toString() + ": Write Ans file faild!");
                 return false;
             }
-            debugPrint("[ProblemService]:" + this.toString() + " SQL:\n\t" + sta.toString());
+            logger.info("[problemservice]:" + this.toString() + " SQL:\n\t" + sta.toString());
             sta.executeUpdate();
-            debugPrint(String.format("[ProblemService]: ProblemUpdate - done! \n\tpid=%s", this.Pid));
+            logger.info(String.format("[problemservice]: ProblemUpdate - done! \n\tpid=%s", this.Pid));
 
             QueryResult.close();
             sta.close();
@@ -218,7 +225,7 @@ public class Problem {
 //            closeQuery(QueryResult, sta, conn);
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
             closeConnection();
             return false;
         }

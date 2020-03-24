@@ -1,14 +1,16 @@
-package com.onlinejudge.UserService;
+package com.onlinejudge.userservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class UserServiceDeleteAccount extends BooleanEvent {
-
+    private static Logger logger = LoggerFactory.getLogger(UserServiceDeleteAccount.class);
 
     private String userID;
 
@@ -17,22 +19,30 @@ public class UserServiceDeleteAccount extends BooleanEvent {
     }
 
     public boolean go() {
-        Connection conn;
+        Connection conn = null;
+        PreparedStatement stmt = null;
         try {
             //    Class.forName(JDBC_DRIVER);
             conn = DatabaseUtil.getConnection();
-            debugPrint("UserServiceDeleteAccount, conn to DB");
-            //stmt.executeQuery("use onlinejudge");
-            var stmt = DatabaseUtil.prepareStatement("delete from userinfo where uid = ?");
+            logger.info("conn to DB");
+            /* stmt.executeQuery("use onlinejudge"); */
+            stmt = DatabaseUtil.prepareStatement("delete from userinfo where uid = ?");
             stmt.setString(1, this.userID);
-            debugPrint("UserServiceDeleteAccount, " + stmt.toString());
+            logger.debug(stmt.toString());
             stmt.executeUpdate();
             DatabaseUtil.closeUpdate(stmt, conn);
-            debugPrint("UserServiceDeleteAccount, query is ok, quit.");
+            logger.info("query is ok, quit.");
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        } catch (SQLException e) {
+            logger.error("SQLException",e);
+
+        }finally {
+            try {
+                DatabaseUtil.closeUpdate(stmt, conn);
+            } catch (SQLException e) {
+                logger.error("SQLException while closing",e);
+            }
         }
+        return false;
     }
 }

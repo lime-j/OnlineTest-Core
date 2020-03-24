@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="OnlineTest.main:jar" />
+      <artifact name="unnamed" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce289c69-5346-4843-8622-1870e9635d2b" name="Default Changelist" comment="" />
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,20 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -32,47 +46,47 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
                 <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
                 <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
                 <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
                 <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OnlineTest" type="f1a62948:ProjectNode" />
+                <item name="OnlineTest-NG" type="f1a62948:ProjectNode" />
                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
@@ -85,50 +99,39 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1Y63KgvS7cRYDV2WBJxWcWYMyfG" />
+  <component name="ProjectId" id="1ZWU1EWvlLEnDQgofeyDuKOrOUU" />
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gant" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="Util" />
-      <recent name="UserService" />
-      <recent name="SearchService" />
-      <recent name="ProblemService" />
-      <recent name="ManagementService" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\solidhtwoo\OnlineTest\src\main\java\" />
-      <recent name="C:\Users\solidhtwoo\OnlineTest\src\main\java" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\solidhtwoo\OnlineTest\src\main\java\UserService" />
-      <recent name="C:\Users\solidhtwoo\OnlineTest\src\main\java" />
-      <recent name="C:\Users\solidhtwoo\OnlineTest\src\main\java\examservice" />
+      <recent name="C:\Users\solidhtwoo\OnlineTest-NG\src" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="gradle build -x test" />
-      <command value="gradle release" />
-      <command value="gradle version" />
-      <command value="gradle shadowJar" />
-      <command value="gradle clean" />
+      <command value="gradle build" />
+      <command value="gradle components" />
+      <command value="gradle buildDependents" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -143,8 +146,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.OnlineTest [build]">
-    <configuration name="OnlineTest [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.DaemonServiceMain">
+    <configuration name="DaemonServiceMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.onlinejudge.daemonservice.DaemonServiceMain" />
+      <module name="OnlineTest-NG.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineTest-NG [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -163,12 +173,12 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="OnlineTest [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OnlineTest-NG [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--exclude-task test" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -182,7 +192,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="OnlineTest [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OnlineTest-NG [components]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -193,82 +203,8 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value="components" />
           </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="OnlineTest [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--stacktrace" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="dependencies" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="OnlineTest [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="shadowJar" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="OnlineTest [version]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="version" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
@@ -276,43 +212,48 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.OnlineTest [buildDependents]" />
-      <item itemvalue="Gradle.OnlineTest [build]" />
-      <item itemvalue="Gradle.OnlineTest [version]" />
-      <item itemvalue="Gradle.OnlineTest [shadowJar]" />
-      <item itemvalue="Gradle.OnlineTest [clean]" />
-      <item itemvalue="Gradle.OnlineTest [dependencies]" />
+      <item itemvalue="Application.DaemonServiceMain" />
+      <item itemvalue="Gradle.OnlineTest-NG [build]" />
+      <item itemvalue="Gradle.OnlineTest-NG [components]" />
+      <item itemvalue="Gradle.OnlineTest-NG [buildDependents]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.OnlineTest [build]" />
-        <item itemvalue="Gradle.OnlineTest [shadowJar]" />
-        <item itemvalue="Gradle.OnlineTest [dependencies]" />
-        <item itemvalue="Gradle.OnlineTest [clean]" />
-        <item itemvalue="Gradle.OnlineTest [version]" />
+        <item itemvalue="Gradle.OnlineTest-NG [build]" />
+        <item itemvalue="Gradle.OnlineTest-NG [buildDependents]" />
+        <item itemvalue="Gradle.OnlineTest-NG [components]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce289c69-5346-4843-8622-1870e9635d2b" name="Default Changelist" comment="" />
-      <created>1582249154461</created>
+      <changelist id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="" />
+      <created>1584954127028</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1582249154461</updated>
-      <workItem from="1582249157882" duration="502000" />
-      <workItem from="1582249721173" duration="3140000" />
-      <workItem from="1582254266667" duration="7651000" />
+      <updated>1584954127028</updated>
+      <workItem from="1584954130922" duration="3207000" />
+      <workItem from="1584957373518" duration="554000" />
+      <workItem from="1584957985516" duration="2583000" />
+      <workItem from="1584960593965" duration="1631000" />
+      <workItem from="1585011416596" duration="22445000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OnlineTest$OnlineTest__dependencies_.ic" NAME="OnlineTest [dependencies] Coverage Results" MODIFIED="1582249498726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

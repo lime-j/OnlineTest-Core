@@ -1,18 +1,20 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ExamServiceDeleteExam extends BooleanEvent {
     public String examID;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceDeleteExam.class);
 
     public ExamServiceDeleteExam(String examID) {
         this.examID = examID;
@@ -26,7 +28,7 @@ public class ExamServiceDeleteExam extends BooleanEvent {
             //stmt.execute("use onlinejudge");
             String qry = String.format("delete from exam where eid = '%s';", this.examID);
             stmt = prepareStatement(qry);
-            debugPrint("ExamServiceDeleteExam, " + qry);
+            logger.debug(qry);
             stmt.execute();
             closeUpdate(stmt, conn);
             return true;
@@ -34,9 +36,9 @@ public class ExamServiceDeleteExam extends BooleanEvent {
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                logger.error(ex.getMessage(),ex);
             }
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
             return false;
         }
     }

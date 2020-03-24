@@ -1,7 +1,10 @@
-package com.onlinejudge.ProblemService;
+package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 import static java.util.Collections.sort;
 
@@ -19,6 +21,7 @@ public class ProblemServiceCreateProblemList extends ListEvent {
     private String subject;
     private List<String> tagList;
     private int choice, torf, blank, subjective, progblank, prog;
+    private static Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblemList.class);
 
     public ProblemServiceCreateProblemList(String subject, List<String> tagList, int choice, int torf, int blank, int subjective, int progblank, int prog) {
         // 创建试题列表
@@ -81,7 +84,8 @@ public class ProblemServiceCreateProblemList extends ListEvent {
         this.progblank = progblank;
     }
 
-    private List<Integer> gen(List<Pair> lst, int lim) {
+    @NotNull
+    private List<Integer> gen(@NotNull List<Pair> lst, int lim) {
         List<Integer> ret = new ArrayList<>();
         int cnt = 0;
         for (var it : lst) {
@@ -123,7 +127,7 @@ public class ProblemServiceCreateProblemList extends ListEvent {
                 resultSet = stmt.executeQuery();
                 while (resultSet.next()) {
                     if (resultSet.getInt("visible") == 0) continue;
-                    debugPrint(String.format("pid=%s, ptype=%d, ptitle=%s, ptext=%s, pans=%s, pmaxsize=%d, pmaxtime=%d, psocre=%d, psubject=%s, ptag=%s",
+                    logger.info(String.format("pid=%s, ptype=%d, ptitle=%s, ptext=%s, pans=%s, pmaxsize=%d, pmaxtime=%d, psocre=%d, psubject=%s, ptag=%s",
                             resultSet.getString("pid"),
                             resultSet.getInt("ptype"),
                             resultSet.getString("ptitle"),
@@ -152,7 +156,7 @@ public class ProblemServiceCreateProblemList extends ListEvent {
                 }
                 resultSet.close();
             }
-            //closeQuery(resultSet, stmt, conn);
+
             sort(tempBlank);
             sort(tempChoice);
             sort(tempProgram);
@@ -178,12 +182,12 @@ public class ProblemServiceCreateProblemList extends ListEvent {
             closeUpdate(stmt, conn);
             return resultList;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         } finally {
             try {
                 closeQuery(resultSet, stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(), e);
             }
 
         }
@@ -207,6 +211,7 @@ public class ProblemServiceCreateProblemList extends ListEvent {
         int first;
         int second;
 
+        @Contract(pure = true)
         Pair(int first, int second) {
             this.first = first;
             this.second = second;

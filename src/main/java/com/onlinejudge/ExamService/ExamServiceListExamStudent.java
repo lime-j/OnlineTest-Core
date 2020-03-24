@@ -1,19 +1,22 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceListExamStudent extends ListEvent {
     public String examID;
+    private static Logger logger = LoggerFactory.getLogger(ExamServiceListExamStudent.class);
 
     public ExamServiceListExamStudent(String examID) {
         this.examID = examID;
@@ -28,9 +31,9 @@ public class ExamServiceListExamStudent extends ListEvent {
             conn = getConnection();
             String qry = String.format("select sid, uname from exam e, examperm ep, userinfo u where u.uid = ep.sid and e.eid = ep.eid and u.utype = 3 and e.eid = '%s'", examID);
             stmt = prepareStatement(qry);
-            debugPrint("ExamServiceListExamStudent, conn and stmt settled.");
+            logger.info("conn and stmt settled.");
             //stmt.executeQuery("use onlinejudge");
-            debugPrint("ExamServiceListExamStudent, qry = " + qry);
+            logger.debug("ExamServiceListExamStudent, qry = " + qry);
             queryResult = stmt.executeQuery();
             int cnt = 0;
             List<ExamServiceListedStudent> resultList = new ArrayList<>();
@@ -42,15 +45,15 @@ public class ExamServiceListExamStudent extends ListEvent {
                 resultList.add(result);
             }
             closeQuery(queryResult, stmt, conn);
-            System.out.println("[DBG]:ExamServiceListExamStudent,  find" + cnt + "result(s)");
+            logger.debug(MessageFormat.format("find{0}result(s)", cnt));
             return resultList;
         } catch (SQLException sqlException) {
             try {
                 closeQuery(queryResult, stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage(),e);
             }
-            sqlException.printStackTrace();
+            logger.error(sqlException.getMessage(),sqlException);
             return new ArrayList<>();
         }
     }

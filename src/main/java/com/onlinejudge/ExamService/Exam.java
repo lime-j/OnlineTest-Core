@@ -1,4 +1,7 @@
-package com.onlinejudge.ExamService;
+package com.onlinejudge.examservice;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -6,14 +9,15 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Exam {
+    private static Logger logger = LoggerFactory.getLogger(Exam.class);
     private String examID;
     private String examName;
     private String userID;
-    private String startTime, endTime;
+    private String startTime;
+    private String endTime;
     private String examText;
     private List<String> problemList;
     private String examSubject;
@@ -36,7 +40,7 @@ public class Exam {
         this.startTime = startTime;
         this.endTime = endTime;
         this.examText = examText;
-        this.problemList = new ArrayList<String>();
+        this.problemList = new ArrayList<>();
     }
 
     public Exam(String examID, String examName, String userID, String startTime, String endTime, String examText, String examSubject) {
@@ -46,7 +50,7 @@ public class Exam {
         this.startTime = startTime;
         this.endTime = endTime;
         this.examText = examText;
-        this.problemList = new ArrayList<String>();
+        this.problemList = new ArrayList<>();
         this.examSubject = examSubject;
 
     }
@@ -65,17 +69,17 @@ public class Exam {
             PreparedStatement updateStmt = prepareStatement("insert into examperm (eid, sid) values (?, ?)");
             updateStmt.setString(1, this.examID);
             updateStmt.setString(2, this.userID);
-            debugPrint(this.toString() + " " + updateStmt.toString());
+
+            logger.debug("{} {}",this, updateStmt);
             updateStmt.executeUpdate();
             updateStmt.close();
-//            }
 //            permExistResult.close();
 //            permExist.close();
             closeConnection();
         } catch (SQLIntegrityConstraintViolationException e) {
-            debugPrint(this.toString() + " " + e.toString());
+            logger.debug("{} {}",this,e.getMessage());
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("SQLEXception", e);
         }
     }
 

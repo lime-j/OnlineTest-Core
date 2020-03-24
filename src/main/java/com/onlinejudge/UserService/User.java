@@ -1,4 +1,4 @@
-package com.onlinejudge.UserService;
+package com.onlinejudge.userservice;
 
 public class User {
     private String userID;

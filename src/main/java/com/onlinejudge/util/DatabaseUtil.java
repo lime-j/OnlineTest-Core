@@ -1,6 +1,7 @@
 package com.onlinejudge.util;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.jetbrains.annotations.Contract;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -12,8 +13,10 @@ public class DatabaseUtil {
     private static DataSource ds = new ComboPooledDataSource();
     private static ThreadLocal<Connection> tl = new ThreadLocal<>();
 
+    @Contract(pure = true)
     public DatabaseUtil() {}
 
+    @Contract(pure = true)
     public static DataSource getDataSource() {
         return ds;
     }

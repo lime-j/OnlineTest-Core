@@ -1,7 +1,9 @@
-package com.onlinejudge.SearchService;
+package com.onlinejudge.searchservice;
 
 import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.ListEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,21 +13,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.DaemonService.DaemonServiceMain.debugPrint;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 
 public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
-    //SearchService 提供考试和题面查询功能,
+    //searchservice 提供考试和题面查询功能,
     // 调用参数 :
     // userID 表示用户的ID (不是Token)
     // queryType 表示查询类型, 1 表示是问题查询, 2 表示是考试查询
     // keyword 是匹配关键字
     // 返回 JSON String, 以一个list的形式给出,
     // 每个 List 内包括多个JSON String, 内容如 SearchServiceResult 所示.
+
     private String userID;
     private queryTypes queryType;
     private String keyword;
+    private static Logger logger = LoggerFactory.getLogger(SearchServiceDoQuery.class);
 
     public SearchServiceDoQuery(String userID, int queryType, String keyword) {
         setUserID(userID);
@@ -42,10 +45,10 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             String pTitle = queryResult.getString("ptitle");
             String pID = queryResult.getString("pid");
             var result = new SearchServiceResult(ptext, pID, pTitle);
-            debugPrint("SearchService, find ptext = " + ptext + ",ptitle = " + pTitle + ",pID = " + pID);
+            logger.debug("find ptext = {},ptitle = {},pid = {}",ptext ,pTitle,pID);
             resultList.add(result);
         }
-        debugPrint("SearchService, find " + cnt + " result(s).");
+        logger.info("searchservice, find {} result(s).",cnt);
         return resultList;
     }
 
@@ -62,10 +65,10 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             var eID = queryResult.getString("eid");
             var eSubject = queryResult.getString("esubject");
             var result = new SearchServiceResult(description, eID, eTitle, eSubject);
-            debugPrint("SearchService, find description = " + description + ",eID = " + eID + ",eTitle = " + eTitle);
+            logger.debug("searchservice, find description = " + description + ",eID = " + eID + ",eTitle = " + eTitle);
             resultList.add(result);
         }
-        debugPrint("SearchService, find " + cnt + " result(s).");
+        logger.info("searchservice, find " + cnt + " result(s).");
         return resultList;
     }
 
@@ -78,7 +81,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
         try {
             //  Class.forName(JDBC_DRIVER);
             conn = DatabaseUtil.getConnection();
-            debugPrint("SearchService, conn settled.");
+            logger.info("searchservice, conn settled.");
             List<SearchServiceResult> resultList = null;
 
             stmt = prepareStatement("select utype from userinfo where uid = ?");
@@ -99,7 +102,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
 
 
             if (this.queryType == queryTypes.Problem) {
-                debugPrint("SearchService, queryType == Problem");
+                logger.info("searchservice, queryType == Problem");
                 String qry = "";
                 if (userType == 3) {
                     qry = "select p.ptext, p.ptitle ptitle, p.pid from examperm ep, exam e, problem p where (e.eid = ep.eid) and (ep.sid = ?) and (ptitle like ? or ename like ? or ptag like ? or psubject like ?)";
@@ -135,9 +138,9 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             }
             DatabaseUtil.closeQuery(queryResult, stmt, conn);
             return resultList;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        } catch (SQLException e) {
+            logger.error(e.getMessage(),e,e.getSQLState());
+            return new ArrayList<>();
         }
     }
 

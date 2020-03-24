@@ -1,6 +1,8 @@
 package com.onlinejudge.util;
 
-import com.onlinejudge.DaemonService.DaemonServiceMain;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +18,9 @@ public class StringListerUtil {
     private List<String> resultList = null;
     private Connection conn = null;
     private PreparedStatement stmt = null;
+    private static Logger logger = LoggerFactory.getLogger(StringListerUtil.class);
 
-    public StringListerUtil(String stmtString, String get, List<String> puts, String callName) {
+    public StringListerUtil(String stmtString, String get, @NotNull List<String> puts, String callName) {
         this.resultList = new ArrayList<>();
         try {
             this.conn = getConnection();
@@ -26,16 +29,16 @@ public class StringListerUtil {
             for (String it : puts) {
                 this.stmt.setString(++cur, it);
             }
-            DaemonServiceMain.debugPrint(callName + " , " + this.stmt.toString());
+            logger.debug("{},{}", callName, this.stmt);
             this.result = this.stmt.executeQuery();
             while (this.result.next()) this.resultList.add(this.result.getString(get));
             closeQuery(this.result, this.stmt, this.conn);
-            DaemonServiceMain.debugPrint(callName + " , query is ok, quit.");
+            logger.info("{}, , query is ok, quit.", callName);
         } catch (SQLException e) {
             try {
                 closeQuery(this.result, this.stmt, this.conn);
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                logger.error(ex.getMessage(),ex);
             }
         }
     }
@@ -46,16 +49,16 @@ public class StringListerUtil {
             this.conn = getConnection();
             this.stmt = prepareStatement(stmtString);
             this.stmt.setString(1, put);
-            DaemonServiceMain.debugPrint(callName + " , " + this.stmt.toString());
+            logger.debug("{},{}",callName,this.stmt);
             this.result = this.stmt.executeQuery();
             while (this.result.next()) this.resultList.add(this.result.getString(get));
             closeQuery(this.result, this.stmt, this.conn);
-            DaemonServiceMain.debugPrint(callName + " , query is ok, quit.");
+            logger.info("{},query is ok, quit.",callName);
         } catch (SQLException e) {
             try {
                 closeQuery(this.result, this.stmt, this.conn);
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                logger.error("SQLException while closing conn",ex);
             }
         }
     }
