@@ -28,13 +28,13 @@ public class LoginServiceSendMail extends BooleanEvent {
     }
 
     @TestOnly
-    public static void main(String args[]) throws InternalException {
+    public static void main(String[] args) throws InternalException {
         var tmp = new LoginServiceSendMail("solidhtwoo@qq.com");
         tmp.go();
     }
 
     public boolean go() throws InternalException {
-        Jedis jedis = null;
+        Jedis jedis;
         Email from = new Email(MAIL_FROM);
         String subject = "重设密码";
         Email to = new Email(email);
