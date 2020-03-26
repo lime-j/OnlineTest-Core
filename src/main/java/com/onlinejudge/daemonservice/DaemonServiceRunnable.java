@@ -18,11 +18,14 @@ import java.nio.charset.StandardCharsets;
 
 public class DaemonServiceRunnable implements Runnable {
     private Socket cl;
+
     @Contract(pure = true)
     DaemonServiceRunnable(Socket sc) {
         this.cl = sc;
     }
+
     private static Logger logger = LoggerFactory.getLogger(DaemonServiceRunnable.class);
+
     public void run() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.cl.getInputStream()));
@@ -30,15 +33,11 @@ public class DaemonServiceRunnable implements Runnable {
             logger.info(recv);
             Handler handler = null;
             var jsonObject = JSON.parseObject(recv);
-            String requestType = null;
+            String requestType = jsonObject.getString("requestType");
+            String userToken = jsonObject.getString("userToken");
+            if (requestType == null || userToken == null) throw new InvalidRequestException();
             String userID = jsonObject.getString("userID");
-            if (jsonObject.containsKey("userPassword") ) {
-                requestType = "login";
-            } else {
-                requestType = jsonObject.getString("requestType");
-                String userToken = jsonObject.getString("userToken");
-                // 这些是基本元素, 是一个请求必须发送的, 如果请求没含有这些内容, 就是不合法的
-                if (requestType == null || userToken == null) throw new InvalidRequestException();
+            if (!requestType.equals("login") && !requestType.equals("sendMain") && !requestType.equals("changePassword")) {
                 UserServiceCheckToken.checkToken(userID, userToken);
             }
             handler = HandlerFactory.getHandler(requestType, jsonObject);
@@ -62,13 +61,13 @@ public class DaemonServiceRunnable implements Runnable {
                 logger.error(e.getMessage(), e);
             }
         } catch (Exception ee) {
-            logger.error("Oops.Something is wrong.",ee);
+            logger.error("Oops.Something is wrong.", ee);
             try {
                 this.cl.getOutputStream().write("{\"status\":-1}".getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 logger.error("IOException", e);
             }
-        }finally {
+        } finally {
             try {
                 this.cl.close();
             } catch (IOException e) {
