@@ -19,7 +19,7 @@ public class ManagementServiceAddListUsers extends BooleanEvent {
             UserWithPasswd CurrUser = new UserWithPasswd(
                     CurrJSON.getString("uid"), CurrJSON.getString("uname"),
                     CurrJSON.getIntValue("usex"), CurrJSON.getIntValue("utype"),
-                    CurrJSON.getString("teacher"), CurrJSON.getString("passwd"));
+                    CurrJSON.getString("passwd"));
             CurrUser.updateUser();
         }
         return true;

@@ -341,10 +341,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="575" y="344" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585194173047">
+    <state x="360" y="140" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585207612918">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="344" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585194173047" />
+    <state x="360" y="140" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585207612918" />
+    <state x="575" y="342" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585207627273">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="575" y="342" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585207627273" />
     <state x="759" y="508" key="com.intellij.ide.util.TipDialog" timestamp="1585194134150">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
