@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static com.onlinejudge.userservice.UserServiceProperties.*;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserServiceUpdateProperties extends BooleanEvent {
@@ -30,15 +31,15 @@ public class UserServiceUpdateProperties extends BooleanEvent {
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            if (this.updateType == 1) {
+            if (this.updateType == changeUserSex) {
                 stmt = prepareStatement("update userinfo set usex = ? where uid = ?");
                 stmt.setString(2, this.userID);
                 stmt.setInt(1, Integer.parseInt(this.newProperty));
-            } else if (this.updateType == 2) {
+            } else if (this.updateType == changeUserName) {
                 stmt = prepareStatement("update userinfo set uname= ? where uid = ?");
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
-            } else if (this.updateType == 3) {
+            } else if (this.updateType == changeUserPassword) {
                 stmt = prepareStatement("update userinfo set upassword = ? where uid = ?");
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
