@@ -1,7 +1,6 @@
 package com.onlinejudge.userservice;
 
 
-import com.onlinejudge.daemonservice.DaemonServiceMain;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
 import org.slf4j.Logger;

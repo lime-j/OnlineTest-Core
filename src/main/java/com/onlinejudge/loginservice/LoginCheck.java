@@ -1,6 +1,7 @@
 package com.onlinejudge.loginservice;
 
 import com.alibaba.fastjson.JSON;
+import com.onlinejudge.manservice.UserWithPasswd;
 import com.onlinejudge.util.ClassEvent;
 import com.onlinejudge.util.DatabaseUtil;
 import org.slf4j.Logger;
@@ -51,18 +52,25 @@ public class LoginCheck extends ClassEvent {
                 uPassword = ret.getString("upassword");
                 uType = ret.getInt("utype");
                 uSex = ret.getInt("usex");
+
             }
             assert cnt == 1 || cnt == 0;
             closeQuery(ret, stmt, conn);
+            if (cnt == 0){
+                logger.info("Register for {} with password {}", uID, passwordRecv);
+                UserWithPasswd CurrUser = new UserWithPasswd(
+                        uID, "", uSex, 3, passwordRecv);
+                CurrUser.updateUser();
+            }
+
+            uPassword = passwordRecv;
             logger.debug("uID = {}", uID);
             logger.debug("uPassword = {}", uPassword);
             logger.debug("uType = {}" ,uType);
             uuid = UUID.randomUUID().toString().replace("-", "");
             logger.info("uuid = {}",uuid);
             // generate UUID
-            // send the information,
-            // (uname == -1) means that ID is wrong,
-            // (uuid == 1) means that password is wrong.
+            // send information
             assert uPassword != null;
             if (uPassword.equals(passwordRecv)) {
                 jedis = new Jedis("localhost");

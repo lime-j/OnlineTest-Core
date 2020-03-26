@@ -15,12 +15,17 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 public class UserWithPasswd extends com.onlinejudge.userservice.User {
     private String UserPasswd;
     private static Logger logger = LoggerFactory.getLogger(UserWithPasswd.class);
-
+/*
+    不再需要Tuid
     public UserWithPasswd(String userID, String userName, int userSex, int userType, String Tuid, String Passwd) {
         super(userID, userName, userSex, userType, Tuid);
         this.UserPasswd = Passwd;
     }
-
+*/
+    public UserWithPasswd(String userID, String userName, int userSex, int userType, String Passwd) {
+        super(userID, userName, userSex, userType);
+        this.UserPasswd = Passwd;
+    }
     private static boolean isfailed(@NotNull ResultSet rs) {
         boolean flag = true;
         try {

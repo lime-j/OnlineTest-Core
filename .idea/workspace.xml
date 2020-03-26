@@ -6,8 +6,57 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d717402d-5f90-4298-ae02-c5ecad19851f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d717402d-5f90-4298-ae02-c5ecad19851f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/DaemonService/DaemonServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/DaemonService/DaemonServiceRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/DaemonService/InvalidRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/InvalidRequestException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceAddUserIntoExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceAddUserIntoExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceCreateModifyExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceCreateModifyExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceDeleteExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceDeleteProblemFromExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteProblemFromExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceListExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceListExamProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceListExamStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceListedStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListedStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceQueryStudentScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceQueryStudentScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ExamService/ExamServiceReplaceProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceReplaceProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/InvisibleProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/InvisibleProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceAntiCheatListSubmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceAntiCheatListSubmission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceChangeScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceChangeScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceCreateProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceCreateProblemList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblemList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceCreateTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceDeleteProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceDeleteProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceListAllProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceListTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceNewInvisibleProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceNewInvisibleProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemServiceSubjectiveSubReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSubjectiveSubReturn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/ProblemSubmissionToQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemSubmissionToQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/SubjectiveSubmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/SubjectiveSubmission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/Submission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Submission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/ProblemService/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/SearchService/SearchServiceDoQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/searchservice/SearchServiceDoQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/SearchService/SearchServiceResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/searchservice/SearchServiceResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/SearchService/queryTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/searchservice/queryTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/TokenWrongException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/TokenWrongException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/UserServiceCheckToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceCheckToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/UserServiceDeleteAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceDeleteAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/UserServiceListAllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListAllUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/UserServiceListSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/UserService/UserServiceUpdateProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceUpdateProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/UserWithPasswd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/UserWithPasswd.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,11 +154,29 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="with_gradle" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1ZWU1EWvlLEnDQgofeyDuKOrOUU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -137,18 +204,6 @@
       <command value="gradle build" />
       <command value="gradle components" />
       <command value="gradle buildDependents" />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="RunManager" selected="Application.DaemonServiceMain">
@@ -230,16 +285,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -256,6 +301,7 @@
       <workItem from="1584960593965" duration="1631000" />
       <workItem from="1585011416596" duration="22445000" />
       <workItem from="1585042454188" duration="500000" />
+      <workItem from="1585194133776" duration="3336000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -282,7 +328,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -291,5 +339,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="575" y="344" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585194173047">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="575" y="344" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585194173047" />
+    <state x="759" y="508" key="com.intellij.ide.util.TipDialog" timestamp="1585194134150">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="759" y="508" key="com.intellij.ide.util.TipDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585194134150" />
   </component>
 </project>
