@@ -11,7 +11,6 @@ import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
 import com.onlinejudge.userservice.UserServiceDeleteAccount;
 import com.onlinejudge.userservice.UserServiceListAllUser;
-import com.onlinejudge.userservice.UserServiceListSubject;
 import com.onlinejudge.userservice.UserServiceUpdateProperties;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -44,6 +43,16 @@ public class HandlerFactory {
 
         try {
             switch (requestEnum) {
+                case listSubject:
+                    handler = new ListEventHandler(
+                            new ProblemServiceListAllSubject()
+                    );
+                    break;
+                case setSubject:
+                    handler = new BooleanEventHandler(new ProblemServiceSetSubject(
+                            parseArray(jsonObject.getJSONArray("subject").toJSONString(), String.class),jsonObject.getString("userID")
+                    ));
+                    break;
                 case sendMail:
                     handler = new BooleanEventHandler(
                             new LoginServiceSendMail(
@@ -212,20 +221,6 @@ public class HandlerFactory {
                             )
                     );
                     break;
-                case listSubject:
-                    handler = new ListEventHandler(
-                            new UserServiceListSubject(
-                                    jsonObject.getString("teacherID")
-                            )
-                    );
-                    break;
-                case listTag:
-                    handler = new ListEventHandler(
-                            new ProblemServiceListTag(
-                                    jsonObject.getString("subject")
-                            )
-                    );
-                    break;
                 case problemUpdate:
                     handler = new BooleanEventHandler(
                             new ProblemServiceCreateProblem(
@@ -293,11 +288,6 @@ public class HandlerFactory {
                             jsonObject.getIntValue("choice"), jsonObject.getIntValue("TorF"), jsonObject.getIntValue("blank"),
                             jsonObject.getIntValue("subjective"), jsonObject.getIntValue("programBlank"),
                             jsonObject.getIntValue("program")));
-                    break;
-                case createProblemTag:
-                    handler = new BooleanEventHandler(new ProblemServiceCreateTag(new Tag(
-                            jsonObject.getString("subject"), jsonObject.getString("newTag")
-                    )));
                     break;
 
                 // ManagerService

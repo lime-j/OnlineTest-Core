@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/onlinejudge</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="onlinejudge@localhost [2]" uuid="60d4ecd2-c6e8-4b47-b0cb-5b52c70b21d8">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/onlinejudge</jdbc-url>
+    </data-source>
   </component>
 </project>

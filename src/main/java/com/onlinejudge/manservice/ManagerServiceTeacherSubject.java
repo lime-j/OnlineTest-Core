@@ -35,8 +35,6 @@ public class ManagerServiceTeacherSubject extends BooleanEvent {
             Connection conn = getConnection();
             staInsertTea = prepareStatement("insert into teasubject (subject, teacherid)" +
                     "values(?, ?)");
-            staNewSubject = prepareStatement("insert into subject (subject)" +
-                    "values(?)");
             staQuerySubject = prepareStatement("select * from subject where subject=?");
             staQueryTea = prepareStatement("select * from teasubject where subject=? and teacherid=?");
             for (String s : this.currTeacherSubject) {

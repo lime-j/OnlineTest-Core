@@ -6,9 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="修了两个warning">
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="修了一点锅">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllSubject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSetSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagerServiceTeacherSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagerServiceTeacherSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringListerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringListerUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +39,48 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="exam: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="subject: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="teasubject: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="ExternalProjectsData">
@@ -102,8 +153,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -114,6 +165,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -148,7 +200,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -166,7 +218,7 @@
       <command value="gradle test" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.LoginServiceChangePassword">
+  <component name="RunManager" selected="Gradle.OnlineTest-NG [build]">
     <configuration name="LoginServiceChangePassword" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.onlinejudge.loginservice.LoginServiceChangePassword" />
       <module name="OnlineTest-NG.main" />
@@ -259,12 +311,34 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.OnlineTest-Core [test]" />
         <item itemvalue="Gradle.OnlineTest-NG [build]" />
+        <item itemvalue="Gradle.OnlineTest-Core [test]" />
         <item itemvalue="Gradle.OnlineTest-NG [buildDependents]" />
         <item itemvalue="Gradle.OnlineTest-NG [components]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:onlinejudge@localhost [2]" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:onlinejudge@localhost [2]" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@50d9c28e" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -284,6 +358,7 @@
       <workItem from="1585042454188" duration="500000" />
       <workItem from="1585194133776" duration="7225000" />
       <workItem from="1585212899111" duration="9271000" />
+      <workItem from="1585274307090" duration="16491000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -334,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585221516035</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修了一点锅">
+      <created>1585282083335</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585282083335</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,13 +442,26 @@
     <MESSAGE value="ignore" />
     <MESSAGE value="性能优化， 添加了发找回验证码邮件的功能" />
     <MESSAGE value="修了两个warning" />
-    <option name="LAST_COMMIT_MESSAGE" value="修了两个warning" />
+    <MESSAGE value="修了一点锅" />
+    <option name="LAST_COMMIT_MESSAGE" value="修了一点锅" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-279" y="336" width="1528" height="1099" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585216190087">
+    <state x="575" y="216" width="1400" height="1280" key="#Intentions" timestamp="1585299127670">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="-279" y="336" width="1528" height="1099" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585216190087" />
+    <state x="575" y="216" width="1400" height="1280" key="#Intentions/0.0.2560.1600@0.0.2560.1600" timestamp="1585299127670" />
+    <state x="575" y="216" width="1400" height="1198" key="#SQL_Dialects" timestamp="1585299118510">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="575" y="216" width="1400" height="1198" key="#SQL_Dialects/0.0.2560.1600@0.0.2560.1600" timestamp="1585299118510" />
+    <state x="575" y="216" width="1400" height="1198" key="#SQL_Resolution_Scopes" timestamp="1585296907435">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="575" y="216" width="1400" height="1198" key="#SQL_Resolution_Scopes/0.0.2560.1600@0.0.2560.1600" timestamp="1585296907435" />
+    <state x="600" y="296" width="1528" height="1099" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585296864372">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="600" y="296" width="1528" height="1099" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585296864372" />
     <state x="862" y="536" width="826" height="558" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585221045791">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -375,62 +470,94 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="926" y="480" width="918" height="738" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585216182670" />
-    <state x="360" y="116" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585221535972">
+    <state x="933" y="585" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585297305440">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="116" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585221535972" />
+    <state x="933" y="585" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1600@0.0.2560.1600" timestamp="1585297305440" />
+    <state x="816" y="370" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585299300558">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="816" y="370" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585299300558" />
+    <state x="360" y="112" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585282083071">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="360" y="112" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585282083071" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585207713833" />
-    <state x="899" y="401" width="742" height="860" key="FileChooserDialogImpl" timestamp="1585213020549">
+    <state x="899" y="399" width="742" height="860" key="FileChooserDialogImpl" timestamp="1585296738755">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="899" y="401" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585213020549" />
-    <state width="2488" height="408" key="GridCell.Tab.0.bottom" timestamp="1585216192052">
+    <state x="899" y="399" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585296738755" />
+    <state width="1704" height="408" key="GridCell.Tab.0.bottom" timestamp="1585326469150">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585216192052" />
-    <state width="2488" height="408" key="GridCell.Tab.0.center" timestamp="1585216192052">
+    <state width="1704" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585326469150" />
+    <state width="1704" height="408" key="GridCell.Tab.0.center" timestamp="1585326469149">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="408" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585216192052" />
-    <state width="2488" height="408" key="GridCell.Tab.0.left" timestamp="1585216192051">
+    <state width="1704" height="408" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585326469149" />
+    <state width="1704" height="408" key="GridCell.Tab.0.left" timestamp="1585326469149">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="408" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585216192051" />
-    <state width="2488" height="408" key="GridCell.Tab.0.right" timestamp="1585216192052">
+    <state width="1704" height="408" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585326469149" />
+    <state width="1704" height="408" key="GridCell.Tab.0.right" timestamp="1585326469150">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="408" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585216192052" />
-    <state width="2488" height="505" key="GridCell.Tab.1.bottom" timestamp="1585214147295">
+    <state width="1704" height="408" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585326469150" />
+    <state width="2478" height="505" key="GridCell.Tab.1.bottom" timestamp="1585278295602">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="505" key="GridCell.Tab.1.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585214147295" />
-    <state width="2488" height="505" key="GridCell.Tab.1.center" timestamp="1585214147294">
+    <state width="2478" height="505" key="GridCell.Tab.1.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585278295602" />
+    <state width="2478" height="505" key="GridCell.Tab.1.center" timestamp="1585278295601">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="505" key="GridCell.Tab.1.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585214147294" />
-    <state width="2488" height="505" key="GridCell.Tab.1.left" timestamp="1585214147293">
+    <state width="2478" height="505" key="GridCell.Tab.1.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585278295601" />
+    <state width="2478" height="505" key="GridCell.Tab.1.left" timestamp="1585278295600">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="505" key="GridCell.Tab.1.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585214147293" />
-    <state width="2488" height="505" key="GridCell.Tab.1.right" timestamp="1585214147294">
+    <state width="2478" height="505" key="GridCell.Tab.1.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585278295600" />
+    <state width="2478" height="505" key="GridCell.Tab.1.right" timestamp="1585278295601">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2488" height="505" key="GridCell.Tab.1.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585214147294" />
-    <state x="422" y="169" width="1716" height="1291" key="SettingsEditor" timestamp="1585212881812">
+    <state width="2478" height="505" key="GridCell.Tab.1.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585278295601" />
+    <state x="926" y="326" width="697" height="978" key="RollbackChangesDialog" timestamp="1585232425488">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="422" y="169" width="1716" height="1291" key="SettingsEditor/0.0.2560.1600@0.0.2560.1600" timestamp="1585212881812" />
-    <state x="575" y="334" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585221538517">
+    <state x="926" y="326" width="697" height="978" key="RollbackChangesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585232425488" />
+    <state x="422" y="167" width="1716" height="1291" key="SettingsEditor" timestamp="1585296491781">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="334" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585221538517" />
-    <state x="759" y="506" key="com.intellij.ide.util.TipDialog" timestamp="1585212900886">
+    <state x="422" y="167" width="1716" height="1291" key="SettingsEditor/0.0.2560.1600@0.0.2560.1600" timestamp="1585296491781" />
+    <state width="949" height="795" key="SqlResolveConfigurable" timestamp="1585296905397">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="759" y="506" key="com.intellij.ide.util.TipDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585212900886" />
+    <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
+    <state x="575" y="332" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585282089970">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="575" y="332" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585282089970" />
+    <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.2560.1600@0.0.2560.1600" timestamp="1585299141802" />
+    <state x="780" y="191" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1585299650596">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="780" y="191" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585299650596" />
+    <state x="759" y="504" key="com.intellij.ide.util.TipDialog" timestamp="1585274307277">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="759" y="504" key="com.intellij.ide.util.TipDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585274307277" />
+    <state x="949" y="661" width="661" height="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585282101155">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="949" y="661" width="661" height="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585282101155" />
+    <state x="756" y="113" width="1047" height="1371" key="find.popup" timestamp="1585326381061">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="756" y="113" width="1047" height="1371" key="find.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585326381061" />
     <state x="691" y="355" width="1177" height="1976" key="run.anything.popup" timestamp="1585214074188">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>

@@ -34,7 +34,9 @@ public enum HandlerEnum {
     createProblemList("createProblemList"),
     createProblemTag("createProblemTag"),
     changePassword("changePassword"),
-    sendMail("sendMail");
+    sendMail("sendMail"),
+    setSubject("setSubject")
+    ;
     public String name;
 
     HandlerEnum(String name) {

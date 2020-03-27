@@ -62,6 +62,7 @@ public class LoginCheck extends ClassEvent {
                         uID, "", uSex, 3, passwordRecv);
                 CurrUser.updateUser();
                 uPassword = passwordRecv;
+                uName = "";
             }
             logger.debug("uID = {}", uID);
             logger.debug("uPassword = {}", uPassword);

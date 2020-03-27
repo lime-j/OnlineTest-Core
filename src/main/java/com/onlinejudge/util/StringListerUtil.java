@@ -62,7 +62,24 @@ public class StringListerUtil {
             }
         }
     }
-
+    public StringListerUtil(String stmtString, String get, String callName) {
+        this.resultList = new ArrayList<>();
+        try {
+            this.conn = getConnection();
+            this.stmt = prepareStatement(stmtString);
+            logger.debug("{},{}",callName,this.stmt);
+            this.result = this.stmt.executeQuery();
+            while (this.result.next()) this.resultList.add(this.result.getString(get));
+            closeQuery(this.result, this.stmt, this.conn);
+            logger.info("{},query is ok, quit.",callName);
+        } catch (SQLException e) {
+            try {
+                closeQuery(this.result, this.stmt, this.conn);
+            } catch (SQLException ex) {
+                logger.error("SQLException while closing conn",ex);
+            }
+        }
+    }
     public List<String> getResultList() {
         return this.resultList;
     }
