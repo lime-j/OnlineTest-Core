@@ -49,7 +49,6 @@ public class LoginServiceSendMail extends BooleanEvent {
         logger.debug("Binded {} with {}", String.format("r%s", email), code);
         jedis.disconnect();
 
-
         Content content = new Content("text/plain", MessageFormat.format(mailContent, code));
         Mail mail = new Mail(from, subject, to, content);
         SendGrid sg = new SendGrid(SG_API_KEY);
