@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.stream.Stream;
 
 public class DaemonServiceRunnable implements Runnable {
     private Socket cl;
@@ -37,7 +38,7 @@ public class DaemonServiceRunnable implements Runnable {
             String userToken = jsonObject.getString("userToken");
             if (requestType == null || userToken == null) throw new InvalidRequestException();
             String userID = jsonObject.getString("userID");
-            if ((!requestType.equals("login")) && (!requestType.equals("sendMail")) && (!requestType.equals("changePassword"))) {
+            if (Stream.of("login", "sendMail", "changePassword").allMatch(s -> (!s.equals(requestType)))) {
                 UserServiceCheckToken.checkToken(userID, userToken);
             }
             handler = HandlerFactory.getHandler(requestType, jsonObject);

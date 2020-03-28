@@ -22,18 +22,6 @@ public class HandlerCode {
      */
     private static final long mod1 = 19260817L;
     private static final long mod2 =  998244353L;
-    @Contract(pure = true)
-    protected static long dualhash(String str){
-        String upperStr = str.toUpperCase();
-        long val1 = 0L, val2 = 0L;
-        int len = str.length();
-        for (int i = 0; i < len; ++ i){
-            int curval = upperStr.charAt(i);
-            val1 = (val1 * 26L + (curval - 65)) % mod1;
-            val2 = (val2 * 26L + (curval - 65)) % mod2;
-        }
-        return val1 * mod2 + val2;
-    }
     protected static final long LOGIN = 5267812320873258L;
     protected static final long QUERYSTUDENTPRACTICESCORE = 4781425251978486L;
     protected static final long DELETEEXAM = 9231245594631845L;
@@ -67,4 +55,16 @@ public class HandlerCode {
     protected static final long CREATEPROBLEMLIST = 4718659792655081L;
     protected static final long CREATEPROBLEMTAG = 926165837817287L;
 
+    @Contract(pure = true)
+    protected static long dualhash(String str) {
+        String upperStr = str.toUpperCase();
+        long val1 = 0L, val2 = 0L;
+        int len = str.length();
+        for (int i = 0; i < len; ++i) {
+            int curval = upperStr.charAt(i);
+            val1 = (val1 * 26L + (curval - 65)) % mod1;
+            val2 = (val2 * 26L + (curval - 65)) % mod2;
+        }
+        return val1 * mod2 + val2;
+    }
 }

@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,7 +355,7 @@
       <workItem from="1585042454188" duration="500000" />
       <workItem from="1585194133776" duration="7225000" />
       <workItem from="1585212899111" duration="9271000" />
-      <workItem from="1585274307090" duration="25274000" />
+      <workItem from="1585274307090" duration="26047000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -433,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585398124738</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="修了一点锅">
+      <created>1585398198786</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1585398198786</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,10 +475,10 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="570" y="198" width="1400" height="1198" key="#Deployment" timestamp="1585398123319">
+    <state x="570" y="196" width="1400" height="1198" key="#Deployment" timestamp="1585398195291">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="570" y="198" width="1400" height="1198" key="#Deployment/0.0.2560.1600@0.0.2560.1600" timestamp="1585398123319" />
+    <state x="570" y="196" width="1400" height="1198" key="#Deployment/0.0.2560.1600@0.0.2560.1600" timestamp="1585398195291" />
     <state x="575" y="216" width="1400" height="1280" key="#Intentions" timestamp="1585299127670">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -503,10 +511,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="816" y="370" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585299300558" />
-    <state x="360" y="106" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585398124571">
+    <state x="360" y="102" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585399882980">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="106" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585398124571" />
+    <state x="360" y="102" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585399882980" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -559,10 +567,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="330" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585327598160">
+    <state x="575" y="328" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585398229941">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="330" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585327598160" />
+    <state x="575" y="328" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585398229941" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
