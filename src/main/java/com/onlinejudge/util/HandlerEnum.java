@@ -37,7 +37,7 @@ public enum HandlerEnum {
     sendMail("sendMail"),
     setSubject("setSubject")
     ;
-    public String name;
+    public final String name;
 
     HandlerEnum(String name) {
         this.name = name;

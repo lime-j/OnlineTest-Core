@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.UUID;
 
 public class ProblemServiceCreateProblem extends BooleanEvent {
-    private Problem currentProblem;
+    private final Problem currentProblem;
     private static Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblem.class);
 
     ////////////////////////////////////////////////////////////////////////////////////

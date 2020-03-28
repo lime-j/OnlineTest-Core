@@ -20,17 +20,19 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Problem {
     private static final String homePath = "/tmp";
-    private static Logger logger = LoggerFactory.getLogger(Problem.class);
+    private static final Logger logger = LoggerFactory.getLogger(Problem.class);
 
     //    final private String homePath=System.getProperties().getProperty("user.home");
-    public int ProbType; //试题类型，1==选择题，2==填空题，3==程序题，4==程序填空，5==
+    public final int ProbType; //试题类型，1==选择题，2==填空题，3==程序题，4==程序填空，5==
     public String Pid;//试题id
-    public String ProbTile;//试题题目
-    public String ProbText;//试题内容
+    public final String ProbTile;//试题题目
+    public final String ProbText;//试题内容
     public String ProbAns;//试题答案
     public String ProbSubject;//试题所属科目
     public String ProbTag;//试题考察知识点
-    public int ProbSZ, ProbTM, ProbScore;//程序题的空间大小，时间限制，总分值
+    public int ProbSZ;
+    public int ProbTM;
+    public final int ProbScore;//程序题的空间大小，时间限制，总分值
     private Tag currTag;
 
 
@@ -137,7 +139,7 @@ public class Problem {
 
     @NotNull
     private String getProbAns() {
-        String ansFile = this.homePath + "/OnlineJudge/ans/" + this.Pid + ".ans";
+        String ansFile = homePath + "/OnlineJudge/ans/" + this.Pid + ".ans";
         logger.info(ansFile);
         String tmp = readLineByLine(ansFile);
         logger.info(tmp);
@@ -168,7 +170,7 @@ public class Problem {
         if (this.ProbAns.isEmpty()) {
             return true;
         }
-        File AnsFile = new File(this.homePath + "/OnlineJudge/ans/" + this.Pid + ".ans");
+        File AnsFile = new File(homePath + "/OnlineJudge/ans/" + this.Pid + ".ans");
         // ans路径：$HOME/OnlineJudge/ans/$Pid.ans
         try {
             FileWriter AnsWrite = new FileWriter(AnsFile);
@@ -185,7 +187,7 @@ public class Problem {
         // 更新数据库中题目内容为当前题目内容
         // 更新成功返回true,失败返回false
         // 可以检测，当前题目是否存在在当前数据库中
-        PreparedStatement sta = null;
+        PreparedStatement sta;
         try {
             getConnection();
             sta = prepareStatement("select * from problem where pid = ?");

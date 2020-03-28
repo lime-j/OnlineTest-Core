@@ -2,7 +2,7 @@ package com.onlinejudge.problemservice;
 
 public class SubjectiveSubmission extends Submission {
 
-    private int ProbScore;
+    private final int ProbScore;
 
     SubjectiveSubmission(String Sid, String SubText, String SubUser, String SubProb, String SubExam, int ProbScore) {
         // 主观题提交类型

@@ -12,10 +12,10 @@ import java.util.UUID;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceNewInvisibleProblem extends StringEvent {
-    private InvisibleProblem currProblem;
-    private String oldPid;
-    private String examID;
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceNewInvisibleProblem.class);
+    private final InvisibleProblem currProblem;
+    private final String oldPid;
+    private final String examID;
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceNewInvisibleProblem.class);
 
     public ProblemServiceNewInvisibleProblem(@NotNull InvisibleProblem origin) {
         this.currProblem = origin;

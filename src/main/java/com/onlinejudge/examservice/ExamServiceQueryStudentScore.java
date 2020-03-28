@@ -17,7 +17,7 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 public class ExamServiceQueryStudentScore extends IntegerEvent {
     private String studentID, examID;
     private int queryType;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceQueryStudentScore.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceQueryStudentScore.class);
 
     public ExamServiceQueryStudentScore(String examID, String studentID, int queryType) {
         this.studentID = studentID;
@@ -66,7 +66,7 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
             stmt.setString(1, this.examID);
             cnt = 0;
             result = stmt.executeQuery();
-            List<String> probIDs = new ArrayList<String>();
+            List<String> probIDs = new ArrayList<>();
             while (result.next()) {
                 ++cnt;
                 probIDs.add(result.getString("pid"));
@@ -79,7 +79,7 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
             stmt.close();
 
             // Query 3: querying the submission, search for student's last submission.
-            HashMap<String, Integer> score = new HashMap<String, Integer>();
+            HashMap<String, Integer> score = new HashMap<>();
             stmt = prepareStatement("select * from submission s where s.suid = ? and s.seid = ? and s.spid = ? ");
             for (int i = 1; i <= cnt; ++i) {
                 //qry = String.format("select * from submission s where s.suid = '%s' and s.seid = '%s' and s.spid = '%s'", this.studentID, this.examID, probIDs.get(i - 1));

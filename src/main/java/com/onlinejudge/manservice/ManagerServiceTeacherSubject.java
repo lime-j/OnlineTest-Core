@@ -16,8 +16,8 @@ import java.util.Objects;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ManagerServiceTeacherSubject extends BooleanEvent {
-    private List<String> currTeacherSubject;
-    private static Logger logger = LoggerFactory.getLogger(ManagerServiceTeacherSubject.class);
+    private final List<String> currTeacherSubject;
+    private static final Logger logger = LoggerFactory.getLogger(ManagerServiceTeacherSubject.class);
     public ManagerServiceTeacherSubject(List<String> origionData) {
         this.currTeacherSubject = origionData;
     }
@@ -45,7 +45,7 @@ public class ManagerServiceTeacherSubject extends BooleanEvent {
                 logger.info("Query Subject: " + staQuerySubject.toString());
                 querySet = staQuerySubject.executeQuery();
                 if (!querySet.next()) {
-                    staNewSubject.setString(1, currSubject);
+                    Objects.requireNonNull(staNewSubject).setString(1, currSubject);
                     logger.info("Insert new Subject: " + staNewSubject.toString());
                     staNewSubject.executeUpdate();
                 }

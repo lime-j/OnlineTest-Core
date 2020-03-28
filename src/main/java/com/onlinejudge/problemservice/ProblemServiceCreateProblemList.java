@@ -21,7 +21,7 @@ public class ProblemServiceCreateProblemList extends ListEvent {
     private String subject;
     private List<String> tagList;
     private int choice, torf, blank, subjective, progblank, prog;
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblemList.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblemList.class);
 
     public ProblemServiceCreateProblemList(String subject, List<String> tagList, int choice, int torf, int blank, int subjective, int progblank, int prog) {
         // 创建试题列表
@@ -113,8 +113,8 @@ public class ProblemServiceCreateProblemList extends ListEvent {
             conn = getConnection();
             stmt = prepareStatement("select * from problem where ptag = ?");
             int cnt = 0;
-            HashMap<Integer, Problem> vis = new HashMap<Integer, Problem>();
-            HashMap<Integer, List<Pair>> lsts = new HashMap<Integer, List<Pair>>();
+            HashMap<Integer, Problem> vis = new HashMap<>();
+            HashMap<Integer, List<Pair>> lsts = new HashMap<>();
             HashMap<String, Integer> countMap = new HashMap<>();
             lsts.put(1, tempChoice);
             lsts.put(3, tempBlank);
@@ -208,8 +208,8 @@ public class ProblemServiceCreateProblemList extends ListEvent {
     }
 
     public static class Pair implements Comparable {
-        int first;
-        int second;
+        final int first;
+        final int second;
 
         @Contract(pure = true)
         Pair(int first, int second) {

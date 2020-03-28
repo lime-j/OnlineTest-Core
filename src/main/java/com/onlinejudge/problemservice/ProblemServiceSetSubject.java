@@ -12,13 +12,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProblemServiceSetSubject extends BooleanEvent {
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceSetSubject.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceSetSubject.class);
     public ProblemServiceSetSubject(@NotNull List<String> subject, String userID){
         this.subject = subject;
         this.userID = userID;
     }
-    List<String> subject = null;
-    public String userID;
+    List<String> subject;
+    public final String userID;
 
     public boolean go() throws InternalException {
         Connection conn = null;

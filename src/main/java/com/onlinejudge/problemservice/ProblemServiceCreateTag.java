@@ -5,7 +5,7 @@ import com.onlinejudge.util.BooleanEvent;
 public class ProblemServiceCreateTag extends BooleanEvent {
     // 创建知识点
     // requestType：createProblemTag
-    private Tag currTag;
+    private final Tag currTag;
 
     public ProblemServiceCreateTag(Tag origion) {
         this.currTag = origion;

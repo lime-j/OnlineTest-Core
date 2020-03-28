@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProblemServiceListTag extends ListEvent {
-    private String subject;
+    private final String subject;
 
     public ProblemServiceListTag(String subject) {
         this.subject = subject;
@@ -20,7 +20,7 @@ public class ProblemServiceListTag extends ListEvent {
                     "select * from subjecttag where subject = ?", "tag", this.subject, this.toString()
             )).getResultList();
         } catch (Exception e) {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
     }
 }

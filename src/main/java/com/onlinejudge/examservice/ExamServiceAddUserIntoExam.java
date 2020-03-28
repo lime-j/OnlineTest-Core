@@ -16,9 +16,9 @@ import static com.alibaba.fastjson.JSON.parseObject;
 
 
 public class ExamServiceAddUserIntoExam extends BooleanEvent {
-    private List<String> currentUserList;
-    private String examID;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceAddUserIntoExam.class);
+    private final List<String> currentUserList;
+    private final String examID;
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceAddUserIntoExam.class);
     public ExamServiceAddUserIntoExam(List<String> origin, String examID) {
         this.currentUserList = origin;
         this.examID = examID;

@@ -12,8 +12,9 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 public class Tag {
     // 添加新知识点
     // requestType:
-    private String subject, tagName;
-    private static Logger logger = LoggerFactory.getLogger(Tag.class);
+    private final String subject;
+    private final String tagName;
+    private static final Logger logger = LoggerFactory.getLogger(Tag.class);
 
 
     public Tag(String subject, String tagName) {

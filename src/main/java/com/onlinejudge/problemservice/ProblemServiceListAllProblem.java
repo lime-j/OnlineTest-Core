@@ -17,7 +17,7 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 public class ProblemServiceListAllProblem extends ListEvent {
     private String subject;
     private List<String> tagList;
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceListAllProblem.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceListAllProblem.class);
 
     public ProblemServiceListAllProblem(String subject, List<String> tagList) {
         // 从题库中拉取题目列表（制定subject与tagList）
@@ -32,7 +32,7 @@ public class ProblemServiceListAllProblem extends ListEvent {
         List<Problem> resultList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
-        ResultSet result = null;
+        ResultSet result;
         try {
             conn = getConnection();
             stmt = prepareStatement("select * from problem where psubject = ? and ptag = ? and visible=1");

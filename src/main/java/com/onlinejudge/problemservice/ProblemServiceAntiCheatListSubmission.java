@@ -12,7 +12,8 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceAntiCheatListSubmission extends ListEvent {
-    private String examID, probID;
+    private final String examID;
+    private final String probID;
 
     public ProblemServiceAntiCheatListSubmission(String examID, String probID) {
         this.examID = examID;

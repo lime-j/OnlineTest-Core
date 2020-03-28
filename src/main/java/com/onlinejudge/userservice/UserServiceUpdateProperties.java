@@ -13,9 +13,10 @@ import static com.onlinejudge.userservice.UserServiceProperties.*;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserServiceUpdateProperties extends BooleanEvent {
-    private String userID, newProperty;
-    private int updateType;
-    private static Logger logger = LoggerFactory.getLogger(UserServiceUpdateProperties.class);
+    private final String userID;
+    private final String newProperty;
+    private final int updateType;
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceUpdateProperties.class);
 
     // type == 1, 更新性别, 为了统一, 传入的是String, 但会被prase一下
     // type == 2, 更新昵称,

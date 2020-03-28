@@ -28,8 +28,8 @@ public class HandlerFactory {
     private HandlerFactory() {
     }
 
-    private static Logger logger = LoggerFactory.getLogger(HandlerFactory.class);
-    private static Map<String, HandlerEnum> mp = new HashMap<>();
+    private static final Logger logger = LoggerFactory.getLogger(HandlerFactory.class);
+    private static final Map<String, HandlerEnum> mp = new HashMap<>();
 
     static {
         for (var it : HandlerEnum.values()) {

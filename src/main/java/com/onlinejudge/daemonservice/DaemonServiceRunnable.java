@@ -18,21 +18,21 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 
 public class DaemonServiceRunnable implements Runnable {
-    private Socket cl;
+    private final Socket cl;
 
     @Contract(pure = true)
     DaemonServiceRunnable(Socket sc) {
         this.cl = sc;
     }
 
-    private static Logger logger = LoggerFactory.getLogger(DaemonServiceRunnable.class);
+    private static final Logger logger = LoggerFactory.getLogger(DaemonServiceRunnable.class);
 
     public void run() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.cl.getInputStream()));
             String recv = bufferedReader.readLine();
             logger.info(recv);
-            Handler handler = null;
+            Handler handler;
             var jsonObject = JSON.parseObject(recv);
             String requestType = jsonObject.getString("requestType");
             String userToken = jsonObject.getString("userToken");

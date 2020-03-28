@@ -12,7 +12,7 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Exam {
-    private static Logger logger = LoggerFactory.getLogger(Exam.class);
+    private static final Logger logger = LoggerFactory.getLogger(Exam.class);
     private String examID;
     private String examName;
     private String userID;

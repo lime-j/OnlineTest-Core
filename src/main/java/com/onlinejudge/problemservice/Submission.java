@@ -14,14 +14,14 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Submission {
     private String Sid;
-    private String SubText;
+    private final String SubText;
     private String SubTime;
-    private String SubUser;
-    private String SubProb;
+    private final String SubUser;
+    private final String SubProb;
     private String SubExam;
     private int SubScore;
 
-    private static Logger logger = LoggerFactory.getLogger(Submission.class);
+    private static final Logger logger = LoggerFactory.getLogger(Submission.class);
 
 
     @Contract(pure = true)
@@ -96,7 +96,7 @@ public class Submission {
         String cmd = "";
         try {
             Connection conn = getConnection();
-            PreparedStatement sta = null;
+            PreparedStatement sta;
             sta = prepareStatement("select * from submission where sid=?");
             sta.setString(1, this.Sid);
             ResultSet QueryResult = sta.executeQuery();

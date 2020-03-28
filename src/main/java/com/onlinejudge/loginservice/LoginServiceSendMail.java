@@ -16,13 +16,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.Objects;
 
 public class LoginServiceSendMail extends BooleanEvent {
-    private static Logger logger = LoggerFactory.getLogger(LoginServiceSendMail.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginServiceSendMail.class);
 
     private static final String SG_API_KEY = "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";
     private static final String MAIL_FROM = "noreply@cfmirror.tech";
-    private String email;
+    private final String email;
 
     public LoginServiceSendMail(String email) {
         this.email = email;
@@ -69,7 +70,7 @@ public class LoginServiceSendMail extends BooleanEvent {
                 logger.error(e.getMessage(), e);
             }
         }
-        if (!queryID.equals(email)) throw new InternalException("sun rises from west, please check.");
+        if (!Objects.requireNonNull(queryID).equals(email)) throw new InternalException("sun rises from west, please check.");
 
 
         Jedis jedis;

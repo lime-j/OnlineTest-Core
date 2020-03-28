@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseUtil {
-    private static DataSource ds = new ComboPooledDataSource();
-    private static ThreadLocal<Connection> tl = new ThreadLocal<>();
+    private static final DataSource ds = new ComboPooledDataSource();
+    private static final ThreadLocal<Connection> tl = new ThreadLocal<>();
 
     @Contract(pure = true)
     public DatabaseUtil() {}

@@ -8,7 +8,7 @@ public class UserServiceCheckToken {
     // 这个类是用来检查token跟用户的token是否一致的,
     // 如果不一致, go() 函数返回false,
     // 否则返回true
-    private static Logger logger = LoggerFactory.getLogger(UserServiceCheckToken.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceCheckToken.class);
     public static boolean checkToken(String userID, String userToken) throws TokenWrongException {
         Jedis jedis = new Jedis("localhost");
         logger.info("connected to redis.");

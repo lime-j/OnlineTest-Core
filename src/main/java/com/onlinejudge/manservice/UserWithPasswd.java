@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserWithPasswd extends com.onlinejudge.userservice.User {
-    private String UserPasswd;
-    private static Logger logger = LoggerFactory.getLogger(UserWithPasswd.class);
+    private final String UserPasswd;
+    private static final Logger logger = LoggerFactory.getLogger(UserWithPasswd.class);
 /*
     不再需要Tuid
     public UserWithPasswd(String userID, String userName, int userSex, int userType, String Tuid, String Passwd) {

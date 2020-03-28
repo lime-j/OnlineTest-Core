@@ -15,8 +15,8 @@ import java.util.UUID;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceCreateModifyExam extends BooleanEvent {
-    private Exam handling;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceCreateModifyExam.class);
+    private final Exam handling;
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceCreateModifyExam.class);
 
     public ExamServiceCreateModifyExam(Exam handling) {
         this.handling = handling;
@@ -38,9 +38,9 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
             while (res.next()) ++cnt;
             stmt.close();
             logger.info("find " + cnt + " eid(s)");
+            boolean flag = this.handling.getStartTime().contains("/");
             if (cnt == 0) {
                 // 更新考试表当中的信息
-                boolean flag = this.handling.getStartTime().contains("/");
                 // 由于csharp的问题, 解析两种不同格式的日期信息
                 SimpleDateFormat sdf = null;
                 if (flag) {
@@ -81,7 +81,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                     logger.debug(stmt.toString());
                 }
             } else if (cnt == 1) {
-                boolean flag = this.handling.getStartTime().contains("/");
+
                 SimpleDateFormat sdf = null;
                 if (flag) {
                     sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -98,7 +98,7 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 stmt.setString(5, this.handling.getExamText());
                 stmt.setString(6, this.handling.getExamSubject());
                 stmt.setString(7, this.handling.getExamID());
-                logger.debug( stmt.toString());
+                logger.debug(stmt.toString());
                 stmt.executeUpdate();
                 stmt.close();
 
@@ -177,12 +177,12 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                 return false;
             }
         } catch (SQLException | ParseException sql) {
-            logger.error("ParseException",sql);
+            logger.error("ParseException", sql);
             try {
                 if (res != null) res.close();
-                DatabaseUtil.closeQuery(ret,stmt, conn);
+                DatabaseUtil.closeQuery(ret, stmt, conn);
             } catch (SQLException e) {
-                logger.error(e.getMessage(),e);
+                logger.error(e.getMessage(), e);
             }
             return false;
         }

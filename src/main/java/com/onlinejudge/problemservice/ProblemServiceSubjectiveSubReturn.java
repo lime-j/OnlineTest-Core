@@ -13,9 +13,10 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceSubjectiveSubReturn extends ListEvent {
-    private String examID, probID;
+    private final String examID;
+    private final String probID;
     private int probScore;
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceSubjectiveSubReturn.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceSubjectiveSubReturn.class);
 
     public ProblemServiceSubjectiveSubReturn(String examID, String probID) {
         this.examID = examID;
@@ -28,7 +29,7 @@ public class ProblemServiceSubjectiveSubReturn extends ListEvent {
             // 返回客观题的提交
             // requestType: subjectSubList
             Connection conn = getConnection();
-            PreparedStatement stmt = null;
+            PreparedStatement stmt;
             stmt = prepareStatement("select * from problem where pid=?");
             stmt.setString(1, this.probID);
             logger.info(stmt.toString());

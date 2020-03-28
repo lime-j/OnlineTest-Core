@@ -20,8 +20,8 @@ public class ProblemSubmissionToQueue extends BooleanEvent {
     private final static String QUEUE_NAME = "test";
     private final static String USER_NAME = "judger";
     private final static String PASSWORD = "ruanjiangongcheng";
-    private Submission CurrSubmission;
-    private static Logger logger = LoggerFactory.getLogger(ProblemSubmissionToQueue.class);
+    private final Submission CurrSubmission;
+    private static final Logger logger = LoggerFactory.getLogger(ProblemSubmissionToQueue.class);
 
     public ProblemSubmissionToQueue(Submission CurrSubmission) {
         // type subUpdate
@@ -39,7 +39,7 @@ public class ProblemSubmissionToQueue extends BooleanEvent {
         logger.info("Submission to Queue - \n\t" + this.CurrSubmission.getSubID() + " is added into database");
         try {
             java.sql.Connection conn = getConnection();
-            PreparedStatement sta = null;
+            PreparedStatement sta;
             sta = prepareStatement("select * from problem where pid=?");
             sta.setString(1, this.CurrSubmission.getSubProb());
             logger.debug("[problemservice]: find Problem of Submission: SQL:" + sta.toString());

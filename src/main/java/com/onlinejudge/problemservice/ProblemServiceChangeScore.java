@@ -11,9 +11,9 @@ import java.sql.SQLException;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ProblemServiceChangeScore extends BooleanEvent {
-    private String Sid;
-    private int Score;
-    private static Logger logger = LoggerFactory.getLogger(ProblemServiceChangeScore.class);
+    private final String Sid;
+    private final int Score;
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceChangeScore.class);
 
     public ProblemServiceChangeScore(String Sid, int Score) {
         this.Sid = Sid;
@@ -24,7 +24,7 @@ public class ProblemServiceChangeScore extends BooleanEvent {
     public boolean go() {
         try {
             Connection conn = getConnection();
-            PreparedStatement sta = null;
+            PreparedStatement sta;
             sta = prepareStatement("update submission " +
                     "set sscore=?,sjudged=1 where sid=?");
             sta.setInt(1, this.Score);

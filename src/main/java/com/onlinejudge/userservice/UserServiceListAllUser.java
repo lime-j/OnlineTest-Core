@@ -16,7 +16,7 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class UserServiceListAllUser extends ListEvent {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);
     // This can be only triggered by admin
     // listing
     public UserServiceListAllUser() {}

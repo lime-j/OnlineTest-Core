@@ -17,9 +17,9 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ExamServiceListExamProblem extends ListEvent {
-    private String examID;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceListExamProblem.class);
+public class ExamServiceListExamProblem extends ListEvent<Problem> {
+    private final String examID;
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExamProblem.class);
 
     public ExamServiceListExamProblem(String examID) {
         this.examID = examID;
@@ -41,8 +41,8 @@ public class ExamServiceListExamProblem extends ListEvent {
             queryResult = stmt.executeQuery();
             int cnt = 0;
             List<Problem> resultList = new ArrayList<>();
-            HashMap<Integer, Problem> vis = new HashMap<Integer, Problem>();
-            HashMap<Integer, List<Integer>> lsts = new HashMap<Integer, List<Integer>>();
+            HashMap<Integer, Problem> vis = new HashMap<>();
+            HashMap<Integer, List<Integer>> lsts = new HashMap<>();
             HashMap<String, Integer> countMap = new HashMap<>();
             List<Integer> tempChoice = new ArrayList<>();
             List<Integer> tempTorF = new ArrayList<>();

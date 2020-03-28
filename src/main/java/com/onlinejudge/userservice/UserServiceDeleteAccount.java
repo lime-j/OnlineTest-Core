@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UserServiceDeleteAccount extends BooleanEvent {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceDeleteAccount.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceDeleteAccount.class);
 
-    private String userID;
+    private final String userID;
 
     public UserServiceDeleteAccount(String userID) {
         this.userID = userID;

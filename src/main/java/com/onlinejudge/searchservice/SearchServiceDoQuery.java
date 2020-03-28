@@ -28,7 +28,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
     private String userID;
     private queryTypes queryType;
     private String keyword;
-    private static Logger logger = LoggerFactory.getLogger(SearchServiceDoQuery.class);
+    private static final Logger logger = LoggerFactory.getLogger(SearchServiceDoQuery.class);
 
     public SearchServiceDoQuery(String userID, int queryType, String keyword) {
         setUserID(userID);
@@ -74,9 +74,9 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
 
     public List<SearchServiceResult> go() {
         // return a JSON string contains list of SearchServiceResult
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet queryResult = null;
+        Connection conn;
+        PreparedStatement stmt;
+        ResultSet queryResult;
         int cnt = 0;
         try {
             //  Class.forName(JDBC_DRIVER);
@@ -103,7 +103,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
 
             if (this.queryType == queryTypes.Problem) {
                 logger.info("searchservice, queryType == Problem");
-                String qry = "";
+                String qry;
                 if (userType == 3) {
                     qry = "select p.ptext, p.ptitle ptitle, p.pid from examperm ep, exam e, problem p where (e.eid = ep.eid) and (ep.sid = ?) and (ptitle like ? or ename like ? or ptag like ? or psubject like ?)";
                     stmt = prepareStatement(qry);

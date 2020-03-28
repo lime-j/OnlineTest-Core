@@ -6,7 +6,7 @@ import com.onlinejudge.util.BooleanEvent;
 import java.util.List;
 
 public class ManagementServiceAddListUsers extends BooleanEvent {
-    private List<String> currUserList;
+    private final List<String> currUserList;
 
     public ManagementServiceAddListUsers(List<String> OrigionUserData) {
         this.currUserList = OrigionUserData;

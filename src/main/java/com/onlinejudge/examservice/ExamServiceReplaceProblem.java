@@ -15,9 +15,11 @@ import java.util.Objects;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ExamServiceReplaceProblem extends ListEvent {
-    private String examID, newID, oldID;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceReplaceProblem.class);
+public class ExamServiceReplaceProblem extends ListEvent<Problem> {
+    private final String examID;
+    private final String newID;
+    private final String oldID;
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceReplaceProblem.class);
 
     public ExamServiceReplaceProblem(String examID, String newID, String oldID) {
         this.examID = examID;

@@ -15,10 +15,10 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class StringListerUtil {
     private ResultSet result = null;
-    private List<String> resultList = null;
+    private List<String> resultList;
     private Connection conn = null;
     private PreparedStatement stmt = null;
-    private static Logger logger = LoggerFactory.getLogger(StringListerUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(StringListerUtil.class);
 
     public StringListerUtil(String stmtString, String get, @NotNull List<String> puts, String callName) {
         this.resultList = new ArrayList<>();

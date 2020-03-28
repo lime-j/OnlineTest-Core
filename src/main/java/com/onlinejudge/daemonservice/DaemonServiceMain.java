@@ -13,7 +13,7 @@ public class DaemonServiceMain {
     // 监听2331端口,
     // 解析用户发来的 JSON 并根据请求类型调用其他的service模块
     private static final int PORT = 2331;
-    private static Logger logger = LoggerFactory.getLogger(DaemonServiceMain.class);
+    private static final Logger logger = LoggerFactory.getLogger(DaemonServiceMain.class);
     public static void main(String[] args) {
         try {
             ServerSocket loginServSocket = new ServerSocket(PORT);
@@ -33,9 +33,6 @@ public class DaemonServiceMain {
             }
         } catch (IOException ee) {
             logger.error("IOException", ee);
-        }
-        finally {
-
         }
     }
 }

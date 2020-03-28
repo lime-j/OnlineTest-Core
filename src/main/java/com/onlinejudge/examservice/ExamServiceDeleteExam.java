@@ -13,8 +13,8 @@ import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ExamServiceDeleteExam extends BooleanEvent {
-    public String examID;
-    private static Logger logger = LoggerFactory.getLogger(ExamServiceDeleteExam.class);
+    public final String examID;
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceDeleteExam.class);
 
     public ExamServiceDeleteExam(String examID) {
         this.examID = examID;

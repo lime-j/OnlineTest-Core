@@ -17,9 +17,9 @@ import java.util.UUID;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 
 public class LoginCheck extends ClassEvent {
-    private String passwordRecv;
-    private String uID;
-    private static Logger logger = LoggerFactory.getLogger(LoginCheck.class);
+    private final String passwordRecv;
+    private final String uID;
+    private static final Logger logger = LoggerFactory.getLogger(LoginCheck.class);
 
     public LoginCheck(String passwordRecv, String uID) {
         this.passwordRecv = passwordRecv;
@@ -32,7 +32,7 @@ public class LoginCheck extends ClassEvent {
     private Jedis jedis = null;
     @Override
     public String go() throws WrongPasswordException {
-        String uuid = "-1";
+        String uuid;
         String uPassword = null;
         int uSex = -1;
         String uName = null;

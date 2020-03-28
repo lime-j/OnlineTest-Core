@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 public class LoginServiceChangePassword extends BooleanEvent {
-    private static Logger logger = LoggerFactory.getLogger(LoginServiceChangePassword.class);
-    private String userID = null;
-    private String userKey = null;
-    private String newPassword = null;
+    private static final Logger logger = LoggerFactory.getLogger(LoginServiceChangePassword.class);
+    private String userID;
+    private String userKey;
+    private String newPassword;
     public LoginServiceChangePassword(String userID, String userKey, String newPassword){
         this.userID = userID;
         this.userKey = userKey;
