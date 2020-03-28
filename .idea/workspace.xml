@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceSendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceSendMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +187,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/libs" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -359,7 +354,7 @@
       <workItem from="1585042454188" duration="500000" />
       <workItem from="1585194133776" duration="7225000" />
       <workItem from="1585212899111" duration="9271000" />
-      <workItem from="1585274307090" duration="25221000" />
+      <workItem from="1585274307090" duration="25274000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -431,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585398071592</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="修了一点锅">
+      <created>1585398124738</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1585398124738</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,10 +467,10 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="570" y="200" width="1400" height="1198" key="#Deployment" timestamp="1585398067322">
+    <state x="570" y="198" width="1400" height="1198" key="#Deployment" timestamp="1585398123319">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="570" y="200" width="1400" height="1198" key="#Deployment/0.0.2560.1600@0.0.2560.1600" timestamp="1585398067322" />
+    <state x="570" y="198" width="1400" height="1198" key="#Deployment/0.0.2560.1600@0.0.2560.1600" timestamp="1585398123319" />
     <state x="575" y="216" width="1400" height="1280" key="#Intentions" timestamp="1585299127670">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -501,18 +503,18 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="816" y="370" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585299300558" />
-    <state x="360" y="108" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585398071412">
+    <state x="360" y="106" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585398124571">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="108" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585398071412" />
+    <state x="360" y="106" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585398124571" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585207713833" />
-    <state x="899" y="397" width="742" height="860" key="FileChooserDialogImpl" timestamp="1585398034246">
+    <state x="899" y="393" width="742" height="860" key="FileChooserDialogImpl" timestamp="1585398103969">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="899" y="397" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585398034246" />
+    <state x="899" y="393" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585398103969" />
     <state width="2488" height="339" key="GridCell.Tab.0.bottom" timestamp="1585398071633">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -581,10 +583,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="756" y="113" width="1047" height="1371" key="find.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585326381061" />
-    <state x="1102" y="345" width="335" height="940" key="ftp.server.browser" timestamp="1585398055610">
+    <state x="1102" y="343" width="335" height="940" key="ftp.server.browser" timestamp="1585398110459">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="1102" y="345" width="335" height="940" key="ftp.server.browser/0.0.2560.1600@0.0.2560.1600" timestamp="1585398055610" />
+    <state x="1102" y="343" width="335" height="940" key="ftp.server.browser/0.0.2560.1600@0.0.2560.1600" timestamp="1585398110459" />
     <state x="691" y="355" width="1177" height="1976" key="run.anything.popup" timestamp="1585214074188">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
