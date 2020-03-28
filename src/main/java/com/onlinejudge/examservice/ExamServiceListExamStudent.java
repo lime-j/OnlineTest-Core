@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ExamServiceListExamStudent extends ListEvent {
+public class ExamServiceListExamStudent extends ListEvent<ExamServiceListedStudent> {
     public String examID;
     private static Logger logger = LoggerFactory.getLogger(ExamServiceListExamStudent.class);
 

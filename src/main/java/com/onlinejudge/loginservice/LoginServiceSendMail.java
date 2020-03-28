@@ -1,6 +1,7 @@
 package com.onlinejudge.loginservice;
 
 import com.onlinejudge.util.BooleanEvent;
+import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.InternalException;
 import com.sendgrid.*;
 import org.jetbrains.annotations.NotNull;
@@ -10,6 +11,10 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.MessageFormat;
 
 public class LoginServiceSendMail extends BooleanEvent {
@@ -18,9 +23,11 @@ public class LoginServiceSendMail extends BooleanEvent {
     private static final String SG_API_KEY = "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";
     private static final String MAIL_FROM = "noreply@cfmirror.tech";
     private String email;
-    public LoginServiceSendMail(String email){
+
+    public LoginServiceSendMail(String email) {
         this.email = email;
     }
+
     @NotNull
     private static String genCode() {
         long l = System.currentTimeMillis();
@@ -34,6 +41,37 @@ public class LoginServiceSendMail extends BooleanEvent {
     }
 
     public boolean go() throws InternalException {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        String queryID = null;
+        try {
+            conn = DatabaseUtil.getConnection();
+            stmt = conn.prepareStatement("select uid from userinfo where uid = ?");
+            stmt.setString(1, email);
+            res = stmt.executeQuery();
+
+            while (res.next()) {
+                queryID = res.getString("uid");
+            }
+            if (queryID == null) {
+                DatabaseUtil.closeQuery(res, stmt, conn);
+                throw new InternalException("user not found");
+            }
+        } catch (SQLException e) {
+            assert stmt != null;
+            logger.warn("sqlerror! {}", stmt.toString());
+        } finally {
+            try {
+                DatabaseUtil.closeQuery(res, stmt, conn);
+            } catch (SQLException e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
+        if (!queryID.equals(email)) throw new InternalException("sun rises from west, please check.");
+
+
         Jedis jedis;
         Email from = new Email(MAIL_FROM);
         String subject = "重设密码";
@@ -45,7 +83,7 @@ public class LoginServiceSendMail extends BooleanEvent {
 
         jedis = new Jedis("localhost");
         logger.debug("Connected to redis");
-        jedis.set(String.format("r%s", email), code);
+        jedis.set(String.format("@%s", email), code);
         logger.debug("Binded {} with {}", String.format("r%s", email), code);
         jedis.disconnect();
 

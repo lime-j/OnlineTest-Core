@@ -108,7 +108,7 @@ public class HandlerFactory {
                 case adminUpdateUserName:
                     handler = new BooleanEventHandler(
                             new UserServiceUpdateProperties(
-                                    jsonObject.getString("changeUserID"), jsonObject.getString("newUserName"), 2
+                                    jsonObject.getString("userID"), jsonObject.getString("userName"), 2
                             )
                     );
                     break;
@@ -123,13 +123,6 @@ public class HandlerFactory {
                     handler = new BooleanEventHandler(
                             new UserServiceUpdateProperties(
                                     jsonObject.getString("userID"), Integer.toString(jsonObject.getIntValue("newSex")), 1
-                            )
-                    );
-                    break;
-                case updateUserName:
-                    handler = new BooleanEventHandler(
-                            new UserServiceUpdateProperties(
-                                    jsonObject.getString("userID"), jsonObject.getString("newUserName"), 2
                             )
                     );
                     break;

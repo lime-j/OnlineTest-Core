@@ -22,14 +22,15 @@ public class LoginServiceChangePassword extends BooleanEvent {
 
     @TestOnly
     public static void main(String[] args) throws InternalException{
-        var tmp = new LoginServiceChangePassword("sandstone12a@163.com", "524630", "2333");
+        var tmp = new LoginServiceChangePassword("limingjia1999@gmail.com", "111111", "2333");
         tmp.go();
     }
 
     public boolean go() throws InternalException {
         Jedis jedis = new Jedis("localhost");
         logger.debug("Connected to redis");
-        String key = jedis.get("r" + userID);
+        String fetchID = "@" + userID;
+        String key = jedis.get(fetchID);
         logger.debug("rightKey = {}, and userKey = {}", key, userKey);
         logger.info("query is ok, quit.");
         boolean result = userKey.equals(key);
