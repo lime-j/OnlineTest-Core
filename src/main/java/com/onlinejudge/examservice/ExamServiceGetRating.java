@@ -23,14 +23,7 @@ import static java.util.Collections.sort;
 
 public class ExamServiceGetRating {
     private static final int MAX_PANS = 10000;
-    private static Comparator<Participant> c = new Comparator<Participant>() {
-        @Override
-        public int compare(Participant participant, Participant t1) {
-            return Integer.compare(participant.newRating, t1.newRating);
-        }
-    };
-    private List<Participant> pans;
-
+    private static Comparator<Participant> c = (participant, t1) -> Integer.compare(participant.newRating, t1.newRating);
     @Contract(pure = true)
     private static double calculateProbability(@NotNull Participant a, @NotNull Participant b) {
         return 1.0 / (1 + pow(10, (a.rank - b.rank) / 400));
@@ -57,7 +50,7 @@ public class ExamServiceGetRating {
         return l;
     }
 
-    public List<Participant> getRating() {
+    public List<Participant> getRating(@NotNull List<Participant> pans) {
         for (int i = 0; i < pans.size(); ++i) {
             for (int j = 0; j < pans.size(); ++j) {
                 if (i != j) {
@@ -93,14 +86,13 @@ public class ExamServiceGetRating {
     @Setter
     @AllArgsConstructor
     @EqualsAndHashCode
-    private static final class Participant implements Comparable {
+    protected static final class Participant implements Comparable {
         double rank;
         String userName;
         int oldRating;
         int newRating = 0;
         double seed = 1.0;
         int delta = 0;
-        String validation;
 
         @Contract(pure = true)
         private Participant() {
