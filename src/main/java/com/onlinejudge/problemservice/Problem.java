@@ -99,16 +99,16 @@ public class Problem {
         // ptitle
         // ptype
         // pscore
-        if (KeyName.equals("pid")) {
+        if ("pid".equals(KeyName)) {
             return String.valueOf(this.Pid);
         }
-        if (KeyName.equals("ptitle")) {
+        if ("ptitle".equals(KeyName)) {
             return this.ProbTile;
         }
-        if (KeyName.equals("ptype")) {
+        if ("ptype".equals(KeyName)) {
             return String.valueOf(this.ProbType);
         }
-        if (KeyName.equals("pscore")) {
+        if ("pscore".equals(KeyName)) {
             return String.valueOf(this.ProbScore);
         }
         return "";
@@ -128,13 +128,13 @@ public class Problem {
             if (isfaild(queryResult)) {
                 this.Pid = NewValue;
             } else {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     @NotNull

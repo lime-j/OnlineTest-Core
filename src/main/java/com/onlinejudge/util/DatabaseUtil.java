@@ -21,7 +21,7 @@ public class DatabaseUtil {
         return ds;
     }
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() {
         try {
             Connection conn = tl.get();
             if (conn == null) {
@@ -54,6 +54,12 @@ public class DatabaseUtil {
         if (resultSet != null) resultSet.close();
         if (preparedStatement != null) preparedStatement.close();
         if (connection != null) closeConnection();
+    }
+
+    public static void closeQuery(ResultSet resultSet, PreparedStatement preparedStatement) throws SQLException {
+        if (resultSet != null) resultSet.close();
+        if (preparedStatement != null) preparedStatement.close();
+        closeConnection();
     }
 
     public static void closeUpdate(PreparedStatement preparedStatement, Connection connection) throws SQLException {

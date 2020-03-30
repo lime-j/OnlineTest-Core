@@ -44,7 +44,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             // 给新题目Pid并添加进数据库
 //            if (this.currProblem.getProbData("pid").isEmpty()) {
             String pid = UUID.randomUUID().toString().replace('-', 'a').substring(0, 6);
-            while (!this.currProblem.addPid(pid)) {
+            while (this.currProblem.addPid(pid)) {
                 pid = UUID.randomUUID().toString().replace('-', 'a').substring(0, 6);
             }
             logger.info(String.format("Problem Pid: %s", pid));
