@@ -31,6 +31,7 @@ public class ExamServiceGetParticipants implements Provider {
             conn = getConnection();
             stmt = prepareStatement("select estart, eend, eid from exam where eid = ?");
             stmt.setString(1, examID);
+            log.debug(stmt);
             res = stmt.executeQuery();
             int cnt = 0;
             Timestamp start = null;
@@ -83,6 +84,7 @@ public class ExamServiceGetParticipants implements Provider {
                 Map<String, Timestamp> timeMap = new HashMap<>();
                 Set<String> pidSet = new HashSet<>();
                 stmt.setString(2, userID);
+                log.debug(stmt);
                 res = stmt.executeQuery();
                 while (res.next()) {
                     int score = res.getInt("score");
@@ -130,6 +132,7 @@ public class ExamServiceGetParticipants implements Provider {
             for (var pan : pans) {
                 stmt.setString(1, Integer.toString(pan.getRank()));
                 stmt.setString(2, pan.getUserID());
+                log.debug(stmt);
                 int status = stmt.executeUpdate();
                 log.info("status = {}", status);
             }
@@ -161,6 +164,7 @@ public class ExamServiceGetParticipants implements Provider {
             conn = getConnection();
             stmt = prepareStatement("select uname, sid, utype as old_rating,`rank` from examperm ex, userinfo ui where ex.sid = ui.uid and ex.eid = ?");
             stmt.setString(1, examID);
+            log.debug(stmt);
             ret = stmt.executeQuery();
             while (ret.next()) {
                 String sid = ret.getString("sid");
@@ -194,10 +198,10 @@ public class ExamServiceGetParticipants implements Provider {
     @Setter
     @AllArgsConstructor
     private static class RankedUser implements Comparable<RankedUser> {
-        String userID;
-        int penalty;
-        int solved;
-        int rank;
+        private String userID;
+        private int penalty;
+        private int solved;
+        private int rank;
 
         @Override
         public int compareTo(@NotNull RankedUser o) {

@@ -87,13 +87,13 @@ public class ExamServiceGetRating {
     @AllArgsConstructor
     @EqualsAndHashCode
     protected static final class Participant implements Comparable<Participant> {
-        double rank;
-        String userName;
-        String userID;
-        int oldRating;
-        int newRating;
-        double seed = 1.0;
-        int delta;
+        protected double rank;
+        protected String userName;
+        protected String userID;
+        protected int oldRating;
+        protected int newRating;
+        protected double seed = 1.0;
+        protected int delta;
 
         @Contract(pure = true)
         private Participant() {
