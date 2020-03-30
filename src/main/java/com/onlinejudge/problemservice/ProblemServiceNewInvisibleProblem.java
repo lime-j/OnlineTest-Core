@@ -45,6 +45,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
 //            if (this.currProblem.getProbData("pid").isEmpty()) {
             String pid = UUID.randomUUID().toString().replace('-', 'a').substring(0, 6);
             while (this.currProblem.addPid(pid)) {
+                //noinspection DuplicateExpressions
                 pid = UUID.randomUUID().toString().replace('-', 'a').substring(0, 6);
             }
             logger.info(String.format("Problem Pid: %s", pid));

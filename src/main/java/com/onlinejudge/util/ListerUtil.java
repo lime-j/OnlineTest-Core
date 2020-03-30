@@ -18,7 +18,7 @@ public class ListerUtil<T> {
     private static final Logger logger = LoggerFactory.getLogger(ListerUtil.class);
     private Connection conn = null;
     private PreparedStatement stmt = null;
-    private List<T> resultList;
+    private final List<T> resultList;
 
     public ListerUtil(String stmtString, String get, @NotNull List<String> puts, String callName) {
         this.resultList = new ArrayList<>();

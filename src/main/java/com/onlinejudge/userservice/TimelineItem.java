@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.Timestamp;
 
 @AllArgsConstructor
-public class TimelineItem implements Comparable {
+public class TimelineItem implements Comparable<TimelineItem> {
     private String name;
     private String description;
     private int type;
@@ -15,13 +15,13 @@ public class TimelineItem implements Comparable {
     private Timestamp time;
 
     @Override
-    public int compareTo(@NotNull Object o) {
-        return this.time.compareTo(((TimelineItem) o).time);
+    public int compareTo(@NotNull TimelineItem o) {
+        return this.time.compareTo(o.time);
     }
 
-    public boolean equals(Object o) {
+    public boolean equals(TimelineItem o) {
         if (o == null) return false;
-        return this.time.equals(((TimelineItem) o).time);
+        return this.time.equals(o.time);
     }
 
     public String getName() {

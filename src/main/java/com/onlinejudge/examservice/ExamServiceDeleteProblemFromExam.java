@@ -2,6 +2,8 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +11,11 @@ import java.sql.SQLException;
 
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 
+@Getter
+@Setter
 public class ExamServiceDeleteProblemFromExam extends BooleanEvent {
-    private String examID, probID;
+    private String examID;
+    private String probID;
 
     public ExamServiceDeleteProblemFromExam(String examID, String probID) {
         this.examID = examID;
@@ -37,21 +42,5 @@ public class ExamServiceDeleteProblemFromExam extends BooleanEvent {
             return false;
         }
 
-    }
-
-    public String getProbID() {
-        return this.probID;
-    }
-
-    public void setProbID(String probID) {
-        this.probID = probID;
-    }
-
-    public String getExamID() {
-        return this.examID;
-    }
-
-    public void setExamID(String examID) {
-        this.examID = examID;
     }
 }

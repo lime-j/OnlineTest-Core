@@ -9,7 +9,7 @@ public class UserServiceCheckToken {
     // 如果不一致, go() 函数返回false,
     // 否则返回true
     private static final Logger logger = LoggerFactory.getLogger(UserServiceCheckToken.class);
-    public static boolean checkToken(String userID, String userToken) throws TokenWrongException {
+    public static void checkToken(String userID, String userToken) throws TokenWrongException {
         Jedis jedis = new Jedis("localhost");
         logger.info("connected to redis.");
         String token = jedis.get(userID);
@@ -17,7 +17,6 @@ public class UserServiceCheckToken {
         logger.info("query is ok, quit.");
         boolean flag = token.equals(userToken);
         jedis.disconnect();
-        if (flag) return flag;
-        else throw new TokenWrongException();
+        if (!flag) throw new TokenWrongException();
     }
 }

@@ -38,7 +38,7 @@ public class UserWithPasswd extends com.onlinejudge.userservice.User {
         return flag;
     }
 
-    public boolean updateUser() {
+    public void updateUser() {
         // 以下代码来自problem的复制粘贴
         Connection conn = null;
         ResultSet queryResult = null;
@@ -56,7 +56,7 @@ public class UserWithPasswd extends com.onlinejudge.userservice.User {
                 System.out.println(cmd);
             } else {
                 // 当前用户已存在，返回false
-                return false;
+                return;
             }
             queryResult.close();
             sta.close();
@@ -69,7 +69,6 @@ public class UserWithPasswd extends com.onlinejudge.userservice.User {
             logger.debug("UserServiceUpdateUser, " + sta.toString());
             sta.executeUpdate();
             closeUpdate(sta, conn);
-            return true;
         } catch (SQLException e) {
             try {
                 closeQuery(queryResult, sta, conn);
@@ -77,7 +76,6 @@ public class UserWithPasswd extends com.onlinejudge.userservice.User {
                 logger.error(ex.getMessage(), ex);
             }
             logger.error(e.getMessage(),e);
-            return false;
         }
     }
 

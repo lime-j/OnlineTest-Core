@@ -1,6 +1,8 @@
 package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -17,7 +19,9 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 import static java.util.Collections.sort;
 
-public class ProblemServiceCreateProblemList extends ListEvent {
+@Getter
+@Setter
+public class ProblemServiceCreateProblemList extends ListEvent<Problem> {
     private String subject;
     private List<String> tagList;
     private int choice, torf, blank, subjective, progblank, prog;
@@ -34,54 +38,6 @@ public class ProblemServiceCreateProblemList extends ListEvent {
         this.subjective = subjective;
         this.progblank = progblank;
         this.prog = prog;
-    }
-
-    public int getChoice() {
-        return this.choice;
-    }
-
-    public void setChoice(int choice) {
-        this.choice = choice;
-    }
-
-    public int getTorf() {
-        return this.torf;
-    }
-
-    public void setTorf(int torf) {
-        this.torf = torf;
-    }
-
-    public int getBlank() {
-        return this.blank;
-    }
-
-    public void setBlank(int blank) {
-        this.blank = blank;
-    }
-
-    public int getSubjective() {
-        return this.subjective;
-    }
-
-    public void setSubjective(int subjective) {
-        this.subjective = subjective;
-    }
-
-    public int getProg() {
-        return this.prog;
-    }
-
-    public void setProg(int prog) {
-        this.prog = prog;
-    }
-
-    public int getProgblank() {
-        return this.progblank;
-    }
-
-    public void setProgblank(int progblank) {
-        this.progblank = progblank;
     }
 
     @NotNull
@@ -163,7 +119,6 @@ public class ProblemServiceCreateProblemList extends ListEvent {
             sort(tempProgramBlank);
             sort(tempSubjective);
             sort(tempTorF);
-            int cur = 0;
             List<Integer> tmp = new ArrayList<>();
             tmp.addAll(gen(tempChoice, this.choice));
             tmp.addAll(gen(tempTorF, this.torf));
@@ -194,20 +149,11 @@ public class ProblemServiceCreateProblemList extends ListEvent {
 
         return resultList;
     }
-
-    public String getSubject() {
-        return this.subject;
-    }
-
-    public List<String> getTagList() {
-        return this.tagList;
-    }
-
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public static class Pair implements Comparable {
+    public static class Pair implements Comparable<Pair> {
         final int first;
         final int second;
 
@@ -218,9 +164,9 @@ public class ProblemServiceCreateProblemList extends ListEvent {
         }
 
         @Override
-        public int compareTo(@NotNull Object o) {
-            if (this.second == ((Pair) o).second) return 0;
-            return this.second > ((Pair) o).second ? 1 : -1;
+        public int compareTo(@NotNull Pair o) {
+            if (this.second == o.second) return 0;
+            return this.second > o.second ? 1 : -1;
         }
     }
 

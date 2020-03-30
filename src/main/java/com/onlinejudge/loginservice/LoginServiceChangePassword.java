@@ -11,17 +11,18 @@ import redis.clients.jedis.Jedis;
 
 public class LoginServiceChangePassword extends BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(LoginServiceChangePassword.class);
-    private String userID;
-    private String userKey;
-    private String newPassword;
-    public LoginServiceChangePassword(String userID, String userKey, String newPassword){
+    private final String userID;
+    private final String userKey;
+    private final String newPassword;
+
+    public LoginServiceChangePassword(String userID, String userKey, String newPassword) {
         this.userID = userID;
         this.userKey = userKey;
         this.newPassword = newPassword;
     }
 
     @TestOnly
-    public static void main(String[] args) throws InternalException{
+    public static void main(String[] args) throws InternalException {
         var tmp = new LoginServiceChangePassword("limingjia1999@gmail.com", "111111", "2333");
         tmp.go();
     }

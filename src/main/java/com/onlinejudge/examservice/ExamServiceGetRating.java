@@ -23,7 +23,7 @@ import static java.util.Collections.sort;
 
 public class ExamServiceGetRating {
     private static final int MAX_PANS = 10000;
-    private static Comparator<Participant> c = Comparator.comparingInt(participant -> participant.newRating);
+    private static final Comparator<Participant> c = Comparator.comparingInt(participant -> participant.newRating);
     @Contract(pure = true)
     private static double calculateProbability(@NotNull Participant a, @NotNull Participant b) {
         return 1.0 / (1 + pow(10, (a.rank - b.rank) / 400));

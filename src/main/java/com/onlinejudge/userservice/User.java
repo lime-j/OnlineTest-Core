@@ -5,6 +5,7 @@ public class User {
     private String userName;
     private int userSex;
     private int userType;
+    @SuppressWarnings("FieldCanBeLocal")
     private String tuid;
 
     public User(String userID, String userName, int userSex, int userType) {

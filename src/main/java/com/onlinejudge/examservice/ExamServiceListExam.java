@@ -17,7 +17,7 @@ import static java.text.MessageFormat.format;
 
 public class ExamServiceListExam extends ListEvent<Exam> {
     private String userID;
-    private ExamType type;
+    private final ExamType type;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExam.class);
 
     public ExamServiceListExam(String userID, int type) {
