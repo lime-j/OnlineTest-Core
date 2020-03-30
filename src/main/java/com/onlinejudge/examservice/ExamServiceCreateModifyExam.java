@@ -2,6 +2,10 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +26,34 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
         this.handling = handling;
     }
 
+    @NotNull
+    @Contract(" -> new")
+    private Pair<Timestamp, Timestamp> getTime() throws ParseException {
+        boolean flag = this.handling.getStartTime().contains("/");
+        SimpleDateFormat sdf = null;
+        if (flag) {
+            sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        } else new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        assert (sdf != null);
+        Timestamp stime = new Timestamp(sdf.parse(this.handling.getStartTime()).getTime());
+        Timestamp etime = new Timestamp(sdf.parse(this.handling.getEndTime()).getTime());
+        return new ImmutablePair<>(stime, etime);
+    }
+
+
+    private void checkLst(List<String> lst, List<String> plst, List<String> toBeAdd) {
+        for (String newpid : lst) {
+            boolean flg = false;
+            for (String pid : plst) {
+                if (pid.equals(newpid)) {
+                    flg = true;
+                    break;
+                }
+            }
+            if (!flg) toBeAdd.add(newpid);
+        }
+    }
+
     public boolean go() {
         var examID = this.handling.getExamID();
         Connection conn = null;
@@ -38,17 +70,11 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
             while (res.next()) ++cnt;
             stmt.close();
             logger.info("find " + cnt + " eid(s)");
-            boolean flag = this.handling.getStartTime().contains("/");
+
             if (cnt == 0) {
-                // 更新考试表当中的信息
-                // 由于csharp的问题, 解析两种不同格式的日期信息
-                SimpleDateFormat sdf = null;
-                if (flag) {
-                    sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                } else new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                assert (sdf != null);
-                Timestamp stime = new Timestamp(sdf.parse(this.handling.getStartTime()).getTime());
-                Timestamp etime = new Timestamp(sdf.parse(this.handling.getEndTime()).getTime());
+                var pair = getTime();
+                Timestamp stime = pair.getKey();
+                Timestamp etime = pair.getValue();
                 this.handling.setExamID(UUID.randomUUID().toString().replace("-", "").substring(24));
                 examID = this.handling.getExamID();
 
@@ -81,15 +107,9 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                     logger.debug(stmt.toString());
                 }
             } else if (cnt == 1) {
-
-                SimpleDateFormat sdf = null;
-                if (flag) {
-                    sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                } else new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                assert (sdf != null);
-                Timestamp stime = new Timestamp(sdf.parse(this.handling.getStartTime()).getTime());
-                Timestamp etime = new Timestamp(sdf.parse(this.handling.getEndTime()).getTime());
-
+                var pair = getTime();
+                Timestamp stime = pair.getKey();
+                Timestamp etime = pair.getValue();
                 stmt = prepareStatement("update exam set eName = ? ,estart =  ? ,eend = ? ,eowner = ? ,etext = ? ,esubject = ?  where eid = ?");
                 stmt.setString(1, this.handling.getExamName());
                 stmt.setTimestamp(2, stime);
@@ -116,30 +136,14 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                     var tmp = ret.getString("pid");
                     plst.add(tmp);
                 }
+                logger.info("queryed {} items", plstLen);
                 List<String> toBeAdd = new ArrayList<>();
                 List<String> toBeDelete = new ArrayList<>();
                 // 在新的题目列表里但是不在旧的题目列表里边的 + toBeAdd
-                for (String newpid : lst) {
-                    boolean flg = false;
-                    for (String pid : plst) {
-                        if (pid.equals(newpid)) {
-                            flg = true;
-                            break;
-                        }
-                    }
-                    if (!flg) toBeAdd.add(newpid);
-                }
+
+                checkLst(lst, plst, toBeAdd);
                 // 在旧的题目列表而不再新的题目列表里边, + toBeDelete
-                for (String pid : plst) {
-                    boolean flg = false;
-                    for (String newpid : lst) {
-                        if (pid.equals(newpid)) {
-                            flg = true;
-                            break;
-                        }
-                    }
-                    if (!flg) toBeDelete.add(pid);
-                }
+                checkLst(plst, lst, toBeDelete);
                 // 检查两个列表有没有重复的元素, 如果有的话说明什么地方错误了, 应该报错.
                 for (String a : toBeAdd) {
                     for (String b : toBeDelete) {
@@ -168,12 +172,12 @@ public class ExamServiceCreateModifyExam extends BooleanEvent {
                     logger.debug(stmt.toString());
                     stmt.execute();
                 }
-                DatabaseUtil.closeQuery(ret, stmt, conn);
+                closeQuery(ret, stmt, conn);
 
                 // 每次更新考试，都会检查所有者是否在examPerm表中存在
                 this.handling.updateExamPerm();
             } else {
-                DatabaseUtil.closeUpdate(stmt, conn);
+                closeUpdate(stmt, conn);
                 return false;
             }
         } catch (SQLException | ParseException sql) {

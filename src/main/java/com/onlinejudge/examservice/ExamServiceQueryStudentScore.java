@@ -2,6 +2,8 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.IntegerEvent;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +16,11 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
+@Getter
+@Setter
 public class ExamServiceQueryStudentScore extends IntegerEvent {
-    private String studentID, examID;
+    private String studentID;
+    private String examID;
     private int queryType;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceQueryStudentScore.class);
 
@@ -26,10 +31,15 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
     }
 
     private boolean judge(Timestamp time, Timestamp startTime, Timestamp endTime) {
+        boolean result;
         if (this.queryType == 1) {
-            return time.after(endTime) || time.before(startTime);
-        } else return time.before(endTime) && time.after(startTime);
+            result = time.after(endTime) || time.before(startTime);
+        } else {
+            result = time.before(endTime) && time.after(startTime);
+        }
+        return result;
     }
+
     public int go() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -101,6 +111,7 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
                     var pscore = score.get(pid);
                     if (pscore < cscore) score.replace(pid, cscore);
                 }
+                logger.info("find {} results", co);
 
             }
             int ret = 0;
@@ -109,37 +120,13 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
             closeQuery(result, stmt, conn);
             return ret;
         } catch (SQLException se) {
-            logger.error("Something wrong in SQL",se);
+            logger.error("Something wrong in SQL", se);
             try {
                 closeQuery(result, stmt, conn);
             } catch (SQLException e) {
-                logger.error("Something wrong while closing",e);
+                logger.error("Something wrong while closing", e);
             }
             return -1;
         }
-    }
-
-    public String getExamID() {
-        return this.examID;
-    }
-
-    public void setExamID(String examID) {
-        this.examID = examID;
-    }
-
-    public String getStudentID() {
-        return this.studentID;
-    }
-
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
-
-    public int getQueryType() {
-        return this.queryType;
-    }
-
-    public void setQueryType(int queryType) {
-        this.queryType = queryType;
     }
 }

@@ -5,15 +5,15 @@ import com.onlinejudge.util.ListEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ExamServiceReplaceProblem extends ListEvent<Problem> {
     private final String examID;
@@ -29,6 +29,7 @@ public class ExamServiceReplaceProblem extends ListEvent<Problem> {
 
     @Override
     public List<Problem> go() {
+        List<Problem> result = null;
         // 考试中新题目替换旧题目
         // requestType: replaceProblemFromExam
         List<Problem> newProblem = new ArrayList<>();
@@ -36,7 +37,6 @@ public class ExamServiceReplaceProblem extends ListEvent<Problem> {
         PreparedStatement staQuery = null;
         PreparedStatement staUpdate = null;
         try {
-            Connection conn = getConnection();
             staQuery = prepareStatement("select * from problem where pid=?");
             staUpdate = prepareStatement("delete from examprob where eid=? and pid=?");
 
@@ -49,29 +49,28 @@ public class ExamServiceReplaceProblem extends ListEvent<Problem> {
                 queryResult.close();
                 staQuery.close();
                 staUpdate.close();
-                return newProblem;
+                result = newProblem;
+            } else {
+                Problem curr = new Problem(queryResult.getInt("ptype"), queryResult.getString("pid"),
+                        queryResult.getString("ptitle"), queryResult.getString("ptext"), "", queryResult.getInt("pmaxsize"),
+                        queryResult.getInt("pmaxtime"), queryResult.getInt("pscore"), queryResult.getString("psubject"),
+                        queryResult.getString("ptag"));
+                staUpdate.setString(1, this.examID);
+                staUpdate.setString(2, this.oldID);
+                logger.info("ReplaceProblem update: " + staUpdate.toString());
+                staUpdate.executeUpdate();
+                staUpdate.close();
+                staUpdate = prepareStatement("insert into examprob (eid, pid) values (?, ?)");
+                staUpdate.setString(1, this.examID);
+                staUpdate.setString(2, this.newID);
+                newProblem.add(curr);
+                queryResult.close();
+                staQuery.close();
+                staUpdate.close();
+                closeConnection();
             }
-            Problem curr = new Problem(queryResult.getInt("ptype"), queryResult.getString("pid"),
-                    queryResult.getString("ptitle"), queryResult.getString("ptext"), "", queryResult.getInt("pmaxsize"),
-                    queryResult.getInt("pmaxtime"), queryResult.getInt("pscore"), queryResult.getString("psubject"),
-                    queryResult.getString("ptag"));
 
 
-            staUpdate.setString(1, this.examID);
-            staUpdate.setString(2, this.oldID);
-            logger.info("ReplaceProblem update: " + staUpdate.toString());
-            staUpdate.executeUpdate();
-            staUpdate.close();
-            staUpdate = prepareStatement("insert into examprob (eid, pid) values (?, ?)");
-            staUpdate.setString(1, this.examID);
-            staUpdate.setString(2, this.newID);
-
-            newProblem.add(curr);
-
-            queryResult.close();
-            staQuery.close();
-            staUpdate.close();
-            closeConnection();
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
             try {
@@ -82,8 +81,11 @@ public class ExamServiceReplaceProblem extends ListEvent<Problem> {
             } catch (SQLException ex) {
                 logger.error(ex.getMessage(), ex);
             }
-            return newProblem;
+            result = newProblem;
         }
-        return newProblem;
+        if (result == null) {
+            result = newProblem;
+        }
+        return result;
     }
 }

@@ -22,7 +22,9 @@ public class ExamServiceListExamStudent extends ListEvent<ExamServiceListedStude
         this.examID = examID;
     }
 
+    @Override
     public List<ExamServiceListedStudent> go() {
+        List<ExamServiceListedStudent> res;
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet queryResult = null;
@@ -46,15 +48,16 @@ public class ExamServiceListExamStudent extends ListEvent<ExamServiceListedStude
             }
             closeQuery(queryResult, stmt, conn);
             logger.debug(MessageFormat.format("find{0}result(s)", cnt));
-            return resultList;
+            res = resultList;
         } catch (SQLException sqlException) {
             try {
                 closeQuery(queryResult, stmt, conn);
             } catch (SQLException e) {
-                logger.error(e.getMessage(),e);
+                logger.error(e.getMessage(), e);
             }
-            logger.error(sqlException.getMessage(),sqlException);
-            return new ArrayList<>();
+            logger.error(sqlException.getMessage(), sqlException);
+            res = new ArrayList<>();
         }
+        return res;
     }
 }

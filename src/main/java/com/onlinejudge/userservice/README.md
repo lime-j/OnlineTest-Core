@@ -1,6 +1,7 @@
 # UserService 用户信息服务
 
 ## UserServiceCheckToken
+
 功能 :
 
     检查用户Token是否是最新的(为了确保同一时间操作的只有一个用户)
@@ -39,8 +40,6 @@
     更新的是昵称而不是用户名(userID), 也不是Token(uuid)
 
 ## UserServiceDeleteAccount
-
-TODO: 级联删除还有bug
 
 
 功能: 

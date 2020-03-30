@@ -26,12 +26,12 @@ public class LoginCheck extends ClassEvent {
         this.uID = uID;
     }
 
-    private Connection conn = null;
-    private PreparedStatement stmt = null;
-    private ResultSet ret = null;
-    private Jedis jedis = null;
     @Override
     public String go() throws WrongPasswordException {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet ret = null;
+        Jedis jedis = null;
         String uuid;
         String uPassword = null;
         int uSex = -1;
