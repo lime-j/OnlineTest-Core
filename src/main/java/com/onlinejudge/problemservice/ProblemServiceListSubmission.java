@@ -11,14 +11,17 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceAntiCheatListSubmission extends ListEvent {
+public class ProblemServiceListSubmission extends ListEvent<Submission> {
     private final String examID;
     private final String probID;
+    private final String userID;
 
-    public ProblemServiceAntiCheatListSubmission(String examID, String probID) {
+    public ProblemServiceListSubmission(String examID, String probID, String userID) {
         this.examID = examID;
         this.probID = probID;
+        this.userID = userID;
     }
+
     @Override
     public List<Submission> go() {
         String cmd = "";
@@ -28,10 +31,11 @@ public class ProblemServiceAntiCheatListSubmission extends ListEvent {
         try {
             //Connection conn = getConnection();
             conn = getConnection();
-            cmd = String.format("select userinfo.uname, submission.sid, submission.stext, submission.stime, submission.suid, submission.sscore " +
-                    "from userinfo, submission " +
-                    "where spid='%s' and seid='%s' and sscore > 0 and userinfo.uid = submission.suid", this.probID, this.examID);
+            cmd = "select userinfo.uname, submission.sid, submission.stext, submission.stime, submission.suid, submission.sscore " + "from userinfo, submission " + "where spid= ?  and seid= ? and userinfo.uid = ?";
             stmt = prepareStatement(cmd);
+            stmt.setString(1, examID);
+            stmt.setString(2, probID);
+            stmt.setString(3, userID);
             subTextSet = stmt.executeQuery();
             List<Submission> result = new ArrayList<>();
             while (subTextSet.next()) {

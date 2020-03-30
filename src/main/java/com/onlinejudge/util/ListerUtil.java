@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
-
-public class StringListerUtil {
+@SuppressWarnings("unchecked")
+public class ListerUtil<T> {
     private ResultSet result = null;
-    private List<String> resultList;
+    private static final Logger logger = LoggerFactory.getLogger(ListerUtil.class);
     private Connection conn = null;
     private PreparedStatement stmt = null;
-    private static final Logger logger = LoggerFactory.getLogger(StringListerUtil.class);
+    private List<T> resultList;
 
-    public StringListerUtil(String stmtString, String get, @NotNull List<String> puts, String callName) {
+    public ListerUtil(String stmtString, String get, @NotNull List<String> puts, String callName) {
         this.resultList = new ArrayList<>();
         try {
             this.conn = getConnection();
@@ -31,7 +31,7 @@ public class StringListerUtil {
             }
             logger.debug("{},{}", callName, this.stmt);
             this.result = this.stmt.executeQuery();
-            while (this.result.next()) this.resultList.add(this.result.getString(get));
+            while (this.result.next()) this.resultList.add((T) this.result.getObject(get));
             closeQuery(this.result, this.stmt, this.conn);
             logger.info("{}, , query is ok, quit.", callName);
         } catch (SQLException e) {
@@ -43,44 +43,46 @@ public class StringListerUtil {
         }
     }
 
-    public StringListerUtil(String stmtString, String get, String put, String callName) {
+    public ListerUtil(String stmtString, String get, String put, String callName) {
         this.resultList = new ArrayList<>();
         try {
             this.conn = getConnection();
             this.stmt = prepareStatement(stmtString);
             this.stmt.setString(1, put);
-            logger.debug("{},{}",callName,this.stmt);
+            logger.debug("{},{}", callName, this.stmt);
             this.result = this.stmt.executeQuery();
-            while (this.result.next()) this.resultList.add(this.result.getString(get));
+            while (this.result.next()) this.resultList.add((T) this.result.getObject(get));
             closeQuery(this.result, this.stmt, this.conn);
-            logger.info("{},query is ok, quit.",callName);
+            logger.info("{},query is ok, quit.", callName);
         } catch (SQLException e) {
             try {
                 closeQuery(this.result, this.stmt, this.conn);
             } catch (SQLException ex) {
-                logger.error("SQLException while closing conn",ex);
+                logger.error("SQLException while closing conn", ex);
             }
         }
     }
-    public StringListerUtil(String stmtString, String get, String callName) {
+
+    public ListerUtil(String stmtString, String get, String callName) {
         this.resultList = new ArrayList<>();
         try {
             this.conn = getConnection();
             this.stmt = prepareStatement(stmtString);
-            logger.debug("{},{}",callName,this.stmt);
+            logger.debug("{},{}", callName, this.stmt);
             this.result = this.stmt.executeQuery();
-            while (this.result.next()) this.resultList.add(this.result.getString(get));
+            while (this.result.next()) this.resultList.add((T) this.result.getObject(get));
             closeQuery(this.result, this.stmt, this.conn);
-            logger.info("{},query is ok, quit.",callName);
+            logger.info("{},query is ok, quit.", callName);
         } catch (SQLException e) {
             try {
                 closeQuery(this.result, this.stmt, this.conn);
             } catch (SQLException ex) {
-                logger.error("SQLException while closing conn",ex);
+                logger.error("SQLException while closing conn", ex);
             }
         }
     }
-    public List<String> getResultList() {
+
+    public List<T> getResultList() {
         return this.resultList;
     }
 }

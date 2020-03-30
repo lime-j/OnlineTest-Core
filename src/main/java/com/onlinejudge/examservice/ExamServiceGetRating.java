@@ -23,7 +23,7 @@ import static java.util.Collections.sort;
 
 public class ExamServiceGetRating {
     private static final int MAX_PANS = 10000;
-    private static Comparator<Participant> c = (participant, t1) -> Integer.compare(participant.newRating, t1.newRating);
+    private static Comparator<Participant> c = Comparator.comparingInt(participant -> participant.newRating);
     @Contract(pure = true)
     private static double calculateProbability(@NotNull Participant a, @NotNull Participant b) {
         return 1.0 / (1 + pow(10, (a.rank - b.rank) / 400));
@@ -78,7 +78,7 @@ public class ExamServiceGetRating {
         inc = min(max(-(sumS / s), -10), 0);
         for (var pan : pans) pan.delta += inc;
         for (var pan : pans) pan.newRating = pan.delta + pan.oldRating;
-        sort(pans, c);
+        pans.sort(c);
         return pans;
     }
 
@@ -86,13 +86,14 @@ public class ExamServiceGetRating {
     @Setter
     @AllArgsConstructor
     @EqualsAndHashCode
-    protected static final class Participant implements Comparable {
+    protected static final class Participant implements Comparable<Participant> {
         double rank;
         String userName;
+        String userID;
         int oldRating;
-        int newRating = 0;
+        int newRating;
         double seed = 1.0;
-        int delta = 0;
+        int delta;
 
         @Contract(pure = true)
         private Participant() {
@@ -100,8 +101,8 @@ public class ExamServiceGetRating {
             this.delta = 0;
         }
 
-        public int compareTo(@NotNull Object o) {
-            return -Double.compare(oldRating, ((Participant) o).oldRating);
+        public int compareTo(@NotNull Participant o) {
+            return -Double.compare(oldRating, o.oldRating);
         }
     }
 }
