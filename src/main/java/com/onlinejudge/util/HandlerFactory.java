@@ -10,6 +10,7 @@ import com.onlinejudge.manservice.ManagementServiceAddListUsers;
 import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
 import com.onlinejudge.userservice.UserServiceDeleteAccount;
+import com.onlinejudge.userservice.UserServiceGetTimeLine;
 import com.onlinejudge.userservice.UserServiceListAllUser;
 import com.onlinejudge.userservice.UserServiceUpdateProperties;
 import org.jetbrains.annotations.Contract;
@@ -43,6 +44,13 @@ public class HandlerFactory {
 
         try {
             switch (requestEnum) {
+                case getTimeline:
+                    handler = new ListEventHandler(
+                            new UserServiceGetTimeLine(
+                                    jsonObject.getString("userID")
+                            )
+                    );
+                    break;
                 case listSubject:
                     handler = new ListEventHandler(
                             new ProblemServiceListAllSubject()
@@ -133,6 +141,8 @@ public class HandlerFactory {
                             )
                     );
                     break;
+                case createProblemTag:
+                    break;
                 case deleteAccount:
                     handler = new BooleanEventHandler(
                             new UserServiceDeleteAccount(
@@ -182,7 +192,8 @@ public class HandlerFactory {
                 case listExam:
                     handler = new ListEventHandler(
                             new ExamServiceListExam(
-                                    jsonObject.getString("userID")
+                                    jsonObject.getString("userID"), jsonObject.getInteger("listType")
+
                             )
                     );
                     break;

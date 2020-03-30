@@ -1,7 +1,8 @@
 package com.onlinejudge.examservice;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -11,8 +12,10 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
+@Getter
+@Setter
+@Log4j2
 public class Exam {
-    private static final Logger logger = LoggerFactory.getLogger(Exam.class);
     private String examID;
     private String examName;
     private String userID;
@@ -21,6 +24,7 @@ public class Exam {
     private String examText;
     private List<String> problemList;
     private String examSubject;
+    private int isRated;
 
     public Exam(String examID, String examName, String userID, String startTime, String endTime, String examText, String examSubject, List<String> pids) {
         this.examID = examID;
@@ -70,80 +74,16 @@ public class Exam {
             updateStmt.setString(1, this.examID);
             updateStmt.setString(2, this.userID);
 
-            logger.debug("{} {}",this, updateStmt);
+            log.debug("{} {}", this, updateStmt);
             updateStmt.executeUpdate();
             updateStmt.close();
 //            permExistResult.close();
 //            permExist.close();
             closeConnection();
         } catch (SQLIntegrityConstraintViolationException e) {
-            logger.debug("{} {}",this,e.getMessage());
+            log.debug("{} {}", this, e.getMessage());
         } catch (SQLException e) {
-            logger.error("SQLEXception", e);
+            log.error("SQLEXception", e);
         }
-    }
-
-    public String getExamID() {
-        return this.examID;
-    }
-
-    public void setExamID(String examID) {
-        this.examID = examID;
-    }
-
-    public String getExamName() {
-        return this.examName;
-    }
-
-    public void setExamName(String examName) {
-        this.examName = examName;
-    }
-
-    public String getUserID() {
-        return this.userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getStartTime() {
-        return this.startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return this.endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getExamText() {
-        return this.examText;
-    }
-
-    public void setExamText(String examText) {
-        this.examText = examText;
-    }
-
-    public String getExamSubject() {
-        return this.examSubject;
-    }
-
-    public void setExamSubject(String examSubject) {
-        this.examSubject = examSubject;
-    }
-
-    public List<String> getProblemList() {
-        return this.problemList;
-    }
-
-    public void setProblemList(List<String> problemList) {
-        this.problemList = problemList;
     }
 }

@@ -8,19 +8,21 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
+import static java.text.MessageFormat.format;
 
 public class ExamServiceListExam extends ListEvent<Exam> {
     private String userID;
+    private ExamType type;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExam.class);
 
-    public ExamServiceListExam(String userID) {
+    public ExamServiceListExam(String userID, int type) {
         this.userID = userID;
+        this.type = type == 1 ? ExamType.CONTEST : ExamType.COURSE;
     }
 
     public List<Exam> go() {
@@ -29,7 +31,6 @@ public class ExamServiceListExam extends ListEvent<Exam> {
         try {
             conn = DatabaseUtil.getConnection();
             logger.info("ExamServiceListExam, conn and stmt created.");
-            //stmt.execute("use onlinejudge");
             String qry = String.format("select e.ename, e.eid, e.ename, e.estart, e.eend, e.etext, e.esubject, ep.sid from examperm ep, exam e where e.eid = ep.eid and ep.sid = '%s'", this.userID);
             stmt = prepareStatement(qry);
             logger.debug("ExamServiceListExam, qry = {}",qry);
@@ -37,6 +38,10 @@ public class ExamServiceListExam extends ListEvent<Exam> {
             int cnt = 0;
             List<Exam> resultList = new ArrayList<>();
             while (queryResult.next()) {
+                int isContest = queryResult.getInt("iscontest");
+                // contest is a special type of exam that could be listed
+                assert (isContest == 1 || isContest == 0);
+                if (isContest == type.type) continue;
                 ++cnt;
                 String eTitle = queryResult.getString("ename");
                 //java.util.Date tspToDate = new java.util.Date(new java.sql.Timestamp(System.currentTimeMillis()).getTime());
@@ -46,13 +51,12 @@ public class ExamServiceListExam extends ListEvent<Exam> {
                 var eID = queryResult.getString("eid");
                 var userID = queryResult.getString("sid");
                 var eText = queryResult.getString("etext");
-                var eSubject = queryResult.getString("esubject");
-                resultList.add(new Exam(eID, eTitle, userID, eStartTime, eEndTime, eText, eSubject));
-                logger.debug(MessageFormat.format("ExamServiceListExam, ename = {0}, estart = {1},eend = {2},eID = {3},userID = {4}etext = {5}esubject = {6}", eTitle, eStartTime, eEndTime, eID, userID, eText, eSubject)
+                resultList.add(new Exam(eID, eTitle, userID, eStartTime, eEndTime, eText));
+                logger.debug(format("ExamServiceListExam, ename = {0}, estart = {1},eend = {2},eID = {3},userID = {4},etext = {5}esubject = {6}", eTitle, eStartTime, eEndTime, eID, userID, eText)
                 );
             }
             closeQuery(queryResult, stmt, conn);
-            logger.info(MessageFormat.format("[DBG]:ExamServiceListExam, find{0}result(s)", cnt));
+            logger.info(format("[DBG]:ExamServiceListExam, find{0}result(s)", cnt));
             return resultList;
         } catch (SQLException sqlException) {
             logger.error(sqlException.getMessage(), sqlException);

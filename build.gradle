@@ -21,6 +21,10 @@ repositories {
     mavenCentral()
 }
 dependencies {
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.2'
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
     // https://mvnrepository.com/artifact/redis.clients/jedis

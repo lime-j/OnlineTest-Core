@@ -15,6 +15,8 @@ public class DaemonServiceMain {
     private static final int PORT = 2331;
     private static final Logger logger = LoggerFactory.getLogger(DaemonServiceMain.class);
     public static void main(String[] args) {
+
+        //
         try {
             ServerSocket loginServSocket = new ServerSocket(PORT);
             logger.info("Server is up, listening {}",PORT);
