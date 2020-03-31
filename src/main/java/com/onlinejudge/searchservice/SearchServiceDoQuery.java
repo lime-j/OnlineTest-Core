@@ -26,7 +26,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
     // 每个 List 内包括多个JSON String, 内容如 SearchServiceResult 所示.
 
     private String userID;
-    private queryTypes queryType;
+    private QueryTypes queryType;
     private String keyword;
     private static final Logger logger = LoggerFactory.getLogger(SearchServiceDoQuery.class);
 
@@ -101,7 +101,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             assert (userType != 1);
 
 
-            if (this.queryType == queryTypes.Problem) {
+            if (this.queryType == QueryTypes.PROBLEM) {
                 logger.info("searchservice, queryType == Problem");
                 String qry;
                 if (userType == 3) {
@@ -127,7 +127,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
                 //stmt = prepareStatement(qry);
                 queryResult = stmt.executeQuery();
                 resultList = handleProblem(queryResult);
-            } else if (this.queryType == queryTypes.Contest) {
+            } else if (this.queryType == QueryTypes.CONTEST) {
                 String qry = "select e.eid, e.ename etitle, e.estart, e.eend, e.esubject from examperm ep, exam e where e.eid = ep.eid and ep.sid = ? and  ename like  ?";
                 stmt = prepareStatement(qry);
                 stmt.setString(1, this.userID);
@@ -152,13 +152,13 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
         this.userID = userID;
     }
 
-    public queryTypes getQueryType() {
+    public QueryTypes getQueryType() {
         return this.queryType;
     }
 
     private void setQueryType(int queryType) {
-        if (queryType == 1) this.queryType = queryTypes.Problem;
-        else this.queryType = queryTypes.Contest;
+        if (queryType == 1) this.queryType = QueryTypes.PROBLEM;
+        else this.queryType = QueryTypes.CONTEST;
     }
 
     public String getKeyword() {

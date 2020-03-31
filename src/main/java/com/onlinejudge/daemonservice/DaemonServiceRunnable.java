@@ -5,7 +5,7 @@ import com.onlinejudge.loginservice.WrongPasswordException;
 import com.onlinejudge.userservice.TokenWrongException;
 import com.onlinejudge.userservice.UserServiceCheckToken;
 import com.onlinejudge.util.Handler;
-import com.onlinejudge.util.HandlerFactory;
+import com.onlinejudge.util.HandlerFactoryUtil;
 import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class DaemonServiceRunnable implements Runnable {
             if (Stream.of("login", "sendMail", "changePassword").allMatch(s -> (!s.equals(requestType)))) {
                 UserServiceCheckToken.checkToken(userID, userToken);
             }
-            handler = HandlerFactory.getHandler(requestType, jsonObject);
+            handler = HandlerFactoryUtil.getHandler(requestType, jsonObject);
             assert handler != null;
             logger.info(handler.result);
             this.cl.getOutputStream().write((handler.result + "\n").getBytes(StandardCharsets.UTF_8));

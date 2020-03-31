@@ -152,7 +152,8 @@ public class ExamServiceGetParticipants implements Provider {
         return penalty;
     }
 
-    private static List<Participant> getRankedPartcipans(String examID) {
+    @NotNull
+    private static List<Participant> getRankedParticipants(String examID) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet ret = null;
@@ -188,7 +189,7 @@ public class ExamServiceGetParticipants implements Provider {
         var pansID = getParticipantsID(examID);
         var listedPans = getRank(pansID, examID, pair);
         setRank(listedPans, examID);
-        return getRankedPartcipans(examID);
+        return getRankedParticipants(examID);
     }
 
     @Getter

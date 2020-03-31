@@ -23,14 +23,13 @@ import java.util.Map;
 
 import static com.alibaba.fastjson.JSON.parseArray;
 
-public class HandlerFactory {
+public class HandlerFactoryUtil {
+    private static final Logger logger = LoggerFactory.getLogger(HandlerFactoryUtil.class);
+    private static final Map<String, HandlerEnum> mp = new HashMap<>();
 
     @Contract(pure = true)
-    private HandlerFactory() {
+    private HandlerFactoryUtil() {
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(HandlerFactory.class);
-    private static final Map<String, HandlerEnum> mp = new HashMap<>();
 
     static {
         for (var it : HandlerEnum.values()) {
@@ -299,13 +298,13 @@ public class HandlerFactory {
                     handler = new BooleanEventHandler(new ExamServiceAddUserIntoExam(
                             parseArray(jsonObject.getJSONArray("userList").toJSONString(), String.class),
                             jsonObject.getString("examID")
-                    ));
-                    break;*/
+                    ))
+                    break*/
 /*                case "addTeacherSubject":
                     handler = new BooleanEventHandler(new ManagerServiceTeacherSubject(
                             parseArray(jsonObject.getJSONArray("tsList").toJSONString(), String.class)
-                    ));
-                    break;*/
+                    ))
+                    break*/
                 default:
                     handler = new NothingToDoHandler();
                     logger.warn("Undefined behavior.");

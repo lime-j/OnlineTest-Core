@@ -37,6 +37,7 @@ public class ManagerServiceTeacherSubject extends BooleanEvent {
                     "values(?, ?)");
             staQuerySubject = prepareStatement("select * from subject where subject=?");
             staQueryTea = prepareStatement("select * from teasubject where subject=? and teacherid=?");
+
             for (String s : this.currTeacherSubject) {
                 JSONObject currJSON = JSONObject.parseObject(s);
                 String currSubject = currJSON.getString("Subject");
@@ -78,25 +79,9 @@ public class ManagerServiceTeacherSubject extends BooleanEvent {
         } finally {
             try {
                 Objects.requireNonNull(querySet).close();
-            } catch (SQLException e) {
-                logger.info(e.getMessage(), e);
-            }
-            try {
                 Objects.requireNonNull(staInsertTea).close();
-            } catch (SQLException e) {
-                logger.info(e.getMessage(), e);
-            }
-            try {
                 Objects.requireNonNull(staNewSubject).close();
-            } catch (SQLException e) {
-                logger.info(e.getMessage(), e);
-            }
-            try {
                 Objects.requireNonNull(staQuerySubject).close();
-            } catch (SQLException e) {
-                logger.info(e.getMessage(), e);
-            }
-            try {
                 Objects.requireNonNull(staQueryTea).close();
             } catch (SQLException e) {
                 logger.info(e.getMessage(), e);
