@@ -10,7 +10,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeConnection;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Getter
 @Setter

@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeQuery;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class Submission {
     private String Sid;

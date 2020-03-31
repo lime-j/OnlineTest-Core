@@ -1,5 +1,6 @@
 package com.onlinejudge.problemservice;
 
+import com.onlinejudge.util.DatabaseUtil;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.stream.Stream;
-
-import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class Problem {
     private static final String HOME_PATH = "/tmp";
@@ -129,8 +128,8 @@ public class Problem {
     protected boolean addPid(String NewValue) {
         // add pid, 新的Pid不会写入数据库，必须执行updateProb才能将Pid写入数据库
         try {
-            getConnection();
-            PreparedStatement sta = prepareStatement("select * from problem where pid=?");
+            DatabaseUtil.getConnection();
+            PreparedStatement sta = DatabaseUtil.prepareStatement("select * from problem where pid=?");
             sta.setString(1, NewValue);
             logger.debug("[problemservice]: addPid: SQL: {}", sta);
             ResultSet queryResult = sta.executeQuery();
@@ -190,18 +189,18 @@ public class Problem {
         // 可以检测，当前题目是否存在在当前数据库中
         PreparedStatement sta;
         try {
-            getConnection();
-            sta = prepareStatement("select * from problem where pid = ?");
+            DatabaseUtil.getConnection();
+            sta = DatabaseUtil.prepareStatement("select * from problem where pid = ?");
             sta.setString(1, this.pid);
             ResultSet queryResult = sta.executeQuery();
             if (isfaild(queryResult)) {
                 // 当前试题为新添加试题，执行insert
-                sta = prepareStatement("insert into problem (ptitle, ptext, ptype, pscore, pmaxsize, pmaxtime, psubject, pid) " +
+                sta = DatabaseUtil.prepareStatement("insert into problem (ptitle, ptext, ptype, pscore, pmaxsize, pmaxtime, psubject, pid) " +
                         "values (?, ?, ?, ?, ?, ?, ?, ?)");
                 logger.info("[problemservice]: {} - \n\tadding problem pid={}", this, this.pid);
             } else {
                 //当前试题为试题内容更新，使用update
-                sta = prepareStatement("update problem set ptitle = ?, ptext = ?, ptype = ?, pscore = ?, " +
+                sta = DatabaseUtil.prepareStatement("update problem set ptitle = ?, ptext = ?, ptype = ?, pscore = ?, " +
                         "pmaxsize = ?, pmaxtime = ?, psubject = ? where pid = ?");
                 logger.info("[problemservice]: ProblemUpdate - \n\tupdating problem pid={}", this.pid);
             }
@@ -223,11 +222,11 @@ public class Problem {
 
             queryResult.close();
             sta.close();
-            closeConnection();
+            DatabaseUtil.closeConnection();
             return true;
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
-            closeConnection();
+            DatabaseUtil.closeConnection();
             return false;
         }
     }

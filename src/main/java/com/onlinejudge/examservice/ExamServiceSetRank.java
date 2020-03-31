@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Log4j2
 public class ExamServiceSetRank implements Settler {

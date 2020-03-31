@@ -3,7 +3,8 @@ package com.onlinejudge.manservice;
 import com.onlinejudge.util.StringEvent;
 
 public class ManServiceGetPerfStatus implements StringEvent {
-    private String userID, userToken;
+    private String userID;
+    private String userToken;
 
     public ManServiceGetPerfStatus(String userID, String userToken) {
         this.userID = userID;
