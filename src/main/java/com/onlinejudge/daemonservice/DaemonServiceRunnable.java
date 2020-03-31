@@ -68,12 +68,6 @@ public class DaemonServiceRunnable implements Runnable {
             } catch (IOException e) {
                 logger.error("IOException", e);
             }
-        } finally {
-            try {
-                this.cl.close();
-            } catch (IOException e) {
-                logger.error("IOException", e);
-            }
         }
     }
 }

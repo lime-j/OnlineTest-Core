@@ -5,10 +5,10 @@ import com.onlinejudge.util.BooleanEvent;
 
 import java.util.List;
 
-public class ManagementServiceAddListUsers implements BooleanEvent {
+public class ManServiceAddListUsers implements BooleanEvent {
     private final List<String> currUserList;
 
-    public ManagementServiceAddListUsers(List<String> OrigionUserData) {
+    public ManServiceAddListUsers(List<String> OrigionUserData) {
         this.currUserList = OrigionUserData;
     }
 

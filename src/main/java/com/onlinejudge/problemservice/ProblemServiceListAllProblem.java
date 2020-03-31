@@ -56,7 +56,7 @@ public class ProblemServiceListAllProblem implements ListEvent {
                             result.getInt("ptype"), result.getString("pid"), result.getString("ptitle")
                             , result.getString("ptext"), result.getString("pans"), result.getInt("pmaxsize"),
                             result.getInt("pmaxsize"), result.getInt("pscore")
-                            , result.getString("psubject"), result.getString("ptag")
+                            , result.getString("psubject")
                     ));
                 }
                 result.close();

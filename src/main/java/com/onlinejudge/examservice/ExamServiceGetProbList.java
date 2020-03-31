@@ -56,9 +56,8 @@ public class ExamServiceGetProbList implements Provider {
                 int psz = queryResult.getInt("pmaxsize");
                 int ptm = queryResult.getInt("pmaxtime");
                 int psc = queryResult.getInt("pscore");
-                String ptg = queryResult.getString("ptag");
                 String psg = queryResult.getString("psubject");
-                var result = new Problem(ptype, pID, ptitle, ptext, pans, psz, ptm, psc, psg, ptg);
+                var result = new Problem(ptype, pID, ptitle, ptext, pans, psz, ptm, psc, psg);
                 log.info("find {} results", cnt);
                 vis.put(cnt, result);
                 lsts.get(queryResult.getInt("ptype")).add(cnt);

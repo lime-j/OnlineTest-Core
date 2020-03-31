@@ -15,11 +15,10 @@ public class DaemonServiceMain {
     private static final int PORT = 2331;
     private static final Logger logger = LoggerFactory.getLogger(DaemonServiceMain.class);
     public static void main(String[] args) {
-
-        //
+        ServerSocket loginServSocket = null;
         try {
-            ServerSocket loginServSocket = new ServerSocket(PORT);
-            logger.info("Server is up, listening {}",PORT);
+            loginServSocket = new ServerSocket(PORT);
+            logger.info("Server is up, listening {}", PORT);
             while (true) {
                 Socket sc = loginServSocket.accept();
                 logger.info("Session started with {}", sc.getInetAddress());
@@ -27,14 +26,23 @@ public class DaemonServiceMain {
                     Thread td = new Thread(new DaemonServiceRunnable(sc));
                     td.start();
                 } catch (Exception e) {
-                    logger.error("Something went wrong",e);
+                    logger.error("Something went wrong", e);
                     break;
                 } finally {
                     logger.info("finished task");
+                    sc.close();
                 }
             }
         } catch (IOException ee) {
             logger.error("IOException", ee);
+        } finally {
+            try {
+                if (loginServSocket != null) {
+                    loginServSocket.close();
+                }
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+            }
         }
     }
 }

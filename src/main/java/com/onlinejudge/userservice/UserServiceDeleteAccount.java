@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
+
 public class UserServiceDeleteAccount implements BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceDeleteAccount.class);
 
@@ -26,7 +28,7 @@ public class UserServiceDeleteAccount implements BooleanEvent {
             conn = DatabaseUtil.getConnection();
             logger.info("conn to DB");
             /* stmt.executeQuery("use onlinejudge"); */
-            stmt = DatabaseUtil.prepareStatement("delete from userinfo where uid = ?");
+            stmt = prepareStatement("delete from userinfo where uid = ?");
             stmt.setString(1, this.userID);
             logger.debug(stmt.toString());
             stmt.executeUpdate();

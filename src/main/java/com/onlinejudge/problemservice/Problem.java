@@ -33,7 +33,6 @@ public class Problem {
     public String probTag;//试题考察知识点
     public int probSZ;
     public int probTM;
-    private Tag currTag;
 
 
     // 如果传入的答案是空的，而且类型不是主观题，则从文件读取答案
@@ -49,7 +48,7 @@ public class Problem {
         }
     }
 
-    public Problem(int ptype, String pid, String ptitle, String ptext, String pans, int pmaxsize, int pmaxtime, int pscore, String pSubject, String pTag) {
+    public Problem(int ptype, String pid, String ptitle, String ptext, String pans, int pmaxsize, int pmaxtime, int pscore, String pSubject) {
         this.probType = ptype;
         this.pid = pid;
         this.probTitle = ptitle;
@@ -59,11 +58,9 @@ public class Problem {
         this.probSZ = pmaxsize;
         this.probTM = pmaxtime;
         this.probSubject = pSubject;
-        this.probTag = pTag;
         if (this.probType != 5 && this.probAns.isEmpty()) {
             this.probAns = getProbAns();
         }
-        this.currTag = new Tag(pSubject, pTag);
     }
 
     public Problem(int ptype, String pid, String ptitle, String ptext, String pans, int pmaxsize, int pmaxtime, int pscore) {
@@ -132,9 +129,6 @@ public class Problem {
     protected boolean addPid(String NewValue) {
         // add pid, 新的Pid不会写入数据库，必须执行updateProb才能将Pid写入数据库
         try {
-            if (this.currTag != null) {
-                this.currTag.updateTag();
-            }
             getConnection();
             PreparedStatement sta = prepareStatement("select * from problem where pid=?");
             sta.setString(1, NewValue);
@@ -202,13 +196,13 @@ public class Problem {
             ResultSet queryResult = sta.executeQuery();
             if (isfaild(queryResult)) {
                 // 当前试题为新添加试题，执行insert
-                sta = prepareStatement("insert into problem (ptitle, ptext, ptype, pscore, pmaxsize, pmaxtime, psubject, ptag, pid) " +
-                        "values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                sta = prepareStatement("insert into problem (ptitle, ptext, ptype, pscore, pmaxsize, pmaxtime, psubject, pid) " +
+                        "values (?, ?, ?, ?, ?, ?, ?, ?)");
                 logger.info("[problemservice]: {} - \n\tadding problem pid={}", this, this.pid);
             } else {
                 //当前试题为试题内容更新，使用update
                 sta = prepareStatement("update problem set ptitle = ?, ptext = ?, ptype = ?, pscore = ?, " +
-                        "pmaxsize = ?, pmaxtime = ?, psubject = ?, ptag = ? where pid = ?");
+                        "pmaxsize = ?, pmaxtime = ?, psubject = ? where pid = ?");
                 logger.info("[problemservice]: ProblemUpdate - \n\tupdating problem pid={}", this.pid);
             }
             sta.setString(1, this.probTitle);
@@ -218,8 +212,7 @@ public class Problem {
             sta.setInt(5, this.probSZ);
             sta.setInt(6, this.probTM);
             sta.setString(7, this.probSubject);
-            sta.setString(8, this.probTag);
-            sta.setString(9, this.pid);
+            sta.setString(8, this.pid);
             if (!writeAnsFile()) {
                 logger.warn("[problemservice]:{}: Write Ans file faild!", this);
                 return false;

@@ -6,7 +6,7 @@ import com.onlinejudge.examservice.*;
 import com.onlinejudge.loginservice.LoginCheck;
 import com.onlinejudge.loginservice.LoginServiceChangePassword;
 import com.onlinejudge.loginservice.LoginServiceSendMail;
-import com.onlinejudge.manservice.ManagementServiceAddListUsers;
+import com.onlinejudge.manservice.ManServiceAddListUsers;
 import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
 import com.onlinejudge.userservice.UserServiceDeleteAccount;
@@ -236,8 +236,7 @@ public class HandlerFactoryUtil {
                                             jsonObject.getIntValue("proMaxsize"),
                                             jsonObject.getIntValue("proMaxtime"),
                                             jsonObject.getIntValue("proScore"),
-                                            jsonObject.getString("proSubject"),
-                                            jsonObject.getString("proTag")
+                                            jsonObject.getString("proSubject")
                                     )));
                     break;
                 case subUpdate:
@@ -250,13 +249,6 @@ public class HandlerFactoryUtil {
                                             jsonObject.getString("subExam")
                                     )));
                     break;
-/*                case "antiCheatListSubmission":
-                    handler = new ListEventHandler(
-                            new ProblemServiceAntiCheatListSubmission(
-                                    jsonObject.getString("examID"), jsonObject.getString("probID")
-                            )
-                    );
-                    break;*/
                 case subjectSubList:
                     handler = new ListEventHandler(
                             new ProblemServiceSubjectiveSubReturn(
@@ -270,7 +262,7 @@ public class HandlerFactoryUtil {
                     ));
                     break;
                 case addListUser:
-                    handler = new BooleanEventHandler(new ManagementServiceAddListUsers(
+                    handler = new BooleanEventHandler(new ManServiceAddListUsers(
                             parseArray(jsonObject.getJSONArray("userlist").toJSONString(), String.class)
                     ));
                     break;
@@ -292,19 +284,6 @@ public class HandlerFactoryUtil {
                             jsonObject.getIntValue("subjective"), jsonObject.getIntValue("programBlank"),
                             jsonObject.getIntValue("program")));
                     break;
-
-                // ManagerService
-/*                case "addUserIntoExam":
-                    handler = new BooleanEventHandler(new ExamServiceAddUserIntoExam(
-                            parseArray(jsonObject.getJSONArray("userList").toJSONString(), String.class),
-                            jsonObject.getString("examID")
-                    ))
-                    break*/
-/*                case "addTeacherSubject":
-                    handler = new BooleanEventHandler(new ManagerServiceTeacherSubject(
-                            parseArray(jsonObject.getJSONArray("tsList").toJSONString(), String.class)
-                    ))
-                    break*/
                 default:
                     handler = new NothingToDoHandler();
                     logger.warn("Undefined behavior.");

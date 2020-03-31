@@ -16,7 +16,7 @@ public class InvisibleProblem extends Problem {
     private static final Logger logger = LoggerFactory.getLogger(InvisibleProblem.class);
 
     public InvisibleProblem(int ptype, String pid, String ptitle, String ptext, String pans, int pmaxsize, int pmaxtime, int pscore, String examID, String pSubject, String pTag) {
-        super(ptype, pid, ptitle, ptext, pans, pmaxsize, pmaxtime, pscore, pSubject, pTag);
+        super(ptype, pid, ptitle, ptext, pans, pmaxsize, pmaxtime, pscore, pSubject);
         this.examID = examID;
         logger.info("ProblemInvisible: examID=" + this.examID);
     }

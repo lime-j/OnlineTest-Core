@@ -2,10 +2,10 @@ package com.onlinejudge.manservice;
 
 import com.onlinejudge.util.StringEvent;
 
-public class ManagementServiceGetPerfStatus implements StringEvent {
+public class ManServiceGetPerfStatus implements StringEvent {
     private String userID, userToken;
 
-    public ManagementServiceGetPerfStatus(String userID, String userToken) {
+    public ManServiceGetPerfStatus(String userID, String userToken) {
         this.userID = userID;
         this.userToken = userToken;
     }

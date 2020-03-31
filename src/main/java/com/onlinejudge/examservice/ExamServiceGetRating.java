@@ -1,5 +1,6 @@
 package com.onlinejudge.examservice;
 
+import com.onlinejudge.util.Provider;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,9 +22,10 @@ import static java.util.Collections.sort;
     按照Codeforces的方式计算Rating
  */
 
-public class ExamServiceGetRating {
+public class ExamServiceGetRating implements Provider {
     private static final int MAX_PANS = 10000;
     private static final Comparator<Participant> c = Comparator.comparingInt(participant -> participant.newRating);
+
     @Contract(pure = true)
     private static double calculateProbability(@NotNull Participant a, @NotNull Participant b) {
         return 1.0 / (1 + pow(10, (a.rank - b.rank) / 400));
@@ -50,7 +52,7 @@ public class ExamServiceGetRating {
         return l;
     }
 
-    public List<Participant> getRating(@NotNull List<Participant> pans) {
+    public static void getItem(@NotNull List<Participant> pans) {
         for (int i = 0; i < pans.size(); ++i) {
             for (int j = 0; j < pans.size(); ++j) {
                 if (i != j) {
@@ -79,7 +81,6 @@ public class ExamServiceGetRating {
         for (var pan : pans) pan.delta += inc;
         for (var pan : pans) pan.newRating = pan.delta + pan.oldRating;
         pans.sort(c);
-        return pans;
     }
 
     @Getter

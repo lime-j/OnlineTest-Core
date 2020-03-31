@@ -1,7 +1,6 @@
 package com.onlinejudge.userservice;
 
 
-import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +14,11 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class UserServiceListAllUser implements ListEvent {
+public class UserServiceListAllUser implements ListEvent<User> {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);
 
     // This can be only triggered by admin
     // listing
-    public UserServiceListAllUser() {
-    }
 
     @Override
     public void beforeGo() {
@@ -33,7 +30,7 @@ public class UserServiceListAllUser implements ListEvent {
         // do nothing
     }
 
-    public List<User> go() throws InternalException {
+    public List<User> go() {
         // 建立列表
         List<User> result = new ArrayList<>();
         Connection conn = null;
@@ -53,16 +50,16 @@ public class UserServiceListAllUser implements ListEvent {
                 int userType = ret.getInt("utype");
                 result.add(new User(userID, userName, userSex, userType));
             }
-            logger.info("Event ListAllUsers Finished, {} user(s) listed",cnt);
+            logger.info("Event ListAllUsers Finished, {} user(s) listed", cnt);
             closeQuery(ret, stmt, conn);
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
+            logger.error(e.getMessage(), e);
+        } finally {
             try {
                 closeQuery(ret, stmt, conn);
             } catch (SQLException e) {
-                logger.error("SQL exception while closing",e);
+                logger.error("SQL exception while closing", e);
             }
         }
         return result;

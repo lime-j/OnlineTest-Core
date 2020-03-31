@@ -38,7 +38,11 @@ public class UserServiceAddComment implements BooleanEvent {
 
     @Override
     public void afterGo() {
-        // do nothing
+        try {
+            setTimelineComment(getExamName());
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     private void setComment() throws SQLException {
@@ -84,7 +88,6 @@ public class UserServiceAddComment implements BooleanEvent {
     public boolean go() {
         try {
             setComment();
-            setTimelineComment(getExamName());
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

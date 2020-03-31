@@ -113,8 +113,7 @@ public class ProblemServiceCreateProblemList implements ListEvent<Problem> {
                             resultSet.getInt("pmaxsize"),
                             resultSet.getInt("pmaxtime"),
                             resultSet.getInt("pscore"),
-                            resultSet.getString("psubject"),
-                            resultSet.getString("ptag")
+                            resultSet.getString("psubject")
                     ));
                     int pcount = resultSet.getInt("pcount");
                     lsts.get(resultSet.getInt("ptype")).add(new Pair(cnt, pcount));

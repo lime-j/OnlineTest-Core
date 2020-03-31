@@ -6,56 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="fix issues">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetRankedUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceSetRank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceSetRating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/RankedUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/Settler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceAddUserIntoExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceAddUserIntoExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceCreateModifyExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceCreateModifyExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteProblemFromExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceDeleteProblemFromExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExamStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceQueryStudentScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceQueryStudentScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceReplaceProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceReplaceProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceSendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginServiceSendMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceAddListUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceAddListUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceGetPerfStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceGetPerfStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagerServiceTeacherSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagerServiceTeacherSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceChangeScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceChangeScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblemList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateProblemList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceDeleteProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceDeleteProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetParticipants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetParticipants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceAddListUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManServiceAddListUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagementServiceGetPerfStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManServiceGetPerfStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManagerServiceTeacherSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManServiceBindUserWithSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceCreateTag.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListAllSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListSubmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListSubmission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceNewInvisibleProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceNewInvisibleProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSetSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSetSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSubjectiveSubReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceSubjectiveSubReturn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemSubmissionToQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemSubmissionToQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/searchservice/SearchServiceDoQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/searchservice/SearchServiceDoQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceListTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/Tag.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceDeleteAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceDeleteAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceGetTimeLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceGetTimeLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListAllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListAllUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListTimeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceListTimeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceUpdateProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceUpdateProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/BooleanEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/BooleanEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/BooleanEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/BooleanEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ClassEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ClassEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ClassEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ClassEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/IntegerEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/IntegerEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/IntegerEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/IntegerEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ListEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ListEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ListEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/ListEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/StringEventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +64,33 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="examperm: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="timeline: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="userinfo: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -164,6 +166,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -217,6 +220,9 @@
     <property name="settings.editor.selected.configurable" value="power.mode.ii" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.onlinejudge.examservice" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\solidhtwoo\OnlineTest-NG\src" />
     </key>
@@ -378,7 +384,7 @@
       <workItem from="1585577531315" duration="281000" />
       <workItem from="1585618789450" duration="2039000" />
       <workItem from="1585620857183" duration="70000" />
-      <workItem from="1585620961111" duration="12796000" />
+      <workItem from="1585620961111" duration="21431000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -541,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585632828483</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="对原有的Handler进行修改，现在可以更加优雅地添加timeline">
+      <created>1585634445512</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1585634445512</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +589,8 @@
     <MESSAGE value="comment" />
     <MESSAGE value="refactored querystudentscore" />
     <MESSAGE value="fix issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix issues" />
+    <MESSAGE value="对原有的Handler进行修改，现在可以更加优雅地添加timeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="对原有的Handler进行修改，现在可以更加优雅地添加timeline" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -606,30 +620,30 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="862" y="536" width="826" height="558" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585221045791" />
-    <state x="945" y="300" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser" timestamp="1585633883760">
+    <state x="945" y="294" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser" timestamp="1585645153406">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="945" y="300" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1600@0.0.2560.1600" timestamp="1585633883760" />
+    <state x="945" y="294" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1600@0.0.2560.1600" timestamp="1585645153406" />
     <state x="926" y="480" width="918" height="738" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585216182670">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="926" y="480" width="918" height="738" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585216182670" />
-    <state x="933" y="581" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585622970283">
+    <state x="933" y="579" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585642246288">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="933" y="581" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1600@0.0.2560.1600" timestamp="1585622970283" />
-    <state x="816" y="368" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585628284338">
+    <state x="933" y="579" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1600@0.0.2560.1600" timestamp="1585642246288" />
+    <state x="816" y="364" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585635519569">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="816" y="368" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585628284338" />
+    <state x="816" y="364" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585635519569" />
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585630044248">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1600@0.0.2560.1600" timestamp="1585630044248" />
-    <state x="360" y="70" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585632828316">
+    <state x="360" y="68" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585634444525">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="70" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585632828316" />
+    <state x="360" y="68" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585634444525" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -638,22 +652,22 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="899" y="393" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585398103969" />
-    <state width="2484" height="465" key="GridCell.Tab.0.bottom" timestamp="1585634228496">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585645233986">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="465" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585634228496" />
-    <state width="2484" height="465" key="GridCell.Tab.0.center" timestamp="1585634228495">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585645233986" />
+    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585645233985">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="465" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585634228495" />
-    <state width="2484" height="465" key="GridCell.Tab.0.left" timestamp="1585634228494">
+    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585645233985" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585645233984">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="465" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585634228494" />
-    <state width="2484" height="465" key="GridCell.Tab.0.right" timestamp="1585634228495">
+    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585645233984" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585645233986">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="465" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585634228495" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585645233986" />
     <state width="2478" height="505" key="GridCell.Tab.1.bottom" timestamp="1585278295602">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -686,18 +700,18 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="308" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585632838903">
+    <state x="575" y="306" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585634454302">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="308" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585632838903" />
+    <state x="575" y="306" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585634454302" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.2560.1600@0.0.2560.1600" timestamp="1585299141802" />
-    <state x="780" y="189" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1585550653688">
+    <state x="780" y="187" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1585635011850">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="780" y="189" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585550653688" />
+    <state x="780" y="187" width="990" height="1247" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585635011850" />
     <state x="759" y="490" key="com.intellij.ide.util.TipDialog" timestamp="1585618915677">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -718,13 +732,13 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="1102" y="343" width="335" height="940" key="ftp.server.browser/0.0.2560.1600@0.0.2560.1600" timestamp="1585398110459" />
-    <state x="691" y="355" width="1177" height="1976" key="run.anything.popup" timestamp="1585214074188">
+    <state x="691" y="355" width="1177" height="1976" key="run.anything.popup" timestamp="1585642065541">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="691" y="355" width="1177" height="1976" key="run.anything.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585214074188" />
-    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup" timestamp="1585619677552">
+    <state x="691" y="355" width="1177" height="1976" key="run.anything.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585642065541" />
+    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup" timestamp="1585637174200">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585619677552" />
+    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585637174200" />
   </component>
 </project>

@@ -63,8 +63,7 @@ public class ExamServiceReplaceProblem implements ListEvent<Problem> {
             } else {
                 Problem curr = new Problem(queryResult.getInt("ptype"), queryResult.getString("pid"),
                         queryResult.getString("ptitle"), queryResult.getString("ptext"), "", queryResult.getInt("pmaxsize"),
-                        queryResult.getInt("pmaxtime"), queryResult.getInt("pscore"), queryResult.getString("psubject"),
-                        queryResult.getString("ptag"));
+                        queryResult.getInt("pmaxtime"), queryResult.getInt("pscore"), queryResult.getString("psubject"));
                 staUpdate.setString(1, this.examID);
                 staUpdate.setString(2, this.oldID);
                 logger.info("ReplaceProblem update: " + staUpdate.toString());
