@@ -8,11 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceSetRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceSetRank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/InvisibleProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/problemservice/ProblemServiceNewInvisibleProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManServiceBindUserWithSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/manservice/ManServiceFinishStudy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,7 +362,7 @@
       <workItem from="1585577531315" duration="281000" />
       <workItem from="1585618789450" duration="2039000" />
       <workItem from="1585620857183" duration="70000" />
-      <workItem from="1585620961111" duration="22003000" />
+      <workItem from="1585620961111" duration="22284000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -543,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585645363108</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix issues">
+      <created>1585645744994</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1585645744994</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,10 +580,10 @@
     <MESSAGE value="fixed issues" />
     <MESSAGE value="comment" />
     <MESSAGE value="refactored querystudentscore" />
-    <MESSAGE value="fix issues" />
     <MESSAGE value="对原有的Handler进行修改，现在可以更加优雅地添加timeline" />
     <MESSAGE value="rank refreshing, user bind, fix issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="rank refreshing, user bind, fix issues" />
+    <MESSAGE value="fix issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix issues" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -630,10 +633,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1600@0.0.2560.1600" timestamp="1585630044248" />
-    <state x="360" y="66" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585645362781">
+    <state x="360" y="64" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585645744766">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="66" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585645362781" />
+    <state x="360" y="64" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585645744766" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -690,10 +693,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="304" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585645376383">
+    <state x="575" y="302" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585645754182">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="304" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585645376383" />
+    <state x="575" y="302" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585645754182" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>

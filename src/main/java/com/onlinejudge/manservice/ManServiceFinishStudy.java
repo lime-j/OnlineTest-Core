@@ -12,11 +12,11 @@ import static com.onlinejudge.util.DatabaseUtil.closeConnection;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Log4j2
-public class ManServiceBindUserWithSubject implements BooleanEvent {
+public class ManServiceFinishStudy implements BooleanEvent {
     private final String subject;
     private final String userID;
 
-    public ManServiceBindUserWithSubject(@NotNull String subject, @NotNull String userID) {
+    public ManServiceFinishStudy(@NotNull String subject, @NotNull String userID) {
         this.subject = subject;
         this.userID = userID;
     }
