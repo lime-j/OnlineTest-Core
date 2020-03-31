@@ -15,13 +15,13 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 public class ExamServiceListContest implements ListEvent<Exam> {
-    private String userID;
-    private final ExamType type;
+    private final int type;
+    private final String userID;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceListContest.class);
 
     public ExamServiceListContest(String userID, int type) {
+        this.type = type;
         this.userID = userID;
-        this.type = type == 1 ? ExamType.CONTEST : ExamType.COURSE;
     }
 
     @Override
@@ -40,25 +40,23 @@ public class ExamServiceListContest implements ListEvent<Exam> {
         try {
             conn = DatabaseUtil.getConnection();
             logger.info("ExamServiceListExam, conn and stmt created.");
-            String qry = String.format("select e.ename, e.eid, e.ename, e.estart, e.eend, e.etext, e.esubject, ep.sid from examperm ep, exam e where e.eid = ep.eid and ep.sid = '%s'", this.userID);
-            stmt = prepareStatement(qry);
-            logger.debug("ExamServiceListExam, qry = {}", qry);
+            stmt = prepareStatement("select * from exam e");
+            logger.debug("ExamServiceListExam, qry = {}", stmt);
             var queryResult = stmt.executeQuery();
             int cnt = 0;
             List<Exam> resultList = new ArrayList<>();
             while (queryResult.next()) {
                 int isContest = queryResult.getInt("iscontest");
+                logger.debug(isContest != 1 ? "course" : "contest");
                 // contest is a special type of exam that could be listed
                 assert (isContest == 1 || isContest == 0);
-                if (isContest == type.type) continue;
+                if (isContest != type) continue;
                 ++cnt;
                 String eTitle = queryResult.getString("ename");
-                //java.util.Date tspToDate = new java.util.Date(new java.sql.Timestamp(System.currentTimeMillis()).getTime());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 var eStartTime = formatter.format(new java.util.Date(queryResult.getTimestamp("estart").getTime()));
                 var eEndTime = formatter.format(new java.util.Date(queryResult.getTimestamp("eend").getTime()));
                 var eID = queryResult.getString("eid");
-                var userID = queryResult.getString("sid");
                 var eText = queryResult.getString("etext");
                 resultList.add(new Exam(eID, eTitle, userID, eStartTime, eEndTime, eText));
                 logger.debug("ExamServiceListExam, ename = {}, estart = {},eend = {},eID = {},userID = {},etext = {}", eTitle, eStartTime, eEndTime, eID, userID, eText);
@@ -71,14 +69,10 @@ public class ExamServiceListContest implements ListEvent<Exam> {
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                logger.error(e.getMessage(),e);
+                logger.error(e.getMessage(), e);
             }
             return new ArrayList<>();
         }
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
 }

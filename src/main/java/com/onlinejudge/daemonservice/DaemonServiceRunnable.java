@@ -65,8 +65,15 @@ public class DaemonServiceRunnable implements Runnable {
             logger.error("Oops.Something is wrong.", ee);
             try {
                 this.cl.getOutputStream().write("{\"status\":-3}\n".getBytes(StandardCharsets.UTF_8));
+
             } catch (IOException e) {
                 logger.error("IOException", e);
+            } finally {
+                try {
+                    cl.close();
+                } catch (IOException e) {
+                    logger.error(e.getMessage(), e);
+                }
             }
         }
     }

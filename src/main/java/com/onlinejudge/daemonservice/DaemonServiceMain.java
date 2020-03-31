@@ -33,7 +33,6 @@ public class DaemonServiceMain {
                     break;
                 } finally {
                     logger.info("finished task");
-                    sc.close();
                 }
             }
         } catch (IOException ee) {

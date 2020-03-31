@@ -9,10 +9,7 @@ import com.onlinejudge.loginservice.LoginServiceSendMail;
 import com.onlinejudge.manservice.ManServiceAddListUsers;
 import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
-import com.onlinejudge.userservice.UserServiceDeleteAccount;
-import com.onlinejudge.userservice.UserServiceGetTimeLine;
-import com.onlinejudge.userservice.UserServiceListAllUser;
-import com.onlinejudge.userservice.UserServiceUpdateProperties;
+import com.onlinejudge.userservice.*;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -26,7 +23,7 @@ import static com.alibaba.fastjson.JSON.parseArray;
 public class HandlerFactoryUtil {
     private static final Logger logger = LoggerFactory.getLogger(HandlerFactoryUtil.class);
     private static final Map<String, HandlerEnum> mp = new HashMap<>();
-
+    private static final String USERID = "userID";
     @Contract(pure = true)
     private HandlerFactoryUtil() {
     }
@@ -40,13 +37,17 @@ public class HandlerFactoryUtil {
     public static Handler getHandler(@NotNull String requestType, JSONObject jsonObject) throws InternalException {
         Handler handler = null;
         HandlerEnum requestEnum = mp.get(requestType);
-
         try {
             switch (requestEnum) {
+                case listTimeline:
+                    handler = new ListEventHandler(
+                            new UserServiceListTimeline(jsonObject.getString(USERID))
+                    );
+                    break;
                 case getTimeline:
                     handler = new ListEventHandler(
                             new UserServiceGetTimeLine(
-                                    jsonObject.getString("userID")
+                                    jsonObject.getString(USERID)
                             )
                     );
                     break;
@@ -57,20 +58,20 @@ public class HandlerFactoryUtil {
                     break;
                 case setSubject:
                     handler = new BooleanEventHandler(new ProblemServiceSetSubject(
-                            parseArray(jsonObject.getJSONArray("subject").toJSONString(), String.class),jsonObject.getString("userID")
+                            parseArray(jsonObject.getJSONArray("subject").toJSONString(), String.class), jsonObject.getString(USERID)
                     ));
                     break;
                 case sendMail:
                     handler = new BooleanEventHandler(
                             new LoginServiceSendMail(
-                                    jsonObject.getString("userID")
+                                    jsonObject.getString(USERID)
                             )
                     );
                     break;
                 case changePassword:
                     handler = new BooleanEventHandler(
                             new LoginServiceChangePassword(
-                                    jsonObject.getString("userID"),
+                                    jsonObject.getString(USERID),
                                     jsonObject.getString("userKey"),
                                     jsonObject.getString("newPassword")
                             )
@@ -80,7 +81,7 @@ public class HandlerFactoryUtil {
                     handler = new ClassEventHandler(
                             new LoginCheck(
                                     jsonObject.getString("userPassword"),
-                                    jsonObject.getString("userID")
+                                    jsonObject.getString(USERID)
                             )
                     );
                     break;
@@ -115,7 +116,7 @@ public class HandlerFactoryUtil {
                 case adminUpdateUserName:
                     handler = new BooleanEventHandler(
                             new UserServiceUpdateProperties(
-                                    jsonObject.getString("userID"), jsonObject.getString("userName"), 2
+                                    jsonObject.getString(USERID), jsonObject.getString("userName"), 2
                             )
                     );
                     break;
@@ -129,14 +130,14 @@ public class HandlerFactoryUtil {
                 case modifySex:
                     handler = new BooleanEventHandler(
                             new UserServiceUpdateProperties(
-                                    jsonObject.getString("userID"), Integer.toString(jsonObject.getIntValue("newSex")), 1
+                                    jsonObject.getString(USERID), Integer.toString(jsonObject.getIntValue("newSex")), 1
                             )
                     );
                     break;
                 case updatePassword:
                     handler = new BooleanEventHandler(
                             new UserServiceUpdateProperties(
-                                    jsonObject.getString("userID"), jsonObject.getString("newPassword"), 3
+                                    jsonObject.getString(USERID), jsonObject.getString("newPassword"), 3
                             )
                     );
                     break;
@@ -156,14 +157,14 @@ public class HandlerFactoryUtil {
                 case searchContest:
                     handler = new ListEventHandler(
                             new SearchServiceDoQuery(
-                                    jsonObject.getString("userID"), 2, jsonObject.getString("keyword")
+                                    jsonObject.getString(USERID), 2, jsonObject.getString("keyword")
                             )
                     );
                     break;
                 case searchProblem:
                     handler = new ListEventHandler(
                             new SearchServiceDoQuery(
-                                    jsonObject.getString("userID"), 1, jsonObject.getString("keyword")
+                                    jsonObject.getString(USERID), 1, jsonObject.getString("keyword")
                             )
                     );
                     break;
@@ -174,7 +175,7 @@ public class HandlerFactoryUtil {
                                     new Exam(
                                             jsonObject.getString("examID"),
                                             jsonObject.getString("examName"),
-                                            jsonObject.getString("userID"),
+                                            jsonObject.getString(USERID),
                                             jsonObject.getString("startTime"),
                                             jsonObject.getString("endTime"),
                                             jsonObject.getString("ExamText"),
@@ -188,10 +189,10 @@ public class HandlerFactoryUtil {
                             jsonObject.getString("problemID")
                     ));
                     break;
-                case listExam:
+                case listContest:
                     handler = new ListEventHandler(
                             new ExamServiceListContest(
-                                    jsonObject.getString("userID"), jsonObject.getInteger("listType")
+                                    jsonObject.getString(USERID), jsonObject.getInteger("listType")
 
                             )
                     );
