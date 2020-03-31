@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.UUID;
 
+import static com.onlinejudge.userservice.UserServiceGetExamName.getExamName;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
@@ -39,7 +40,12 @@ public class UserServiceAddComment implements BooleanEvent {
     @Override
     public void afterGo() {
         try {
-            setTimelineComment(getExamName());
+            UserServiceSetTimeline.setItem(
+                    new TimelineItem(getExamName(examID),
+                            text,
+                            3,
+                            userID,
+                            new Timestamp(System.currentTimeMillis())));
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
         }
@@ -56,34 +62,6 @@ public class UserServiceAddComment implements BooleanEvent {
         stmt.close();
     }
 
-    private String getExamName() throws SQLException {
-        String examName = null;
-        stmt = prepareStatement("select ename from exam where eid = ?");
-        stmt.setString(1, examID);
-        ret = stmt.executeQuery();
-        log.debug(stmt);
-        int count = 0;
-        while (ret.next()) {
-            ++count;
-            examName = ret.getString("ename");
-        }
-        assert count == 1;
-        stmt.close();
-        ret.close();
-        return examName;
-    }
-
-    private void setTimelineComment(String examName) throws SQLException {
-        stmt = prepareStatement("insert into timeline values(?,?,?,?,?)");
-        stmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
-        stmt.setInt(2, TIMELINE_COMMENT);
-        stmt.setString(3, userID);
-        stmt.setString(4, examName);
-        stmt.setString(5, text);
-        log.debug(stmt);
-        stmt.executeUpdate();
-        closeUpdate(stmt);
-    }
 
     public boolean go() {
         try {
