@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ProblemServiceChangeScore implements BooleanEvent {
     private final String Sid;

@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeQuery;
+import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class UserWithPasswd extends com.onlinejudge.userservice.User {
     private final String UserPasswd;

@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,13 +38,11 @@ public class ExamServiceListExamStudent implements ListEvent<ExamServiceListedSt
         PreparedStatement stmt = null;
         ResultSet queryResult = null;
         try {
-            //   Class.forName(JDBC_DRIVER);
             conn = getConnection();
             String qry = String.format("select sid, uname from exam e, examperm ep, userinfo u where u.uid = ep.sid and e.eid = ep.eid and u.utype = 3 and e.eid = '%s'", examID);
             stmt = prepareStatement(qry);
             logger.info("conn and stmt settled.");
-            //stmt.executeQuery("use onlinejudge");
-            logger.debug("ExamServiceListExamStudent, qry = " + qry);
+            logger.debug("ExamServiceListExamStudent, qry = {}", qry);
             queryResult = stmt.executeQuery();
             int cnt = 0;
             List<ExamServiceListedStudent> resultList = new ArrayList<>();
@@ -57,7 +54,7 @@ public class ExamServiceListExamStudent implements ListEvent<ExamServiceListedSt
                 resultList.add(result);
             }
             closeQuery(queryResult, stmt, conn);
-            logger.debug(MessageFormat.format("find{0}result(s)", cnt));
+            logger.debug("find{}result(s)", cnt);
             res = resultList;
         } catch (SQLException sqlException) {
             try {

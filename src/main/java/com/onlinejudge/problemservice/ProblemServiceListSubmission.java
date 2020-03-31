@@ -1,6 +1,7 @@
 package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
+@Log4j2
 public class ProblemServiceListSubmission implements ListEvent<Submission> {
     private final String examID;
     private final String probID;
@@ -34,12 +36,11 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
 
     @Override
     public List<Submission> go() {
-        String cmd = "";
+        String cmd;
         PreparedStatement stmt = null;
         Connection conn = null;
         ResultSet subTextSet = null;
         try {
-            //Connection conn = getConnection();
             conn = getConnection();
             cmd = "select userinfo.uname, submission.sid, submission.stext, submission.stime, submission.suid, submission.sscore " + "from userinfo, submission " + "where spid= ?  and seid= ? and userinfo.uid = ?";
             stmt = prepareStatement(cmd);
@@ -57,15 +58,14 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
             }
             return result;
         } catch (SQLException e) {
-            System.out.println("SQL: " + cmd);
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             try {
                 closeQuery(subTextSet, stmt, conn);
             } catch (SQLException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
             }
         }
-        return null;
+        return new ArrayList<>();
     }
 }

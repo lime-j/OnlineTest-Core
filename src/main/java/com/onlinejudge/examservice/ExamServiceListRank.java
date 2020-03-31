@@ -38,8 +38,8 @@ public class ExamServiceListRank implements ListEvent<RankedUser> {
     public void beforeGo() throws InternalException {
         //
         var pair = ExamServiceGetContestTime.getItem(examID);
-        long currentTime = System.currentTimeMillis() + REFRESH_INTERVAL;
-        if (pair.getLeft().getTime() < currentTime && currentTime < pair.getRight().getTime()) {
+        long currentTime = System.currentTimeMillis();
+        if (pair.getLeft().getTime() < currentTime && currentTime < pair.getRight().getTime() + REFRESH_INTERVAL) {
             flag = false;
             return;
         }

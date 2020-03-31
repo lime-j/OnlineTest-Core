@@ -14,7 +14,9 @@ import java.sql.SQLException;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeQuery;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class ProblemSubmissionToQueue implements BooleanEvent {
     private final static String QUEUE_NAME = "test";
