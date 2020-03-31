@@ -6,6 +6,7 @@ import com.onlinejudge.util.Provider;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
@@ -84,6 +85,8 @@ public class ExamServiceGetRankedUser implements Provider {
         return ret;
     }
 
+    @NotNull
+    @Contract("_ -> new")
     private static Pair<Timestamp, Timestamp> isValidExamID(String examID) throws InternalException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -129,6 +132,7 @@ public class ExamServiceGetRankedUser implements Provider {
         return penalty;
     }
 
+    @NotNull
     public static List<RankedUser> getItem(String examID) throws InternalException {
         var pair = isValidExamID(examID);
         var pansID = getParticipantsID(examID);

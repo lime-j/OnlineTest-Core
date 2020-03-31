@@ -2,30 +2,12 @@ package com.onlinejudge.util;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.onlinejudge.examservice.Exam;
-import com.onlinejudge.examservice.ExamServiceCreateModifyExam;
-import com.onlinejudge.examservice.ExamServiceDeleteExam;
-import com.onlinejudge.examservice.ExamServiceDeleteProblemFromExam;
-import com.onlinejudge.examservice.ExamServiceListExam;
-import com.onlinejudge.examservice.ExamServiceListExamProblem;
-import com.onlinejudge.examservice.ExamServiceListExamStudent;
-import com.onlinejudge.examservice.ExamServiceQueryStudentScore;
-import com.onlinejudge.examservice.ExamServiceReplaceProblem;
+import com.onlinejudge.examservice.*;
 import com.onlinejudge.loginservice.LoginCheck;
 import com.onlinejudge.loginservice.LoginServiceChangePassword;
 import com.onlinejudge.loginservice.LoginServiceSendMail;
 import com.onlinejudge.manservice.ManServiceAddListUsers;
-import com.onlinejudge.problemservice.Problem;
-import com.onlinejudge.problemservice.ProblemServiceChangeScore;
-import com.onlinejudge.problemservice.ProblemServiceCreateProblem;
-import com.onlinejudge.problemservice.ProblemServiceCreateProblemList;
-import com.onlinejudge.problemservice.ProblemServiceDeleteProblem;
-import com.onlinejudge.problemservice.ProblemServiceListAllProblem;
-import com.onlinejudge.problemservice.ProblemServiceListAllSubject;
-import com.onlinejudge.problemservice.ProblemServiceSetSubject;
-import com.onlinejudge.problemservice.ProblemServiceSubjectiveSubReturn;
-import com.onlinejudge.problemservice.ProblemSubmissionToQueue;
-import com.onlinejudge.problemservice.Submission;
+import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
 import com.onlinejudge.userservice.UserServiceDeleteAccount;
 import com.onlinejudge.userservice.UserServiceGetTimeLine;
@@ -286,13 +268,6 @@ public class HandlerFactoryUtil {
                     break;
                 case deleteProblemFromDatabase:
                     handler = new BooleanEventHandler(new ProblemServiceDeleteProblem(jsonObject.getString("proID")));
-                    break;
-                case createProblemList:
-                    handler = new ListEventHandler(new ProblemServiceCreateProblemList(jsonObject.getString("subject"),
-                            parseArray(jsonObject.getJSONArray("tagList").toJSONString(), String.class),
-                            jsonObject.getIntValue("choice"), jsonObject.getIntValue("TorF"), jsonObject.getIntValue("blank"),
-                            jsonObject.getIntValue("subjective"), jsonObject.getIntValue("programBlank"),
-                            jsonObject.getIntValue("program")));
                     break;
                 default:
                     handler = new NothingToDoHandler();
