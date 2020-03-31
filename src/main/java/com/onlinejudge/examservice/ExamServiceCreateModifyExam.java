@@ -18,12 +18,22 @@ import java.util.UUID;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ExamServiceCreateModifyExam extends BooleanEvent {
+public class ExamServiceCreateModifyExam implements BooleanEvent {
     private final Exam handling;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceCreateModifyExam.class);
 
     public ExamServiceCreateModifyExam(Exam handling) {
         this.handling = handling;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @NotNull

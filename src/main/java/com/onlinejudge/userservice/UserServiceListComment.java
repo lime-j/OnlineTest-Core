@@ -19,8 +19,18 @@ import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 @Setter
 @Log4j2
 @AllArgsConstructor
-public class UserServiceListComment extends ListEvent<Comment> {
+public class UserServiceListComment implements ListEvent<Comment> {
     private final String examID;
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
 
     public List<Comment> go() {
         PreparedStatement stmt = null;

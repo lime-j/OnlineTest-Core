@@ -15,7 +15,7 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 import static java.text.MessageFormat.format;
 
-public class ExamServiceListExam extends ListEvent<Exam> {
+public class ExamServiceListExam implements ListEvent<Exam> {
     private String userID;
     private final ExamType type;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExam.class);
@@ -23,6 +23,16 @@ public class ExamServiceListExam extends ListEvent<Exam> {
     public ExamServiceListExam(String userID, int type) {
         this.userID = userID;
         this.type = type == 1 ? ExamType.CONTEST : ExamType.COURSE;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public List<Exam> go() {
@@ -33,7 +43,7 @@ public class ExamServiceListExam extends ListEvent<Exam> {
             logger.info("ExamServiceListExam, conn and stmt created.");
             String qry = String.format("select e.ename, e.eid, e.ename, e.estart, e.eend, e.etext, e.esubject, ep.sid from examperm ep, exam e where e.eid = ep.eid and ep.sid = '%s'", this.userID);
             stmt = prepareStatement(qry);
-            logger.debug("ExamServiceListExam, qry = {}",qry);
+            logger.debug("ExamServiceListExam, qry = {}", qry);
             var queryResult = stmt.executeQuery();
             int cnt = 0;
             List<Exam> resultList = new ArrayList<>();

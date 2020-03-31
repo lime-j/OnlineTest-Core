@@ -12,12 +12,22 @@ import java.sql.SQLException;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-public class ExamServiceDeleteExam extends BooleanEvent {
+public class ExamServiceDeleteExam implements BooleanEvent {
     public final String examID;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceDeleteExam.class);
 
     public ExamServiceDeleteExam(String examID) {
         this.examID = examID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() {

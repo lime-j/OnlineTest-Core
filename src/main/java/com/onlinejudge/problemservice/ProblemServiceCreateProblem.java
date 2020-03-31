@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
-public class ProblemServiceCreateProblem extends BooleanEvent {
+public class ProblemServiceCreateProblem implements BooleanEvent {
     private final Problem currentProblem;
     private static Logger logger = LoggerFactory.getLogger(ProblemServiceCreateProblem.class);
 
@@ -20,6 +20,16 @@ public class ProblemServiceCreateProblem extends BooleanEvent {
         //用于创建(更新)问题
         // type: problemUpdate
         this.currentProblem = CurrProb;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() {

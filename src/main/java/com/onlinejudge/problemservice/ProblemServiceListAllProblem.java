@@ -15,7 +15,7 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
 
-public class ProblemServiceListAllProblem extends ListEvent {
+public class ProblemServiceListAllProblem implements ListEvent {
     private String subject;
     private List<String> tagList;
     private static final Logger logger = LoggerFactory.getLogger(ProblemServiceListAllProblem.class);
@@ -27,6 +27,15 @@ public class ProblemServiceListAllProblem extends ListEvent {
         this.tagList = tagList;
     }
 
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
 
     @Override
     public List<Problem> go() {
@@ -53,12 +62,12 @@ public class ProblemServiceListAllProblem extends ListEvent {
                 result.close();
             }
         } catch (Exception e) {
-            logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(), e);
         } finally {
             try {
                 closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                logger.error(e.getMessage(),e);
+                logger.error(e.getMessage(), e);
             }
         }
         return resultList;

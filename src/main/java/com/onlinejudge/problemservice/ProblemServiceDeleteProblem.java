@@ -10,12 +10,22 @@ import java.sql.SQLException;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceDeleteProblem extends BooleanEvent {
+public class ProblemServiceDeleteProblem implements BooleanEvent {
     private String problemID;
     private static Logger logger = LoggerFactory.getLogger(ProblemServiceDeleteProblem.class);
 
     public ProblemServiceDeleteProblem(String problemID) {
         this.problemID = problemID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

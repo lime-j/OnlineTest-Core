@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceChangeScore extends BooleanEvent {
+public class ProblemServiceChangeScore implements BooleanEvent {
     private final String Sid;
     private final int Score;
     private static final Logger logger = LoggerFactory.getLogger(ProblemServiceChangeScore.class);
@@ -18,6 +18,16 @@ public class ProblemServiceChangeScore extends BooleanEvent {
     public ProblemServiceChangeScore(String Sid, int Score) {
         this.Sid = Sid;
         this.Score = Score;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

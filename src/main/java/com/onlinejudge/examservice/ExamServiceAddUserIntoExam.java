@@ -15,13 +15,24 @@ import java.util.List;
 import static com.alibaba.fastjson.JSON.parseObject;
 
 
-public class ExamServiceAddUserIntoExam extends BooleanEvent {
+public class ExamServiceAddUserIntoExam implements BooleanEvent {
     private final List<String> currentUserList;
     private final String examID;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceAddUserIntoExam.class);
+
     public ExamServiceAddUserIntoExam(List<String> origin, String examID) {
         this.currentUserList = origin;
         this.examID = examID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override
@@ -55,14 +66,14 @@ public class ExamServiceAddUserIntoExam extends BooleanEvent {
             }
             DatabaseUtil.closeQuery(queryResult, staQuery, conn);
         } catch (SQLException e) {
-            logger.error("SQLException",e);
+            logger.error("SQLException", e);
             return false;
-        }finally {
+        } finally {
             try {
                 if (staInsert != null) staInsert.close();
                 DatabaseUtil.closeQuery(queryResult, staQuery, conn);
             } catch (SQLException e) {
-                logger.error("SQLException",e);
+                logger.error("SQLException", e);
             }
         }
         return true;

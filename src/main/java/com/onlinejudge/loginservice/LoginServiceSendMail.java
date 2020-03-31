@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.Objects;
 
-public class LoginServiceSendMail extends BooleanEvent {
+public class LoginServiceSendMail implements BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(LoginServiceSendMail.class);
 
     private static final String SG_API_KEY = "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";
@@ -27,6 +27,16 @@ public class LoginServiceSendMail extends BooleanEvent {
 
     public LoginServiceSendMail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @NotNull
@@ -70,7 +80,8 @@ public class LoginServiceSendMail extends BooleanEvent {
                 logger.error(e.getMessage(), e);
             }
         }
-        if (!Objects.requireNonNull(queryID).equals(email)) throw new InternalException("sun rises from west, please check.");
+        if (!Objects.requireNonNull(queryID).equals(email))
+            throw new InternalException("sun rises from west, please check.");
 
 
         Jedis jedis;

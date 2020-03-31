@@ -21,7 +21,7 @@ import static java.util.Collections.sort;
 
 @Getter
 @Setter
-public class ProblemServiceCreateProblemList extends ListEvent<Problem> {
+public class ProblemServiceCreateProblemList implements ListEvent<Problem> {
     private String subject;
     private List<String> tagList;
     private int choice, torf, blank, subjective, progblank, prog;
@@ -38,6 +38,16 @@ public class ProblemServiceCreateProblemList extends ListEvent<Problem> {
         this.subjective = subjective;
         this.progblank = progblank;
         this.prog = prog;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @NotNull
@@ -149,6 +159,7 @@ public class ProblemServiceCreateProblemList extends ListEvent<Problem> {
 
         return resultList;
     }
+
     public void setSubject(String subject) {
         this.subject = subject;
     }

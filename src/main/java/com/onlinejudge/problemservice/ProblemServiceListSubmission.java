@@ -11,7 +11,7 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceListSubmission extends ListEvent<Submission> {
+public class ProblemServiceListSubmission implements ListEvent<Submission> {
     private final String examID;
     private final String probID;
     private final String userID;
@@ -20,6 +20,16 @@ public class ProblemServiceListSubmission extends ListEvent<Submission> {
         this.examID = examID;
         this.probID = probID;
         this.userID = userID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

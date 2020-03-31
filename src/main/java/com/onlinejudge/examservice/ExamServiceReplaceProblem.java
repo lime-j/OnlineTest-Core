@@ -15,7 +15,7 @@ import java.util.Objects;
 import static com.onlinejudge.util.DatabaseUtil.closeConnection;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-public class ExamServiceReplaceProblem extends ListEvent<Problem> {
+public class ExamServiceReplaceProblem implements ListEvent<Problem> {
     private final String examID;
     private final String newID;
     private final String oldID;
@@ -25,6 +25,16 @@ public class ExamServiceReplaceProblem extends ListEvent<Problem> {
         this.examID = examID;
         this.newID = newID;
         this.oldID = oldID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

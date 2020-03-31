@@ -13,13 +13,23 @@ import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 
 @Getter
 @Setter
-public class ExamServiceDeleteProblemFromExam extends BooleanEvent {
+public class ExamServiceDeleteProblemFromExam implements BooleanEvent {
     private String examID;
     private String probID;
 
     public ExamServiceDeleteProblemFromExam(String examID, String probID) {
         this.examID = examID;
         this.probID = probID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() {

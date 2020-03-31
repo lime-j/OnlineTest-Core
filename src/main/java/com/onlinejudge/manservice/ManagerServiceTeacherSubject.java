@@ -15,11 +15,22 @@ import java.util.Objects;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ManagerServiceTeacherSubject extends BooleanEvent {
+public class ManagerServiceTeacherSubject implements BooleanEvent {
     private final List<String> currTeacherSubject;
     private static final Logger logger = LoggerFactory.getLogger(ManagerServiceTeacherSubject.class);
+
     public ManagerServiceTeacherSubject(List<String> origionData) {
         this.currTeacherSubject = origionData;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

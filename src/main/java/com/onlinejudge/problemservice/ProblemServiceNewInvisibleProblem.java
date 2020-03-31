@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceNewInvisibleProblem extends StringEvent {
+public class ProblemServiceNewInvisibleProblem implements StringEvent {
     private final InvisibleProblem currProblem;
     private final String oldPid;
     private final String examID;
@@ -21,6 +21,16 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
         this.currProblem = origin;
         this.oldPid = origin.pid;
         this.examID = origin.examID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override
@@ -78,7 +88,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             closeConnection();
             return this.currProblem.pid;
         } catch (SQLException e) {
-            logger.info(e.getMessage(),e);
+            logger.info(e.getMessage(), e);
             return "";
         }
     }

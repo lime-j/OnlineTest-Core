@@ -17,7 +17,7 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 @Log4j2
 @Getter
 @Setter
-public class UserServiceAddComment extends BooleanEvent {
+public class UserServiceAddComment implements BooleanEvent {
     private final String examID;
     private final String userID;
     private final String text;
@@ -29,6 +29,16 @@ public class UserServiceAddComment extends BooleanEvent {
         this.examID = examID;
         this.text = text;
         this.userID = userID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     private void setComment() throws SQLException {

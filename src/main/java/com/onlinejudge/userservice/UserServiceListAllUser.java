@@ -15,11 +15,23 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class UserServiceListAllUser extends ListEvent {
+public class UserServiceListAllUser implements ListEvent {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);
+
     // This can be only triggered by admin
     // listing
-    public UserServiceListAllUser() {}
+    public UserServiceListAllUser() {
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
 
     public List<User> go() throws InternalException {
         // 建立列表

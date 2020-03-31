@@ -6,8 +6,19 @@ import com.onlinejudge.util.ListerUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProblemServiceListAllSubject extends ListEvent<String> {
+public class ProblemServiceListAllSubject implements ListEvent<String> {
     private static final String CONTEST_STR = "contest";
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
+
     public List<String> go() {
         var lst = (new ListerUtil<String>(
                 "select * from subject", "subject", this.toString()

@@ -16,7 +16,7 @@ import java.util.UUID;
 
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 
-public class LoginCheck extends ClassEvent {
+public class LoginCheck implements ClassEvent {
     private final String passwordRecv;
     private final String uID;
     private static final Logger logger = LoggerFactory.getLogger(LoginCheck.class);
@@ -24,6 +24,16 @@ public class LoginCheck extends ClassEvent {
     public LoginCheck(String passwordRecv, String uID) {
         this.passwordRecv = passwordRecv;
         this.uID = uID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override
@@ -56,7 +66,7 @@ public class LoginCheck extends ClassEvent {
             }
             assert cnt == 1 || cnt == 0;
             closeQuery(ret, stmt, conn);
-            if (cnt == 0){
+            if (cnt == 0) {
                 logger.info("Register for {} with password {}", uID, passwordRecv);
                 UserWithPasswd CurrUser = new UserWithPasswd(
                         uID, "", uSex, 3, passwordRecv);
@@ -66,9 +76,9 @@ public class LoginCheck extends ClassEvent {
             }
             logger.debug("uID = {}", uID);
             logger.debug("uPassword = {}", uPassword);
-            logger.debug("uType = {}" ,uType);
+            logger.debug("uType = {}", uType);
             uuid = UUID.randomUUID().toString().replace("-", "");
-            logger.info("uuid = {}",uuid);
+            logger.info("uuid = {}", uuid);
             // generate UUID
             // send information
             assert uPassword != null;
@@ -87,7 +97,7 @@ public class LoginCheck extends ClassEvent {
             }
         } catch (SQLException e) {
             logger.error(e.getMessage());
-        }finally{
+        } finally {
             if (jedis != null) jedis.disconnect();
             try {
                 closeQuery(ret, stmt, conn);

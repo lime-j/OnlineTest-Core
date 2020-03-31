@@ -1,4 +1,7 @@
 package com.onlinejudge.util;
 
-public abstract class Event {
+public interface Event {
+    void beforeGo() throws InternalException;
+
+    void afterGo() throws InternalException;
 }

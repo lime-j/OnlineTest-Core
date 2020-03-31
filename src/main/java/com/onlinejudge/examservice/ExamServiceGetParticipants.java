@@ -4,7 +4,10 @@ import com.onlinejudge.examservice.ExamServiceGetRating.Participant;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListerUtil;
 import com.onlinejudge.util.Provider;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -68,7 +71,6 @@ public class ExamServiceGetParticipants implements Provider {
     }
 
     @NotNull
-    @SneakyThrows
     private static List<RankedUser> getRank(@NotNull List<String> userIDs, String examID, @NotNull Pair<Timestamp, Timestamp> times) {
         PreparedStatement stmt = null;
         ResultSet res = null;
@@ -108,7 +110,11 @@ public class ExamServiceGetParticipants implements Provider {
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
         } finally {
-            closeQuery(res, stmt);
+            try {
+                closeQuery(res, stmt);
+            } catch (SQLException e) {
+                log.error(e.getMessage(), e);
+            }
         }
         sort(ret);
         int curRank = 0;
@@ -119,7 +125,6 @@ public class ExamServiceGetParticipants implements Provider {
         return ret;
     }
 
-    @SneakyThrows
     private static void setRank(List<RankedUser> pans, String examID) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -137,7 +142,11 @@ public class ExamServiceGetParticipants implements Provider {
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
         } finally {
-            closeUpdate(stmt, conn);
+            try {
+                closeUpdate(stmt, conn);
+            } catch (SQLException e) {
+                log.error(e.getMessage(), e);
+            }
         }
     }
 

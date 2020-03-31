@@ -2,14 +2,24 @@ package com.onlinejudge.manservice;
 
 import com.onlinejudge.util.StringEvent;
 
-public class ManagementServiceGetPerfStatus extends StringEvent {
+public class ManagementServiceGetPerfStatus implements StringEvent {
     private String userID, userToken;
 
     public ManagementServiceGetPerfStatus(String userID, String userToken) {
         this.userID = userID;
         this.userToken = userToken;
     }
+
     @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
+
     public String go() {
         return "http://106.54.221.110/tetz2.php?user=" + this.userID + "&token=" + this.userToken;
     }

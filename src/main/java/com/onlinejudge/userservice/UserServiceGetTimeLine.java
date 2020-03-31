@@ -15,8 +15,18 @@ import java.util.List;
 
 @Log4j2
 @AllArgsConstructor
-public class UserServiceGetTimeLine extends ListEvent<SendableTimelineItem> {
+public class UserServiceGetTimeLine implements ListEvent<SendableTimelineItem> {
     private String userID;
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
 
     @Override
     public List<SendableTimelineItem> go() throws InternalException {

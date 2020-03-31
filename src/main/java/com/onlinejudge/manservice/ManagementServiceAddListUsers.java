@@ -5,11 +5,21 @@ import com.onlinejudge.util.BooleanEvent;
 
 import java.util.List;
 
-public class ManagementServiceAddListUsers extends BooleanEvent {
+public class ManagementServiceAddListUsers implements BooleanEvent {
     private final List<String> currUserList;
 
     public ManagementServiceAddListUsers(List<String> OrigionUserData) {
         this.currUserList = OrigionUserData;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

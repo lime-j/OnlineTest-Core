@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemSubmissionToQueue extends BooleanEvent {
+public class ProblemSubmissionToQueue implements BooleanEvent {
     private final static String QUEUE_NAME = "test";
     private final static String USER_NAME = "judger";
     private final static String PASSWORD = "ruanjiangongcheng";
@@ -26,6 +26,16 @@ public class ProblemSubmissionToQueue extends BooleanEvent {
     public ProblemSubmissionToQueue(Submission CurrSubmission) {
         // type subUpdate
         this.CurrSubmission = CurrSubmission;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() {
@@ -66,7 +76,7 @@ public class ProblemSubmissionToQueue extends BooleanEvent {
             channel.close();
             connection.close();
         } catch (TimeoutException | IOException | SQLException e) {
-            logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(), e);
             return false;
         }
         return true;

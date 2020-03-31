@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ClassEventHandler extends Handler {
     public ClassEventHandler(@NotNull ClassEvent e) throws InternalException {
-        this.result = "{\"status\":1, " + StringUtils.strip(e.go(),"{}") + "}";
+        e.beforeGo();
+        this.result = "{\"status\":1, " + StringUtils.strip(e.go(), "{}") + "}";
+        e.afterGo();
     }
 }

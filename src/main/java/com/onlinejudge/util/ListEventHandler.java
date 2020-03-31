@@ -6,8 +6,10 @@ import static com.alibaba.fastjson.JSON.toJSONString;
 
 public class ListEventHandler extends Handler {
     public ListEventHandler(@NotNull ListEvent e) throws InternalException{
+        e.beforeGo();
         this.result = toJSONString(e.go());
         this.result = "{\"status\":1,\"result\":" + this.result + '}';
+        e.afterGo();
     }
 }
 

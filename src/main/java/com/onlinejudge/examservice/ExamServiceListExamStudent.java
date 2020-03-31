@@ -14,12 +14,22 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ExamServiceListExamStudent extends ListEvent<ExamServiceListedStudent> {
+public class ExamServiceListExamStudent implements ListEvent<ExamServiceListedStudent> {
     public final String examID;
     private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExamStudent.class);
 
     public ExamServiceListExamStudent(String examID) {
         this.examID = examID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

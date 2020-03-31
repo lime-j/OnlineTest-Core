@@ -15,12 +15,22 @@ import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Log4j2
-public class UserServiceListTimeline extends ListEvent<SendableTimelineItem> {
+public class UserServiceListTimeline implements ListEvent<SendableTimelineItem> {
     private static final int COMMENT_MAX_LENGTH = 19;
     private final String userID;
 
     public UserServiceListTimeline(@NotNull String userID) {
         this.userID = userID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     @Override

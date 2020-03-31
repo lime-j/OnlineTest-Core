@@ -1,5 +1,5 @@
 package com.onlinejudge.util;
 
-public abstract class StringEvent extends Event {
-    public abstract String go() throws InternalException;
+public interface StringEvent extends Event {
+    String go() throws InternalException;
 }

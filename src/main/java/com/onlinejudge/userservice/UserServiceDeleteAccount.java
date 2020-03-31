@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UserServiceDeleteAccount extends BooleanEvent {
+public class UserServiceDeleteAccount implements BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceDeleteAccount.class);
 
     private final String userID;
@@ -34,15 +34,25 @@ public class UserServiceDeleteAccount extends BooleanEvent {
             logger.info("query is ok, quit.");
             return true;
         } catch (SQLException e) {
-            logger.error("SQLException",e);
+            logger.error("SQLException", e);
 
-        }finally {
+        } finally {
             try {
                 DatabaseUtil.closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                logger.error("SQLException while closing",e);
+                logger.error("SQLException while closing", e);
             }
         }
         return false;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 }

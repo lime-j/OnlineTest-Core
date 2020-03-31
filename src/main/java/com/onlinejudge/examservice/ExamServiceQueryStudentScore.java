@@ -21,7 +21,7 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Getter
 @Setter
-public class ExamServiceQueryStudentScore extends IntegerEvent {
+public class ExamServiceQueryStudentScore implements IntegerEvent {
     private String studentID;
     private String examID;
     private int queryType;
@@ -128,6 +128,16 @@ public class ExamServiceQueryStudentScore extends IntegerEvent {
         for (String key : probIDs) ret += score.get(key);
         closeQuery(result, stmt);
         return ret;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public int go() throws InternalException {

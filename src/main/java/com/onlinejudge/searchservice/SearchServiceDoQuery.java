@@ -16,7 +16,7 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 
-public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
+public class SearchServiceDoQuery implements ListEvent<SearchServiceResult> {
     //searchservice 提供考试和题面查询功能,
     // 调用参数 :
     // userID 表示用户的ID (不是Token)
@@ -36,6 +36,16 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
         setKeyword(keyword);
     }
 
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
+
     private List<SearchServiceResult> handleProblem(ResultSet queryResult) throws SQLException {
         List<SearchServiceResult> resultList = new ArrayList<>();
         int cnt = 0;
@@ -45,10 +55,10 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             String pTitle = queryResult.getString("ptitle");
             String pID = queryResult.getString("pid");
             var result = new SearchServiceResult(ptext, pID, pTitle);
-            logger.debug("find ptext = {},ptitle = {},pid = {}",ptext ,pTitle,pID);
+            logger.debug("find ptext = {},ptitle = {},pid = {}", ptext, pTitle, pID);
             resultList.add(result);
         }
-        logger.info("searchservice, find {} result(s).",cnt);
+        logger.info("searchservice, find {} result(s).", cnt);
         return resultList;
     }
 
@@ -139,7 +149,7 @@ public class SearchServiceDoQuery extends ListEvent<SearchServiceResult> {
             DatabaseUtil.closeQuery(queryResult, stmt, conn);
             return resultList;
         } catch (SQLException e) {
-            logger.error(e.getMessage(),e,e.getSQLState());
+            logger.error(e.getMessage(), e, e.getSQLState());
             return new ArrayList<>();
         }
     }

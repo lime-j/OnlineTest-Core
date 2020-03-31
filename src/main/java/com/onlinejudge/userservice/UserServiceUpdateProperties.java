@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import static com.onlinejudge.userservice.UserServiceProperties.*;
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class UserServiceUpdateProperties extends BooleanEvent {
+public class UserServiceUpdateProperties implements BooleanEvent {
     private final String userID;
     private final String newProperty;
     private final int updateType;
@@ -25,6 +25,16 @@ public class UserServiceUpdateProperties extends BooleanEvent {
         this.userID = userID;
         this.newProperty = newProperty;
         this.updateType = updateType;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() throws InternalException {
@@ -45,7 +55,7 @@ public class UserServiceUpdateProperties extends BooleanEvent {
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
             } else return false;
-            logger.info("sql query = {}",stmt);
+            logger.info("sql query = {}", stmt);
             stmt.executeUpdate();
             closeUpdate(stmt, conn);
             logger.info("UserServiceUpdateProperties, query is ok, quit.");
@@ -56,7 +66,7 @@ public class UserServiceUpdateProperties extends BooleanEvent {
             } catch (SQLException ex) {
                 logger.error("SQLException while closing db", ex);
             }
-            logger.error("SQLException",e);
+            logger.error("SQLException", e);
             return false;
         }
     }

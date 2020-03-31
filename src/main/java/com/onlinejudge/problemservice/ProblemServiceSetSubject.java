@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProblemServiceSetSubject extends BooleanEvent {
+public class ProblemServiceSetSubject implements BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(ProblemServiceSetSubject.class);
 
     private final List<String> subject;
@@ -20,6 +20,16 @@ public class ProblemServiceSetSubject extends BooleanEvent {
     public ProblemServiceSetSubject(@NotNull List<String> subject, String userID) {
         this.subject = subject;
         this.userID = userID;
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() {

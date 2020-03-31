@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-public class LoginServiceChangePassword extends BooleanEvent {
+public class LoginServiceChangePassword implements BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(LoginServiceChangePassword.class);
     private final String userID;
     private final String userKey;
@@ -25,6 +25,16 @@ public class LoginServiceChangePassword extends BooleanEvent {
     public static void main(String[] args) throws InternalException {
         var tmp = new LoginServiceChangePassword("limingjia1999@gmail.com", "111111", "2333");
         tmp.go();
+    }
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
     }
 
     public boolean go() throws InternalException {

@@ -12,11 +12,21 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-public class ProblemServiceSubjectiveSubReturn extends ListEvent {
+public class ProblemServiceSubjectiveSubReturn implements ListEvent {
     private final String examID;
     private final String probID;
     private int probScore;
     private static final Logger logger = LoggerFactory.getLogger(ProblemServiceSubjectiveSubReturn.class);
+
+    @Override
+    public void beforeGo() {
+        // do nothing
+    }
+
+    @Override
+    public void afterGo() {
+        // do nothing
+    }
 
     public ProblemServiceSubjectiveSubReturn(String examID, String probID) {
         this.examID = examID;
