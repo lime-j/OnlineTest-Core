@@ -51,7 +51,7 @@ public class ExamServiceCreateModifyExam implements BooleanEvent {
     }
 
 
-    private void checkLst(List<String> lst, List<String> plst, List<String> toBeAdd) {
+    private void checkLst(@NotNull List<String> lst, List<String> plst, List<String> toBeAdd) {
         for (String newpid : lst) {
             boolean flg = false;
             for (String pid : plst) {
@@ -154,17 +154,6 @@ public class ExamServiceCreateModifyExam implements BooleanEvent {
                 checkLst(lst, plst, toBeAdd);
                 // 在旧的题目列表而不再新的题目列表里边, + toBeDelete
                 checkLst(plst, lst, toBeDelete);
-                // 检查两个列表有没有重复的元素, 如果有的话说明什么地方错误了, 应该报错.
-                for (String a : toBeAdd) {
-                    for (String b : toBeDelete) {
-                        if (a.equals(b)) {
-                            stmt.close();
-                            closeConnection();
-                            logger.warn("Assertion failed.There're same elements in toBeAdd and toBeDelete.\n returning false");
-                            return false;
-                        }
-                    }
-                }
                 stmt.close();
                 stmt = prepareStatement("insert into examprob values (?, ?)");
                 for (String a : toBeAdd) {

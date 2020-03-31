@@ -36,6 +36,13 @@ public class ExamServiceListRank implements ListEvent<RankedUser> {
 
     @Override
     public void beforeGo() throws InternalException {
+        //
+        var pair = ExamServiceGetContestTime.getItem(examID);
+        long currentTime = System.currentTimeMillis() + REFRESH_INTERVAL;
+        if (pair.getLeft().getTime() < currentTime && currentTime < pair.getRight().getTime()) {
+            flag = false;
+            return;
+        }
         log.info("connected to redis.");
         String time = jedis.get(examID);
         flag = (time == null || (Long.getLong(time) - System.currentTimeMillis() >= REFRESH_INTERVAL));
