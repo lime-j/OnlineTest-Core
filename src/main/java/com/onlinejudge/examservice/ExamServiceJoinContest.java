@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import static com.onlinejudge.userservice.UserServiceGetExamName.getExamName;
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Log4j2
 public class ExamServiceJoinContest implements BooleanEvent {
@@ -63,14 +64,7 @@ public class ExamServiceJoinContest implements BooleanEvent {
     public void afterGo() {
         if (isContest != 0) return;
 
-        try {
-            UserServiceSetTimeline.setItem(new TimelineItem(
-                    getExamName(examID), "", 2, userID, new Timestamp(System.currentTimeMillis())));
-        } catch (SQLException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            closeConnection();
-        }
-        // DO NOTHING
+        UserServiceSetTimeline.setItem(new TimelineItem(
+                getExamName(examID), " ", 2, userID, new Timestamp(System.currentTimeMillis())));
     }
 }

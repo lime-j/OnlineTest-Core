@@ -7,11 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceGetExamName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceSetTimeline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceJoinContest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceJoinContest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceUpdateRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceSetTimeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceSetTimeline.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +371,7 @@
       <workItem from="1585577531315" duration="281000" />
       <workItem from="1585618789450" duration="2039000" />
       <workItem from="1585620857183" duration="70000" />
-      <workItem from="1585620961111" duration="29994000" />
+      <workItem from="1585620961111" duration="31729000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -598,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585652281040</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="rating timeline remained">
+      <created>1585654716698</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1585654716698</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +643,8 @@
     <MESSAGE value="fix issues" />
     <MESSAGE value="join contest" />
     <MESSAGE value="fix issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix issue" />
+    <MESSAGE value="rating timeline remained" />
+    <option name="LAST_COMMIT_MESSAGE" value="rating timeline remained" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -666,10 +673,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="862" y="536" width="826" height="558" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585221045791" />
-    <state x="945" y="290" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser" timestamp="1585652547431">
+    <state x="945" y="288" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser" timestamp="1585663228422">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="945" y="290" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1600@0.0.2560.1600" timestamp="1585652547431" />
+    <state x="945" y="288" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1600@0.0.2560.1600" timestamp="1585663228422" />
     <state x="926" y="480" width="918" height="738" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585216182670">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -686,10 +693,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1600@0.0.2560.1600" timestamp="1585630044248" />
-    <state x="360" y="52" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585652280840">
+    <state x="360" y="50" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585654716484">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="52" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585652280840" />
+    <state x="360" y="50" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585654716484" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -746,10 +753,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="294" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585652286132">
+    <state x="575" y="292" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585654727000">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="294" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585652286132" />
+    <state x="575" y="292" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585654727000" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -762,10 +769,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="759" y="490" key="com.intellij.ide.util.TipDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585618915677" />
-    <state x="949" y="659" width="661" height="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585546739632">
+    <state x="949" y="657" width="661" height="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585664192683">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="949" y="659" width="661" height="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585546739632" />
+    <state x="949" y="657" width="661" height="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585664192683" />
     <state x="814" y="416" width="921" height="800" key="extract.method.dialog" timestamp="1585559194713">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -782,10 +789,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="691" y="355" width="1177" height="1976" key="run.anything.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585642065541" />
-    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup" timestamp="1585637174200">
+    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup" timestamp="1585663236531">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585637174200" />
+    <state x="689" y="0" width="1177" height="1596" key="search.everywhere.popup/0.0.2560.1600@0.0.2560.1600" timestamp="1585663236531" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
