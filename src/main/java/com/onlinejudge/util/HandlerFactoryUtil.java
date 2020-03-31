@@ -266,14 +266,6 @@ public class HandlerFactoryUtil {
                             parseArray(jsonObject.getJSONArray("userlist").toJSONString(), String.class)
                     ));
                     break;
-                case editProblemFromExam:
-                    handler = new StringEventHandler(new ProblemServiceNewInvisibleProblem(new InvisibleProblem(
-                            jsonObject.getIntValue("proType"), jsonObject.getString("proID"), jsonObject.getString("proTitle")
-                            , jsonObject.getString("proText"), jsonObject.getString("proAns"), jsonObject.getIntValue("proMaxsize")
-                            , jsonObject.getIntValue("proMaxtime"), jsonObject.getIntValue("proScore"), jsonObject.getString("examID")
-                            , jsonObject.getString("proSubject"), jsonObject.getString("proTag")
-                    )));
-                    break;
                 case deleteProblemFromDatabase:
                     handler = new BooleanEventHandler(new ProblemServiceDeleteProblem(jsonObject.getString("proID")));
                     break;

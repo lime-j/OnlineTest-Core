@@ -2,6 +2,7 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.Settler;
 import lombok.extern.log4j.Log4j2;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +13,10 @@ import static com.onlinejudge.util.DatabaseUtil.*;
 
 @Log4j2
 public class ExamServiceSetRank implements Settler {
+    private ExamServiceSetRank() {
+    }
 
-    public static void setItem(List<RankedUser> pans, String examID) {
+    public static void setItem(@NotNull List<RankedUser> pans, String examID) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {

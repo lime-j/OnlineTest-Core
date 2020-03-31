@@ -13,7 +13,7 @@ import static com.alibaba.fastjson.JSON.toJSONString;
 @Log4j2
 public class ExamServiceListRank implements ListEvent<RankedUser> {
     private static final int REFRESH_INTERVAL = 120000;
-    boolean flag = true;
+    private boolean flag = true;
     private List<RankedUser> res = null;
     private String examID;
     private Jedis jedis = null;
