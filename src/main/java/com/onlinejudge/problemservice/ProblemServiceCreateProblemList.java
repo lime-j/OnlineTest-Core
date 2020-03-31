@@ -130,8 +130,8 @@ public class ProblemServiceCreateProblemList extends ListEvent<Problem> {
             stmt.close();
             stmt = prepareStatement("update problem set pcount = ? where pid = ?");
             for (var it : resultList) {
-                stmt.setInt(1, countMap.get(it.Pid) + 1);
-                stmt.setString(2, it.Pid);
+                stmt.setInt(1, countMap.get(it.pid) + 1);
+                stmt.setString(2, it.pid);
                 stmt.executeUpdate();
             }
             closeUpdate(stmt, conn);

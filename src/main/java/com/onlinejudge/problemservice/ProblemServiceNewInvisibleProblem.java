@@ -19,7 +19,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
 
     public ProblemServiceNewInvisibleProblem(@NotNull InvisibleProblem origin) {
         this.currProblem = origin;
-        this.oldPid = origin.Pid;
+        this.oldPid = origin.pid;
         this.examID = origin.examID;
     }
 
@@ -32,12 +32,12 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
         try {
             getConnection();
             PreparedStatement sta = prepareStatement("select * from problem where pid=?");
-            sta.setString(1, this.currProblem.Pid);
+            sta.setString(1, this.currProblem.pid);
             logger.info("[problemservice]: Find the old problem: " + sta.toString());
             var queryResult = sta.executeQuery();
             if (queryResult.next()) {
-                this.currProblem.ProbSubject = queryResult.getString("psubject");
-                this.currProblem.ProbTag = queryResult.getString("ptag");
+                this.currProblem.probSubject = queryResult.getString("psubject");
+                this.currProblem.probTag = queryResult.getString("ptag");
             }
 
 
@@ -76,7 +76,7 @@ public class ProblemServiceNewInvisibleProblem extends StringEvent {
             staDelete.close();
             staInsert.close();
             closeConnection();
-            return this.currProblem.Pid;
+            return this.currProblem.pid;
         } catch (SQLException e) {
             logger.info(e.getMessage(),e);
             return "";

@@ -24,7 +24,7 @@ public class InvisibleProblem extends Problem {
     public boolean updateVisible() {
         try {
             Connection conn = getConnection();
-            String cmd = String.format("update problem set visible=0 where pid='%s'", this.Pid);
+            String cmd = String.format("update problem set visible=0 where pid='%s'", this.pid);
             logger.debug("[problemservice]: updateVisible: " + cmd);
             PreparedStatement sta = prepareStatement(cmd);
             sta.executeUpdate();

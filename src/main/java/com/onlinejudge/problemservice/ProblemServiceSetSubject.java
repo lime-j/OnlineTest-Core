@@ -14,13 +14,13 @@ import java.util.List;
 public class ProblemServiceSetSubject extends BooleanEvent {
     private static final Logger logger = LoggerFactory.getLogger(ProblemServiceSetSubject.class);
 
+    private final List<String> subject;
+    private final String userID;
+
     public ProblemServiceSetSubject(@NotNull List<String> subject, String userID) {
         this.subject = subject;
         this.userID = userID;
     }
-
-    final List<String> subject;
-    public final String userID;
 
     public boolean go() {
         Connection conn = null;
@@ -38,13 +38,13 @@ public class ProblemServiceSetSubject extends BooleanEvent {
                 stmt.setString(2, userID);
                 stmt.execute();
             }
-        }catch (SQLException e){
-            logger.error(e.getMessage(),e);
-        }finally{
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        } finally {
             try {
                 DatabaseUtil.closeUpdate(stmt, conn);
             } catch (SQLException e) {
-                logger.error(e.getMessage(),e);
+                logger.error(e.getMessage(), e);
             }
         }
         return true;

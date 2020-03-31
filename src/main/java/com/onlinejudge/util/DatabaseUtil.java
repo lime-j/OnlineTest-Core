@@ -14,7 +14,8 @@ public class DatabaseUtil {
     private static final ThreadLocal<Connection> tl = new ThreadLocal<>();
 
     @Contract(pure = true)
-    public DatabaseUtil() {}
+    private DatabaseUtil() {
+    }
 
     @Contract(pure = true)
     public static DataSource getDataSource() {
@@ -46,8 +47,7 @@ public class DatabaseUtil {
     }
 
     public static PreparedStatement prepareStatement(String cmd) throws SQLException {
-        assert (tl.get() != null);
-        return tl.get().prepareStatement(cmd);
+        return getConnection().prepareStatement(cmd);
     }
 
     public static void closeQuery(ResultSet resultSet, PreparedStatement preparedStatement, Connection connection) throws SQLException {
@@ -59,6 +59,11 @@ public class DatabaseUtil {
     public static void closeQuery(ResultSet resultSet, PreparedStatement preparedStatement) throws SQLException {
         if (resultSet != null) resultSet.close();
         if (preparedStatement != null) preparedStatement.close();
+        closeConnection();
+    }
+
+    public static void closeUpdate(PreparedStatement stmt) throws SQLException {
+        if (stmt != null) stmt.close();
         closeConnection();
     }
 

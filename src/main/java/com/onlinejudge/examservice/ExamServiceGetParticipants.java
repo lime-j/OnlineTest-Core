@@ -4,10 +4,7 @@ import com.onlinejudge.examservice.ExamServiceGetRating.Participant;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListerUtil;
 import com.onlinejudge.util.Provider;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
+import lombok.*;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -22,6 +19,9 @@ import static java.util.Collections.sort;
 
 @Log4j2
 public class ExamServiceGetParticipants implements Provider {
+    private ExamServiceGetParticipants() {
+    }
+
     @NotNull
     private static Pair<Timestamp, Timestamp> isValidExamID(String examID) throws InternalException {
         Connection conn = null;
@@ -70,13 +70,11 @@ public class ExamServiceGetParticipants implements Provider {
     @NotNull
     @SneakyThrows
     private static List<RankedUser> getRank(@NotNull List<String> userIDs, String examID, @NotNull Pair<Timestamp, Timestamp> times) {
-        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet res = null;
         Timestamp start = times.getKey();
         List<RankedUser> ret = new ArrayList<>();
         try {
-            conn = getConnection();
             stmt = prepareStatement("select score,pid, stime from submission where eid = ? and sid = ?");
             stmt.setString(1, examID);
             for (var userID : userIDs) {
@@ -110,7 +108,7 @@ public class ExamServiceGetParticipants implements Provider {
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
         } finally {
-            closeQuery(res, stmt, conn);
+            closeQuery(res, stmt);
         }
         sort(ret);
         int curRank = 0;
@@ -138,7 +136,6 @@ public class ExamServiceGetParticipants implements Provider {
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
-            //e.pTrace();
         } finally {
             closeUpdate(stmt, conn);
         }
@@ -197,12 +194,12 @@ public class ExamServiceGetParticipants implements Provider {
     @Getter
     @Setter
     @AllArgsConstructor
+    @EqualsAndHashCode
     private static class RankedUser implements Comparable<RankedUser> {
         private String userID;
         private int penalty;
         private int solved;
         private int rank;
-
         @Override
         public int compareTo(@NotNull RankedUser o) {
             if (solved != o.solved) {
