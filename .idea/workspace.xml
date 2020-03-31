@@ -7,13 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetContestTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceJoinContest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceCreateModifyExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceCreateModifyExam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetRankedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceGetRankedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceListContest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +49,13 @@
         <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="exam: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -367,7 +370,7 @@
       <workItem from="1585577531315" duration="281000" />
       <workItem from="1585618789450" duration="2039000" />
       <workItem from="1585620857183" duration="70000" />
-      <workItem from="1585620961111" duration="24441000" />
+      <workItem from="1585620961111" duration="24793000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -565,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585646417411</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="join contest">
+      <created>1585648186338</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1585648186338</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +612,8 @@
     <MESSAGE value="对原有的Handler进行修改，现在可以更加优雅地添加timeline" />
     <MESSAGE value="rank refreshing, user bind, fix issues" />
     <MESSAGE value="fix issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix issues" />
+    <MESSAGE value="join contest" />
+    <option name="LAST_COMMIT_MESSAGE" value="join contest" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -651,10 +662,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1600@0.0.2560.1600" timestamp="1585630044248" />
-    <state x="360" y="60" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585646417228">
+    <state x="360" y="58" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585648186119">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="60" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585646417228" />
+    <state x="360" y="58" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585648186119" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -711,10 +722,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="302" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585645754182">
+    <state x="575" y="300" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585648517097">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="302" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585645754182" />
+    <state x="575" y="300" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585648517097" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>

@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
-import static java.text.MessageFormat.format;
 
-public class ExamServiceListExam implements ListEvent<Exam> {
+public class ExamServiceListContest implements ListEvent<Exam> {
     private String userID;
     private final ExamType type;
-    private static final Logger logger = LoggerFactory.getLogger(ExamServiceListExam.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExamServiceListContest.class);
 
-    public ExamServiceListExam(String userID, int type) {
+    public ExamServiceListContest(String userID, int type) {
         this.userID = userID;
         this.type = type == 1 ? ExamType.CONTEST : ExamType.COURSE;
     }
@@ -62,11 +61,10 @@ public class ExamServiceListExam implements ListEvent<Exam> {
                 var userID = queryResult.getString("sid");
                 var eText = queryResult.getString("etext");
                 resultList.add(new Exam(eID, eTitle, userID, eStartTime, eEndTime, eText));
-                logger.debug(format("ExamServiceListExam, ename = {0}, estart = {1},eend = {2},eID = {3},userID = {4},etext = {5}esubject = {6}", eTitle, eStartTime, eEndTime, eID, userID, eText)
-                );
+                logger.debug("ExamServiceListExam, ename = {}, estart = {},eend = {},eID = {},userID = {},etext = {}", eTitle, eStartTime, eEndTime, eID, userID, eText);
             }
             closeQuery(queryResult, stmt, conn);
-            logger.info(format("[DBG]:ExamServiceListExam, find{0}result(s)", cnt));
+            logger.info("[DBG]:ExamServiceListExam, find{}result(s)", cnt);
             return resultList;
         } catch (SQLException sqlException) {
             logger.error(sqlException.getMessage(), sqlException);

@@ -190,7 +190,7 @@ public class HandlerFactoryUtil {
                     break;
                 case listExam:
                     handler = new ListEventHandler(
-                            new ExamServiceListExam(
+                            new ExamServiceListContest(
                                     jsonObject.getString("userID"), jsonObject.getInteger("listType")
 
                             )
