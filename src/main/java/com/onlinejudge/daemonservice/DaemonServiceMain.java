@@ -6,9 +6,12 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DaemonServiceMain {
 
+    public static final Map<String, Boolean> isRatingCalculated = new ConcurrentHashMap<>();
     // daemonservice 的功能是
     // 监听2331端口,
     // 解析用户发来的 JSON 并根据请求类型调用其他的service模块

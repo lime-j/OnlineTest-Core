@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 public class DaemonServiceRunnable implements Runnable {
@@ -28,7 +26,7 @@ public class DaemonServiceRunnable implements Runnable {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(DaemonServiceRunnable.class);
-    public static final Map<String, Boolean> isRatingCalculated = new ConcurrentHashMap<>();
+
     public void run() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.cl.getInputStream()));

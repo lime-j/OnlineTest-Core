@@ -1,6 +1,6 @@
 package com.onlinejudge.examservice;
 
-import com.onlinejudge.daemonservice.DaemonServiceRunnable;
+import com.onlinejudge.daemonservice.DaemonServiceMain;
 import com.onlinejudge.examservice.ExamServiceGetRating.Participant;
 import com.onlinejudge.userservice.TimelineItem;
 import com.onlinejudge.userservice.UserServiceSetTimeline;
@@ -40,7 +40,7 @@ public class ExamServiceUpdateRating implements BooleanEvent {
 
     @Override
     public void beforeGo() {
-        isRatingCalcuated = DaemonServiceRunnable.isRatingCalculated.getOrDefault(examID, false);
+        isRatingCalcuated = DaemonServiceMain.isRatingCalculated.getOrDefault(examID, false);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ExamServiceUpdateRating implements BooleanEvent {
                         )
                 );
             }
-            DaemonServiceRunnable.isRatingCalculated.put(examID, true);
+            DaemonServiceMain.isRatingCalculated.put(examID, true);
         }
     }
 }

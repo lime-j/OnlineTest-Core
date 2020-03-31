@@ -39,16 +39,13 @@ public class UserServiceAddComment implements BooleanEvent {
 
     @Override
     public void afterGo() {
-        try {
-            UserServiceSetTimeline.setItem(
-                    new TimelineItem(getExamName(examID),
-                            text,
-                            3,
-                            userID,
-                            new Timestamp(System.currentTimeMillis())));
-        } catch (SQLException e) {
-            log.error(e.getMessage(), e);
-        }
+        UserServiceSetTimeline.setItem(
+                new TimelineItem(getExamName(examID),
+                        text,
+                        3,
+                        userID,
+                        new Timestamp(System.currentTimeMillis())));
+
     }
 
     private void setComment() throws SQLException {

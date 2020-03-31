@@ -6,10 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="fix issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/daemonservice/DaemonServiceRunnable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceUpdateRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceUpdateRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceAddComment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +208,9 @@
     <property name="settings.editor.selected.configurable" value="power.mode.ii" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="com.onlinejudge.daemonservice.DaemonServiceMain" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.onlinejudge.examservice" />
     </key>
@@ -370,7 +375,7 @@
       <workItem from="1585577531315" duration="281000" />
       <workItem from="1585618789450" duration="2039000" />
       <workItem from="1585620857183" duration="70000" />
-      <workItem from="1585620961111" duration="32242000" />
+      <workItem from="1585620961111" duration="32861000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1585042715254</created>
@@ -610,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585664225660</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="timeline ok">
+      <created>1585664803961</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1585664803961</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,10 +660,10 @@
     <MESSAGE value="rank refreshing, user bind, fix issues" />
     <MESSAGE value="fix issues" />
     <MESSAGE value="join contest" />
-    <MESSAGE value="fix issue" />
     <MESSAGE value="rating timeline remained" />
     <MESSAGE value="timeline ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline ok" />
+    <MESSAGE value="fix issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix issue" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -692,6 +704,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="933" y="573" width="704" height="472" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1600@0.0.2560.1600" timestamp="1585654688940" />
+    <state x="942" y="305" width="666" height="1022" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1585665058519">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="942" y="305" width="666" height="1022" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.0.2560.1600@0.0.2560.1600" timestamp="1585665058519" />
     <state x="816" y="358" width="917" height="885" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585646383855">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -700,10 +716,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="724" y="513" width="1143" height="575" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1600@0.0.2560.1600" timestamp="1585630044248" />
-    <state x="360" y="48" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585664225451">
+    <state x="360" y="42" width="1830" height="1350" key="CommitChangelistDialog2" timestamp="1585665251565">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="360" y="48" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585664225451" />
+    <state x="360" y="42" width="1830" height="1350" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585665251565" />
     <state x="246" y="152" width="2048" height="1346" key="DiffContextDialog" timestamp="1585207713833">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -712,22 +728,22 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="899" y="393" width="742" height="860" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585398103969" />
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585648161805">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585665262323">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585648161805" />
-    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585648161803">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585665262323" />
+    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585665262322">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585648161803" />
-    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585648161803">
+    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585665262322" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585665262322">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585648161803" />
-    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585648161804">
+    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585665262322" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585665262323">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585648161804" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585665262323" />
     <state width="2478" height="505" key="GridCell.Tab.1.bottom" timestamp="1585278295602">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
@@ -760,10 +776,10 @@
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state width="949" height="795" key="SqlResolveConfigurable/0.0.2560.1600@0.0.2560.1600" timestamp="1585296905397" />
-    <state x="575" y="292" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585654727000">
+    <state x="575" y="288" width="1400" height="938" key="Vcs.Push.Dialog.v2" timestamp="1585665346794">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="575" y="292" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585654727000" />
+    <state x="575" y="288" width="1400" height="938" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585665346794" />
     <state x="1188" y="598" width="832" height="862" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1585299141802">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
