@@ -1,4 +1,7 @@
 package com.onlinejudge.predictservice;
 
-public class PredictServiceUserRatingProvider {
+import com.onlinejudge.util.Provider;
+
+public class PredictServiceUserRatingProvider implements Provider {
+
 }

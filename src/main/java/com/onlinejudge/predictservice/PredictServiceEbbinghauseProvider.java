@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ import static java.lang.Math.pow;
 public class PredictServiceEbbinghauseProvider {
     private static final Comparator<Pair<String, Double>> c = new Cmp();
 
+    @Contract(pure = true)
     private PredictServiceEbbinghauseProvider() {
     }
 
@@ -34,6 +36,7 @@ public class PredictServiceEbbinghauseProvider {
         }
     }
 
+    @NotNull
     private static List<Pair<String, Double>> getRecommandList(int throttle, String userID) {
         PreparedStatement stmt = null;
         ResultSet res = null;
