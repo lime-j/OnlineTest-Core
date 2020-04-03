@@ -22,11 +22,11 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.pow;
 
 @Log4j2
-public class PredictServiceEbbinghauseProvider {
+public class PredictServiceEbbinghauseUtil {
     private static final Comparator<Pair<String, Double>> c = new Cmp();
 
     @Contract(pure = true)
-    private PredictServiceEbbinghauseProvider() {
+    private PredictServiceEbbinghauseUtil() {
     }
 
     @Contract(pure = true)

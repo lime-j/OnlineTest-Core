@@ -13,8 +13,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import static com.google.common.primitives.Ints.min;
-import static com.onlinejudge.predictservice.PredictServiceEbbinghauseProvider.getRecommandList;
-import static com.onlinejudge.predictservice.PredictServiceTreeProvider.getItem;
+import static com.onlinejudge.predictservice.PredictServiceEbbinghauseUtil.getRecommandList;
+import static com.onlinejudge.predictservice.PredictServiceTreeUtil.getItem;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.abs;
