@@ -27,7 +27,7 @@ public class ExamServiceGetProbList implements Provider {
         List<Problem> resultList = new ArrayList<>();
         try {
             conn = getConnection();
-            String qry = String.format("select ep.pid, ptitle, ptext, ptype, pmaxsize, pmaxtime, pscore, psubject, ptag, visible, pcount " +
+            String qry = String.format("select ep.pid, ptitle, ptext, ptype, pmaxsize, pmaxtime, pscore, psubject, visible, pcount " +
                     "from examprob ep, problem p where ep.pid = p.pid and ep.eid = '%s'\n", examID);
             stmt = prepareStatement(qry);
             log.debug("qry = {}", qry);

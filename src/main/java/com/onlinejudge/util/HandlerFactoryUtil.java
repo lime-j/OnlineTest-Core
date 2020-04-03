@@ -291,6 +291,11 @@ public class HandlerFactoryUtil {
                 case deleteProblemFromDatabase:
                     handler = new BooleanEventHandler(new ProblemServiceDeleteProblem(jsonObject.getString("proID")));
                     break;
+                case listSubmission:
+                    handler = new ListEventHandler(new ProblemServiceListSubmission(jsonObject.getString("examID"),
+                            jsonObject.getString("probID"), jsonObject.getString("userID")
+                    ));
+                    break;
                 default:
                     handler = new NothingToDoHandler();
                     logger.warn("Undefined behavior.");
