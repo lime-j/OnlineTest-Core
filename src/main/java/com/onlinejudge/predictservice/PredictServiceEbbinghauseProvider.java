@@ -9,7 +9,13 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
@@ -24,12 +30,12 @@ public class PredictServiceEbbinghauseProvider {
     }
 
     @Contract(pure = true)
-    private static double getAibinScore(long ox) {
+    protected static double getAibinScore(long ox) {
         double x = (double) ox;
         return 1 / (1 - pow(0.56 * x, 0.06));
     }
 
-    private static class Cmp implements Comparator<Pair<String, Double>> {
+    static class Cmp implements Comparator<Pair<String, Double>> {
         @Override
         public int compare(Pair<String, Double> stringDoublePair, Pair<String, Double> t1) {
             return -Double.compare(stringDoublePair.getValue(), t1.getValue());
@@ -37,7 +43,7 @@ public class PredictServiceEbbinghauseProvider {
     }
 
     @NotNull
-    private static List<Pair<String, Double>> getRecommandList(int throttle, String userID) {
+    protected static List<Pair<String, Double>> getRecommandList(int throttle, String userID) {
         PreparedStatement stmt = null;
         ResultSet res = null;
         List<Pair<String, Double>> lst = new ArrayList<>();

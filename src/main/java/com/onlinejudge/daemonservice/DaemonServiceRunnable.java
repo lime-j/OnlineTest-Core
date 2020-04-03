@@ -17,6 +17,8 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 
+import static com.onlinejudge.util.DatabaseUtil.closeConnection;
+
 public class DaemonServiceRunnable implements Runnable {
     private final Socket cl;
 
@@ -70,6 +72,7 @@ public class DaemonServiceRunnable implements Runnable {
                 logger.error("IOException", e);
             } finally {
                 try {
+                    closeConnection();
                     cl.close();
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);

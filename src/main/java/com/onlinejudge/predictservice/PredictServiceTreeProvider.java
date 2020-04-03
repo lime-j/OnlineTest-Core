@@ -4,16 +4,20 @@ import com.onlinejudge.util.DatabaseUtil;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-
-import static jdk.xml.internal.SecuritySupport.getResourceAsStream;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Log4j2
 public class PredictServiceTreeProvider {
@@ -21,15 +25,9 @@ public class PredictServiceTreeProvider {
     // (but this is actually a DAG, not tree!
     private static final Map<String, List<Edge>> EDGE = new HashMap<>();
     private static final String ROOT = "ROOT";
-
+    private static final Comparator<Pair<String, Double>> c = new PredictServiceEbbinghauseProvider.Cmp();
+    private static final int K = 1;
     @NotNull
-    @Contract(pure = true)
-    private static List<Pair<String, Double>> getItem() {
-        List<Pair<String, Double>> result = new ArrayList<>();
-        result.add(new ImmutablePair<>("114514", 1919.810));
-        return result;
-    }
-
     private static Set<String> getUserStudyStatus(String userID) {
         PreparedStatement stmt = null;
         ResultSet ret = null;
@@ -53,8 +51,8 @@ public class PredictServiceTreeProvider {
         return result;
     }
 
-    public PredictServiceTreeProvider() {
-        InputStream temp = getResourceAsStream("/resources/config.properties");
+    protected PredictServiceTreeProvider() {
+        InputStream temp = this.getClass().getResourceAsStream("/resources/config.properties");
         Scanner cin = new Scanner(temp);
         while (cin.hasNext()) {
             String from = cin.next();
@@ -67,8 +65,9 @@ public class PredictServiceTreeProvider {
             } else EDGE.get(from).add(new Edge(to, val));
         }
     }
-    private static List<PredictedItem> getItem(String userID) {
-        List<PredictedItem> result = new ArrayList<>();
+
+    protected static List<Pair<String, Double>> getItem(int throttle, String userID) {
+        List<Pair<String, Double>> result = new ArrayList<>();
         Set eids = getUserStudyStatus(userID);
         for (var eid : eids) {
             boolean flag = true;
@@ -82,11 +81,19 @@ public class PredictServiceTreeProvider {
             }
             if (!flag) {
                 for (var toEid : map) {
-                    result.add(new PredictedItem(toEid.getTo(), toEid.getWeight()));
+                    result.add(new ImmutablePair<String, Double>(toEid.getTo(), K / toEid.getWeight()));
                 }
             }
         }
-        return result;
+        List<Pair<String, Double>> sub = new ArrayList<>();
+        result.sort(c);
+        int cnt = 0;
+        for (var it : result) {
+            ++cnt;
+            if (cnt <= throttle) sub.add(it);
+            else break;
+        }
+        return sub;
     }
 
 }
