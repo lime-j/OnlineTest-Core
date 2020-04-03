@@ -16,7 +16,7 @@ import static java.lang.Math.sqrt;
 @Setter
 @AllArgsConstructor
 class UserStar {
-    private static final int MAXN = 128;
+    protected static final int MAXN = 128;
     private static final double MAX_RATING = 1500;
     private static final double MIN_RATING = 0;
     private String userID;

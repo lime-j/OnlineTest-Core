@@ -3,7 +3,7 @@ package com.onlinejudge.daemonservice;
 import com.alibaba.fastjson.JSON;
 import com.onlinejudge.loginservice.WrongPasswordException;
 import com.onlinejudge.userservice.TokenWrongException;
-import com.onlinejudge.userservice.UserServiceCheckToken;
+import com.onlinejudge.userservice.UserServiceCheckTokenUtil;
 import com.onlinejudge.util.Handler;
 import com.onlinejudge.util.HandlerFactoryUtil;
 import org.jetbrains.annotations.Contract;
@@ -41,7 +41,7 @@ public class DaemonServiceRunnable implements Runnable {
             if (requestType == null || userToken == null) throw new InvalidRequestException();
             String userID = jsonObject.getString("userID");
             if (Stream.of("login", "sendMail", "changePassword").allMatch(s -> (!s.equals(requestType)))) {
-                UserServiceCheckToken.checkToken(userID, userToken);
+                UserServiceCheckTokenUtil.checkToken(userID, userToken);
             }
             handler = HandlerFactoryUtil.getHandler(requestType, jsonObject);
             assert handler != null;

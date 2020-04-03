@@ -4,11 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-public class UserServiceCheckToken {
+public class UserServiceCheckTokenUtil {
     // 这个类是用来检查token跟用户的token是否一致的,
     // 如果不一致, go() 函数返回false,
     // 否则返回true
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceCheckToken.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceCheckTokenUtil.class);
     public static void checkToken(String userID, String userToken) throws TokenWrongException {
         Jedis jedis = new Jedis("localhost");
         logger.info("connected to redis.");

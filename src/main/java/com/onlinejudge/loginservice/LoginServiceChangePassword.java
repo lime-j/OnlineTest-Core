@@ -46,6 +46,6 @@ public class LoginServiceChangePassword implements BooleanEvent {
         logger.info("query is ok, quit.");
         boolean result = userKey.equals(key);
         if (!result) return false;
-        return (new UserServiceUpdateProperties(userID, newPassword, UserServiceProperties.changeUserPassword)).go();
+        return (new UserServiceUpdateProperties(userID, newPassword, UserServiceProperties.changeUserPassword.getId())).go();
     }
 }

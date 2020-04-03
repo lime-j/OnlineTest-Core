@@ -46,15 +46,15 @@ public class UserServiceUpdateProperties implements BooleanEvent {
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            if (this.updateType == changeUserSex) {
+            if (this.updateType == changeUserSex.getId()) {
                 stmt = prepareStatement("update userinfo set usex = ? where uid = ?");
                 stmt.setString(2, this.userID);
                 stmt.setInt(1, Integer.parseInt(this.newProperty));
-            } else if (this.updateType == changeUserName) {
+            } else if (this.updateType == changeUserName.getId()) {
                 stmt = prepareStatement("update userinfo set uname= ? where uid = ?");
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
-            } else if (this.updateType == changeUserPassword) {
+            } else if (this.updateType == changeUserPassword.getId()) {
                 stmt = prepareStatement("update userinfo set upassword = ? where uid = ?");
                 stmt.setString(1, this.newProperty);
                 stmt.setString(2, this.userID);
