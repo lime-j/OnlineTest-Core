@@ -52,7 +52,7 @@ public class PredictServiceTreeProvider {
     }
 
     protected PredictServiceTreeProvider() {
-        InputStream temp = this.getClass().getResourceAsStream("/resources/config.properties");
+        InputStream temp = this.getClass().getResourceAsStream(ROOT);
         Scanner cin = new Scanner(temp);
         while (cin.hasNext()) {
             String from = cin.next();

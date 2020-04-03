@@ -73,7 +73,7 @@ public class Submission {
         return this.Sid;
     }
 
-    String getSubProb() {
+    public String getSubProb() {
         return this.SubProb;
     }
 
@@ -90,12 +90,11 @@ public class Submission {
     }
 
 
-    void setSubID(String Sid) {
+    public void setSubID(String Sid) {
         this.Sid = Sid;
     }
 
-    boolean updateSubmission() {
-        String cmd = "";
+    public boolean updateSubmission() {
         try {
             Connection conn = getConnection();
             PreparedStatement sta;

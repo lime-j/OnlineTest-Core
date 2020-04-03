@@ -1,7 +1,6 @@
 package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.BooleanEvent;
-import com.onlinejudge.util.DatabaseUtil;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.Contract;
@@ -183,7 +182,7 @@ public class ExamServiceCreateModifyExam implements BooleanEvent {
             logger.error("ParseException", sql);
             try {
                 if (res != null) res.close();
-                DatabaseUtil.closeQuery(ret, stmt, conn);
+                closeQuery(ret, stmt, conn);
             } catch (SQLException e) {
                 logger.error(e.getMessage(), e);
             }

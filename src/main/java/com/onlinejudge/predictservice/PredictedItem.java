@@ -9,5 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PredictedItem {
     private String examID;
-    private double value;
+    private double interesting;
+    private double challenging;
 }

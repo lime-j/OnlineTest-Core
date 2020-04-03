@@ -76,8 +76,7 @@ public class PredictServiceEbbinghauseProvider {
         }
         lst.sort(c);
         List<Pair<String, Double>> finalList = new ArrayList<>();
-        throttle = Math.max(throttle, lst.size());
-        for (int i = 0; i < throttle; ++i) {
+        for (int i = 0; i < Math.max(throttle, lst.size()); ++i) {
             finalList.add(lst.get(i));
         }
         finalList.sort(c);
