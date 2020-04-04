@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PrediceServiceTreeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,43 +34,6 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="exam: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="examperm: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="subject: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -363,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585818113858</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed bug">
+      <created>1585967998928</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585967998928</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,28 +355,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+    <MESSAGE value="fixed bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585967975440">
+    <state x="358" y="139" width="1834" height="1354" key="CommitChangelistDialog2" timestamp="1585967998776">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975440" />
-    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585967975438">
+    <state x="358" y="139" width="1834" height="1354" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585967998776" />
+    <state x="896" y="406" width="746" height="864" key="FileChooserDialogImpl" timestamp="1585982980809">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975438" />
-    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585967975438">
+    <state x="896" y="406" width="746" height="864" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585982980809" />
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585994133434">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975438" />
-    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585967975439">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585994133434" />
+    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585994133433">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975439" />
-    <state x="573" y="345" width="1404" height="942" key="Vcs.Push.Dialog.v2" timestamp="1585967708670">
+    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585994133433" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585994133432">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="573" y="345" width="1404" height="942" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585967708670" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585994133432" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585994133433">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585994133433" />
+    <state x="573" y="343" width="1404" height="942" key="Vcs.Push.Dialog.v2" timestamp="1585968006330">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="573" y="343" width="1404" height="942" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585968006330" />
   </component>
 </project>

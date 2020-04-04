@@ -103,7 +103,8 @@ public class HandlerFactoryUtil {
                     handler = new ClassEventHandler(
                             new LoginCheck(
                                     jsonObject.getString("userPassword"),
-                                    jsonObject.getString(USERID)
+                                    jsonObject.getString(USERID),
+                                    jsonObject.getString("userToken")
                             )
                     );
                     break;
