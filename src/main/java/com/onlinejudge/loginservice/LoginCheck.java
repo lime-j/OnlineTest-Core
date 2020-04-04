@@ -48,9 +48,9 @@ public class LoginCheck implements ClassEvent {
         Jedis jedis = null;
         String uuid;
         String uPassword = null;
-        int uSex = -1;
+        int uSex = 0;
         String uName = null;
-        int uType = -1;
+        int uType = 1500;
         try {
             conn = DatabaseUtil.getConnection();
             String sqlIns = "select uname, utype, upassword, usex from userinfo where uid = ?";
@@ -66,14 +66,13 @@ public class LoginCheck implements ClassEvent {
                 uPassword = ret.getString("upassword");
                 uType = ret.getInt("utype");
                 uSex = ret.getInt("usex");
-
             }
             assert cnt == 1 || cnt == 0;
             closeQuery(ret, stmt, conn);
             if (cnt == 0) {
                 logger.info("Register for {} with password {}", uID, passwordRecv);
                 UserWithPasswd CurrUser = new UserWithPasswd(
-                        uID, "", uSex, 3, passwordRecv);
+                        uID, "", uSex, 500, passwordRecv);
                 CurrUser.updateUser();
                 uPassword = passwordRecv;
                 uName = "";

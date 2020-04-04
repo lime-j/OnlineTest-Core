@@ -7,8 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/userservice/UserServiceGetLastCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceJoinContest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/examservice/ExamServiceJoinContest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/loginservice/LoginCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/util/HandlerFactoryUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +59,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="exam: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="examperm: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -276,6 +287,28 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:onlinejudge@localhost [2]" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:onlinejudge@localhost [2]" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@5de0e444" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -340,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585994186230</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="修复bug">
+      <created>1586006879586</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586006879587</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,36 +403,45 @@
     <MESSAGE value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="fixed bug" />
     <MESSAGE value="修改了login的格式，可以用来刷新内容了" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了login的格式，可以用来刷新内容了" />
+    <MESSAGE value="修复bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复bug" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="358" y="137" width="1834" height="1354" key="CommitChangelistDialog2" timestamp="1585994186041">
+    <state x="945" y="315" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser" timestamp="1586020245634">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="358" y="137" width="1834" height="1354" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1585994186041" />
+    <state x="945" y="315" width="659" height="1016" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1600@0.0.2560.1600" timestamp="1586020245634" />
+    <state x="358" y="135" width="1834" height="1354" key="CommitChangelistDialog2" timestamp="1586006879387">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="358" y="135" width="1834" height="1354" key="CommitChangelistDialog2/0.0.2560.1600@0.0.2560.1600" timestamp="1586006879387" />
     <state x="896" y="406" width="746" height="864" key="FileChooserDialogImpl" timestamp="1585982980809">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
     <state x="896" y="406" width="746" height="864" key="FileChooserDialogImpl/0.0.2560.1600@0.0.2560.1600" timestamp="1585982980809" />
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585994963425">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1586020635953">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585994963425" />
-    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585994963425">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1586020635953" />
+    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1586020635952">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585994963425" />
-    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585994963424">
+    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1586020635952" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1586020635952">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585994963424" />
-    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585994963425">
+    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1586020635952" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1586020635953">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585994963425" />
-    <state x="573" y="343" width="1404" height="942" key="Vcs.Push.Dialog.v2" timestamp="1585968006330">
+    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1586020635953" />
+    <state x="573" y="339" width="1404" height="942" key="Vcs.Push.Dialog.v2" timestamp="1586021307451">
       <screen x="0" y="0" width="2560" height="1600" />
     </state>
-    <state x="573" y="343" width="1404" height="942" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585968006330" />
+    <state x="573" y="339" width="1404" height="942" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1586021307451" />
+    <state x="857" y="384" width="836" height="866" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1586020649720">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="857" y="384" width="836" height="866" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.2560.1600@0.0.2560.1600" timestamp="1586020649720" />
   </component>
 </project>

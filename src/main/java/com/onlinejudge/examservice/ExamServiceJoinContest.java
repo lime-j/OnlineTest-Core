@@ -63,7 +63,20 @@ public class ExamServiceJoinContest implements BooleanEvent {
     @Override
     public void afterGo() {
         if (isContest != 0) return;
-
+        PreparedStatement stmt = null;
+        try {
+            stmt = prepareStatement("update userinfo set usex = usex + 1 where uid = ?");
+            stmt.setString(1, userID);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            try {
+                closeUpdate(stmt);
+            } catch (SQLException e) {
+                log.error(e.getMessage(), e);
+            }
+        }
         UserServiceSetTimeline.setItem(new TimelineItem(
                 getExamName(examID), " ", 2, userID, new Timestamp(System.currentTimeMillis())));
     }

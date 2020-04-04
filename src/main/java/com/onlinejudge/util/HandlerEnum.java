@@ -24,6 +24,7 @@ public enum HandlerEnum {
     listSubject("listSubject"),
     listTag("listTag"),
     listTimeline("listTimeline"),
+    listPredictItem("listPredictItem"),
     login("login"),
     modifySex("modifySex"),
     problemUpdate("problemUpdate"),
@@ -38,7 +39,9 @@ public enum HandlerEnum {
     subjectSubList("subjectSubList"),
     updatePassword("updatePassword"),
     updateUserName("updateUserName"),
-    getTimeline("getTimeline");
+    getTimeline("getTimeline"),
+    getLastCourse("getLastCourse"),
+    addUserStar("addUserStar");
     public final String name;
 
     HandlerEnum(String name) {

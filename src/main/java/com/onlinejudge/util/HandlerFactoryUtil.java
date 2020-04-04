@@ -2,36 +2,16 @@ package com.onlinejudge.util;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.onlinejudge.examservice.Exam;
-import com.onlinejudge.examservice.ExamServiceCreateModifyExam;
-import com.onlinejudge.examservice.ExamServiceDeleteExam;
-import com.onlinejudge.examservice.ExamServiceDeleteProblemFromExam;
-import com.onlinejudge.examservice.ExamServiceListContest;
-import com.onlinejudge.examservice.ExamServiceListExamProblem;
-import com.onlinejudge.examservice.ExamServiceListExamStudent;
-import com.onlinejudge.examservice.ExamServiceQueryStudentScore;
-import com.onlinejudge.examservice.ExamServiceReplaceProblem;
+import com.onlinejudge.examservice.*;
 import com.onlinejudge.loginservice.LoginCheck;
 import com.onlinejudge.loginservice.LoginServiceChangePassword;
 import com.onlinejudge.loginservice.LoginServiceSendMail;
 import com.onlinejudge.manservice.ManServiceAddListUsers;
-import com.onlinejudge.problemservice.Problem;
-import com.onlinejudge.problemservice.ProblemServiceChangeScore;
-import com.onlinejudge.problemservice.ProblemServiceCreateProblem;
-import com.onlinejudge.problemservice.ProblemServiceDeleteProblem;
-import com.onlinejudge.problemservice.ProblemServiceListAllProblem;
-import com.onlinejudge.problemservice.ProblemServiceListAllSubject;
-import com.onlinejudge.problemservice.ProblemServiceListSubmission;
-import com.onlinejudge.problemservice.ProblemServiceSetSubject;
-import com.onlinejudge.problemservice.ProblemServiceSubjectiveSubReturn;
-import com.onlinejudge.problemservice.ProblemSubmissionToQueue;
-import com.onlinejudge.problemservice.Submission;
+import com.onlinejudge.predictservice.PredictServiceAddUserStar;
+import com.onlinejudge.predictservice.PredictServiceListPredictedItem;
+import com.onlinejudge.problemservice.*;
 import com.onlinejudge.searchservice.SearchServiceDoQuery;
-import com.onlinejudge.userservice.UserServiceDeleteAccount;
-import com.onlinejudge.userservice.UserServiceGetTimeLine;
-import com.onlinejudge.userservice.UserServiceListAllUser;
-import com.onlinejudge.userservice.UserServiceListTimeline;
-import com.onlinejudge.userservice.UserServiceUpdateProperties;
+import com.onlinejudge.userservice.*;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -46,6 +26,7 @@ public class HandlerFactoryUtil {
     private static final Logger logger = LoggerFactory.getLogger(HandlerFactoryUtil.class);
     private static final Map<String, HandlerEnum> mp = new HashMap<>();
     private static final String USERID = "userID";
+
     @Contract(pure = true)
     private HandlerFactoryUtil() {
     }
@@ -61,6 +42,33 @@ public class HandlerFactoryUtil {
         HandlerEnum requestEnum = mp.get(requestType);
         try {
             switch (requestEnum) {
+                case addUserStar:
+                    handler = new BooleanEventHandler(
+                            new PredictServiceAddUserStar(
+                                    jsonObject.getString("examID"),
+                                    jsonObject.getString(USERID),
+                                    jsonObject.getInteger("isChallenging"),
+                                    jsonObject.getInteger("isInteresting"),
+                                    jsonObject.getInteger("userRating")
+                            )
+                    );
+                    break;
+                case getLastCourse:
+                    handler = new StringEventHandler(
+                            new UserServiceGetLastCourse(
+                                    jsonObject.getString(USERID)
+                            )
+                    );
+                    break;
+                case listPredictItem:
+                    handler = new ListEventHandler(
+                            new PredictServiceListPredictedItem(
+                                    jsonObject.getString(USERID),
+                                    jsonObject.getInteger("pviot"),
+                                    jsonObject.getInteger("throttle")
+                            )
+                    );
+                    break;
                 case listTimeline:
                     handler = new ListEventHandler(
                             new UserServiceListTimeline(jsonObject.getString(USERID))
