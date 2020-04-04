@@ -38,7 +38,7 @@ public class ProblemServiceCreateProblem implements BooleanEvent {
             while (this.currentProblem.addPid(pid.toString().replace('-', 'a').substring(0, 6))) {
                 pid = UUID.randomUUID();
             }
-            System.out.println(String.format("Problem Pid: %s", this.currentProblem.pid));
+            logger.info("Problem Pid: {}", this.currentProblem.pid);
         }
         this.currentProblem.updateProb();
         return true;

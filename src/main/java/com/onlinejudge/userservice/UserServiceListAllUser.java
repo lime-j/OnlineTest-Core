@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.util.DatabaseUtil.*;
+import static com.onlinejudge.util.DatabaseUtil.closeQuery;
+import static com.onlinejudge.util.DatabaseUtil.getConnection;
+import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 public class UserServiceListAllUser implements ListEvent<User> {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceListAllUser.class);

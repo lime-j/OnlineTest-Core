@@ -3,7 +3,7 @@ package com.onlinejudge.daemonservice;
 import com.alibaba.fastjson.JSON;
 import com.onlinejudge.loginservice.WrongPasswordException;
 import com.onlinejudge.userservice.TokenWrongException;
-import com.onlinejudge.userservice.UserServiceCheckToken;
+import com.onlinejudge.userservice.UserServiceCheckTokenUtil;
 import com.onlinejudge.util.Handler;
 import com.onlinejudge.util.HandlerFactoryUtil;
 import org.jetbrains.annotations.Contract;
@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
+
+import static com.onlinejudge.util.DatabaseUtil.closeConnection;
 
 public class DaemonServiceRunnable implements Runnable {
     private final Socket cl;
@@ -39,7 +41,7 @@ public class DaemonServiceRunnable implements Runnable {
             if (requestType == null || userToken == null) throw new InvalidRequestException();
             String userID = jsonObject.getString("userID");
             if (Stream.of("login", "sendMail", "changePassword").allMatch(s -> (!s.equals(requestType)))) {
-                UserServiceCheckToken.checkToken(userID, userToken);
+                UserServiceCheckTokenUtil.checkToken(userID, userToken);
             }
             handler = HandlerFactoryUtil.getHandler(requestType, jsonObject);
             assert handler != null;
@@ -70,6 +72,7 @@ public class DaemonServiceRunnable implements Runnable {
                 logger.error("IOException", e);
             } finally {
                 try {
+                    closeConnection();
                     cl.close();
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);

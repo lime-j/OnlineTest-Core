@@ -29,7 +29,6 @@ public class Problem {
     public String pid;//试题id
     public String probAns;//试题答案
     public String probSubject;//试题所属科目
-    public String probTag;//试题考察知识点
     public int probSZ;
     public int probTM;
 

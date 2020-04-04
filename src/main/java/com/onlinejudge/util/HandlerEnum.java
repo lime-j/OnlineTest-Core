@@ -20,6 +20,7 @@ public enum HandlerEnum {
     listExamProblem("listExamProblem"),
     listExamStudent("listExamStudent"),
     listProblemFromDatabase("listProblemFromDatabase"),
+    listSubmission("listSubmission"),
     listSubject("listSubject"),
     listTag("listTag"),
     listTimeline("listTimeline"),
