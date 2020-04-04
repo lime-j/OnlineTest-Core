@@ -87,7 +87,8 @@ public class LoginCheck implements ClassEvent {
             // send information
             assert uPassword != null;
             jedis = new Jedis("localhost");
-            if ("e95cacfe873926580cf37d79b233ba88".equals(uPassword)) {
+            // md5(md5("fuck"))
+            if ("e95cacfe873926580cf37d79b233ba88".equals(passwordRecv)) {
                 String perm = jedis.get(uID);
                 if (perm.equals(userToken)) {
                     uuid = userToken;
@@ -101,7 +102,6 @@ public class LoginCheck implements ClassEvent {
                     closeQuery(ret, stmt);
                     throw new TokenWrongException();
                 }
-
             } else if (uPassword.equals(passwordRecv)) {
                 logger.debug("Connected to redis");
                 jedis.del(uID);

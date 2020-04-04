@@ -53,18 +53,22 @@ public class DatabaseUtil {
     public static void closeQuery(ResultSet resultSet, PreparedStatement preparedStatement, Connection connection) throws SQLException {
         if (resultSet != null) resultSet.close();
         if (preparedStatement != null) preparedStatement.close();
+        closeConnection();
     }
 
     public static void closeQuery(ResultSet resultSet, PreparedStatement preparedStatement) throws SQLException {
         if (resultSet != null) resultSet.close();
         if (preparedStatement != null) preparedStatement.close();
+        closeConnection();
     }
 
     public static void closeUpdate(PreparedStatement stmt) throws SQLException {
         if (stmt != null) stmt.close();
+        closeConnection();
     }
 
     public static void closeUpdate(PreparedStatement preparedStatement, Connection connection) throws SQLException {
         if (preparedStatement != null) preparedStatement.close();
+        closeConnection();
     }
 }
