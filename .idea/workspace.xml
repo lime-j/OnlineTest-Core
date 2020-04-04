@@ -6,17 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d717402d-5f90-4298-ae02-c5ecad19851f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d717402d-5f90-4298-ae02-c5ecad19851f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="764d9de6-9003-4552-a24e-4903523da51c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PrediceServiceTreeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceEbbinghauseProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceEbbinghauseProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceTreeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceTreeProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceUserRatingProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceUserRatingProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictedItem.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,10 +30,6 @@
       <set />
     </option>
     <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
@@ -81,6 +70,49 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="onlinejudge@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="exam: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="examprob: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="timeline: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="onlinejudge@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="onlinejudge: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="userinfo: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -167,10 +199,10 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/onlinejudge/predictservice/PredictServiceEbbinghauseProvider.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1ZWU1EWvlLEnDQgofeyDuKOrOUU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -200,18 +232,6 @@
       <command value="gradle build" />
       <command value="gradle components" />
       <command value="gradle buildDependents" />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="RunManager" selected="Gradle.OnlineTest-NG [build]">
@@ -293,26 +313,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@488c29e3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@488c29e3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5bb79dcd" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -385,5 +385,27 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'with_gradle' of https://github.com/solidhtwoo/OnlineTest-Core into with_gradle&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom" timestamp="1585967975440">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state width="2484" height="476" key="GridCell.Tab.0.bottom/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975440" />
+    <state width="2484" height="476" key="GridCell.Tab.0.center" timestamp="1585967975438">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state width="2484" height="476" key="GridCell.Tab.0.center/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975438" />
+    <state width="2484" height="476" key="GridCell.Tab.0.left" timestamp="1585967975438">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state width="2484" height="476" key="GridCell.Tab.0.left/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975438" />
+    <state width="2484" height="476" key="GridCell.Tab.0.right" timestamp="1585967975439">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state width="2484" height="476" key="GridCell.Tab.0.right/0.0.2560.1600@0.0.2560.1600" timestamp="1585967975439" />
+    <state x="573" y="345" width="1404" height="942" key="Vcs.Push.Dialog.v2" timestamp="1585967708670">
+      <screen x="0" y="0" width="2560" height="1600" />
+    </state>
+    <state x="573" y="345" width="1404" height="942" key="Vcs.Push.Dialog.v2/0.0.2560.1600@0.0.2560.1600" timestamp="1585967708670" />
   </component>
 </project>

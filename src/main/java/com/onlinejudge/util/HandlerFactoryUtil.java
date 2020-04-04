@@ -21,6 +21,7 @@ import com.onlinejudge.problemservice.ProblemServiceCreateProblem;
 import com.onlinejudge.problemservice.ProblemServiceDeleteProblem;
 import com.onlinejudge.problemservice.ProblemServiceListAllProblem;
 import com.onlinejudge.problemservice.ProblemServiceListAllSubject;
+import com.onlinejudge.problemservice.ProblemServiceListSubmission;
 import com.onlinejudge.problemservice.ProblemServiceSetSubject;
 import com.onlinejudge.problemservice.ProblemServiceSubjectiveSubReturn;
 import com.onlinejudge.problemservice.ProblemSubmissionToQueue;
