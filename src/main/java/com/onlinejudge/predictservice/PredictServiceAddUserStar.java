@@ -26,7 +26,7 @@ public class PredictServiceAddUserStar implements BooleanEvent {
             ret = stmt.executeQuery();
             int cnt = 0;
             while (ret.next()) {
-                String eid = ret.getString(0);
+                String eid = ret.getString(1);
                 if (examIDMapping.get(eid) == null) {
                     examIDMapping.put(eid, cnt);
                     ++cnt;
@@ -72,7 +72,7 @@ public class PredictServiceAddUserStar implements BooleanEvent {
             stmt.setString(1, userID);
             ret = stmt.executeQuery();
             while (ret.next()) {
-                var tmp = examIDMapping.get(ret.getString(0));
+                var tmp = examIDMapping.get(ret.getString(1));
                 if (tmp != null) bytes[tmp] = true;
             }
         } catch (SQLException e) {

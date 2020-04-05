@@ -33,11 +33,11 @@ public class PredictServiceTreeUtil {
         ResultSet ret = null;
         Set<String> result = new TreeSet<>();
         try {
-            stmt = DatabaseUtil.prepareStatement("select ep.eid from exam e, examperm ep where e.iscontest = 0 and ep.sid = 'limingjia1999@gmail.com'");
+            stmt = DatabaseUtil.prepareStatement("select ep.eid from exam e, examperm ep where e.iscontest = 0 and ep.sid = ?");
             stmt.setString(1, userID);
             ret = stmt.executeQuery();
             while (ret.next()) {
-                result.add(ret.getString(0));
+                result.add(ret.getString(1));
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
@@ -51,8 +51,8 @@ public class PredictServiceTreeUtil {
         return result;
     }
 
-    protected PredictServiceTreeUtil() {
-        InputStream temp = this.getClass().getResourceAsStream(ROOT);
+    static  {
+        InputStream temp = PredictServiceTreeUtil.class.getResourceAsStream(ROOT);
         Scanner cin = new Scanner(temp);
         while (cin.hasNext()) {
             String from = cin.next();

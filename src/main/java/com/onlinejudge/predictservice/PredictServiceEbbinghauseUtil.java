@@ -50,7 +50,7 @@ public class PredictServiceEbbinghauseUtil {
         Map<String, Long> visMap = new HashMap<>();
         Set<String> examSet = new HashSet<>();
         try {
-            stmt = prepareStatement("select * from examperm where iscontest = 0 and uid = ?");
+            stmt = prepareStatement("select * from exam e, examperm ep where e.iscontest = 0 and sid = ? and e.eid = ep.eid");
             stmt.setString(1, userID);
             res = stmt.executeQuery();
             while (res.next()) {

@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.google.common.primitives.Ints.min;
 import static com.onlinejudge.predictservice.PredictServiceEbbinghauseUtil.getRecommandList;
 import static com.onlinejudge.predictservice.PredictServiceTreeUtil.getItem;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.abs;
+import static java.lang.Math.min;
 
 @Log4j2
 public class PredictServiceListPredictedItem implements ListEvent<String> {
