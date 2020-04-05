@@ -24,7 +24,7 @@ public class PredictServiceTreeUtil {
     // Happy tree friend!
     // (but this is actually a DAG, not tree!
     private static final Map<String, List<Edge>> EDGE = new HashMap<>();
-    private static final String ROOT = "ROOT";
+    private static final String ROOT = "/tree.txt";
     private static final Comparator<Pair<String, Double>> c = new PredictServiceEbbinghauseUtil.Cmp();
     private static final int K = 1;
     @NotNull
@@ -81,7 +81,7 @@ public class PredictServiceTreeUtil {
             }
             if (!flag) {
                 for (var toEid : map) {
-                    result.add(new ImmutablePair<String, Double>(toEid.getTo(), K / toEid.getWeight()));
+                    result.add(new ImmutablePair<>(toEid.getTo(), K / toEid.getWeight()));
                 }
             }
         }

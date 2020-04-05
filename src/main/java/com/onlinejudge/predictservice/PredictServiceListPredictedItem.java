@@ -20,7 +20,7 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.abs;
 
 @Log4j2
-public class PredictServiceListPredictedItem implements ListEvent<PredictedItem> {
+public class PredictServiceListPredictedItem implements ListEvent<String> {
     private static final int ITEM_VAL = 10;
     private final String userID;
     private int pviot;
@@ -59,7 +59,7 @@ public class PredictServiceListPredictedItem implements ListEvent<PredictedItem>
     }
 
     @Override
-    public List<PredictedItem> go() {
+    public List<String> go() {
         List<PredictedItem> result = new ArrayList<>();
         List<Pair<String, Double>> ebb = getRecommandList(pviot, userID);
         List<Pair<String, Double>> tree = getItem(ITEM_VAL - pviot, userID);
@@ -70,7 +70,13 @@ public class PredictServiceListPredictedItem implements ListEvent<PredictedItem>
             result.add(getScore(it.getLeft()));
         }
         result.sort(c);
-        return result.subList(0, throttle);
+        List<String> finalRet = new ArrayList<>();
+        int cnt = 0;
+        for(var it : result){
+            if (++ cnt >= throttle) break;
+            finalRet.add(it.getExamID());
+        }
+        return finalRet;
     }
 
     @Override

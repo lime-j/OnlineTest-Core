@@ -7,12 +7,12 @@ import lombok.extern.log4j.Log4j2;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.onlinejudge.util.DatabaseUtil.closeConnection;
-import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
+import static com.onlinejudge.predictservice.UserStar.MAXN;
+import static com.onlinejudge.util.DatabaseUtil.*;
+import static java.lang.String.format;
 
 @Log4j2
 public class PredictServiceAddUserStar implements BooleanEvent {
@@ -66,7 +66,7 @@ public class PredictServiceAddUserStar implements BooleanEvent {
     protected static boolean[] handle(String userID) {
         PreparedStatement stmt = null;
         ResultSet ret = null;
-        boolean[] bytes = new boolean[UserStar.MAXN];
+        boolean[] bytes = new boolean[MAXN];
         try {
             stmt = prepareStatement("select eid from examperm where sid = ?");
             stmt.setString(1, userID);
@@ -91,24 +91,30 @@ public class PredictServiceAddUserStar implements BooleanEvent {
     @Override
     public boolean go() {
         PreparedStatement stmt = null;
-        ResultSet ret = null;
         try {
             boolean[] bytes = handle(userID);
-            ret.close();
-            stmt.close();
             stmt = prepareStatement("insert into user_star(favor, difficulty,uid, urating,eid, coursestring) values (?,?,?,?,?,?)");
             stmt.setInt(1, isInteresting);
             stmt.setInt(2, isChallenging);
             stmt.setString(3, userID);
             stmt.setInt(4, userRating);
             stmt.setString(5, examID);
-            stmt.setString(6, Arrays.toString(bytes));
+            String course = "";
+            for (int i = 0; i < MAXN; ++ i){
+                course = format("%s%s", course, bytes[i] ? "1" : "0");
+            }
+            log.debug(course);
+            stmt.setString(6, course);
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
         } finally {
-
+            try {
+                closeUpdate(stmt);
+            } catch (SQLException e) {
+                log.error(e.getMessage(),e);
+            }
         }
         return true;
     }
@@ -120,6 +126,20 @@ public class PredictServiceAddUserStar implements BooleanEvent {
 
     @Override
     public void afterGo() {
-        // do nothing
+        PreparedStatement stmt = null;
+        try {
+            stmt = prepareStatement("update examperm set `rank` = 1 where eid = ?");
+            stmt.setString(1, examID);
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            try {
+                closeUpdate(stmt);
+            } catch (SQLException e) {
+                log.error(e.getMessage(),e);
+            }
+        }
     }
 }
