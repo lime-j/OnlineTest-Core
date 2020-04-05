@@ -25,6 +25,7 @@ public enum HandlerEnum {
     listTag("listTag"),
     listTimeline("listTimeline"),
     listPredictItem("listPredictItem"),
+    listRank("listRank"),
     login("login"),
     modifySex("modifySex"),
     problemUpdate("problemUpdate"),

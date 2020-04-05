@@ -42,6 +42,13 @@ public class HandlerFactoryUtil {
         HandlerEnum requestEnum = mp.get(requestType);
         try {
             switch (requestEnum) {
+                case listRank:
+                    handler = new ListEventHandler(
+                            new ExamServiceListRank(
+                                    jsonObject.getString("examID")
+                            )
+                    );
+                    break;
                 case addUserStar:
                     handler = new BooleanEventHandler(
                             new PredictServiceAddUserStar(
