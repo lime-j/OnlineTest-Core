@@ -89,6 +89,9 @@ public class Submission {
         return this.SubUser;
     }
 
+    public int getSubScore() {
+        return this.SubScore;
+    }
 
     public void setSubID(String Sid) {
         this.Sid = Sid;
