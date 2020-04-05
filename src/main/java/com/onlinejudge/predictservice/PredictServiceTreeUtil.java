@@ -37,7 +37,7 @@ public class PredictServiceTreeUtil {
             stmt.setString(1, userID);
             ret = stmt.executeQuery();
             while (ret.next()) {
-                result.add(ret.getString(1));
+                result.add(ret.getString(0));
             }
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
