@@ -2,6 +2,8 @@ package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
 import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +19,7 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
     private final String examID;
     private final String probID;
     private final String userID;
+    private static final Logger logger = LoggerFactory.getLogger(ProblemServiceListSubmission.class);
 
     public ProblemServiceListSubmission(String examID, String probID, String userID) {
         this.examID = examID;
@@ -42,11 +45,12 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
         ResultSet subTextSet = null;
         try {
             conn = getConnection();
-            cmd = "select userinfo.uname, submission.sid, submission.stext, submission.stime, submission.suid, submission.sscore " + "from userinfo, submission " + "where spid= ?  and seid= ? and userinfo.uid = ?";
+            cmd = "select * from submission where spid= ?  and seid= ? and suid = ? ";
             stmt = prepareStatement(cmd);
-            stmt.setString(1, examID);
-            stmt.setString(2, probID);
+            stmt.setString(1, probID);
+            stmt.setString(2, examID);
             stmt.setString(3, userID);
+            logger.info(stmt.toString());
             subTextSet = stmt.executeQuery();
             List<Submission> result = new ArrayList<>();
             while (subTextSet.next()) {
