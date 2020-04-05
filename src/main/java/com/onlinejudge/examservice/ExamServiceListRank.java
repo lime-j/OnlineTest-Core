@@ -45,7 +45,7 @@ public class ExamServiceListRank implements ListEvent<RankedUser> {
         }
         log.info("connected to redis.");
         String time = jedis.get(examID);
-        flag = (time == null || (Long.getLong(time) - System.currentTimeMillis() >= REFRESH_INTERVAL));
+        flag = (time == null || (Long.parseLong(time) - System.currentTimeMillis() >= REFRESH_INTERVAL));
     }
 
     @Override

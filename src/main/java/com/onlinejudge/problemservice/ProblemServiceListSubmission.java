@@ -45,7 +45,7 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
         ResultSet subTextSet = null;
         try {
             conn = getConnection();
-            cmd = "select * from submission where spid= ?  and seid= ? and suid = ? ";
+            cmd = "SELECT * FROM submission WHERE spid= ?  AND seid= ? AND suid = ? ORDER BY stime";
             stmt = prepareStatement(cmd);
             stmt.setString(1, probID);
             stmt.setString(2, examID);
