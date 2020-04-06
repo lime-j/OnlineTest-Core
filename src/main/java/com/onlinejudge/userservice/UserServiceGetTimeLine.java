@@ -4,7 +4,8 @@ import com.onlinejudge.util.DatabaseUtil;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,11 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Log4j2
+
 @AllArgsConstructor
 public class UserServiceGetTimeLine implements ListEvent<SendableTimelineItem> {
     private String userID;
-
+    private static final Logger log = LoggerFactory.getLogger(UserServiceGetTimeLine.class);
     @Override
     public void beforeGo() {
         // do nothing
@@ -30,6 +31,7 @@ public class UserServiceGetTimeLine implements ListEvent<SendableTimelineItem> {
 
     @Override
     public List<SendableTimelineItem> go() throws InternalException {
+
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet res = null;

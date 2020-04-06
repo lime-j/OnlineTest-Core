@@ -1,28 +1,24 @@
 package com.onlinejudge.predictservice;
 
-import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.pow;
 
-@Log4j2
+
 public class PredictServiceEbbinghauseUtil {
+    private static final Logger log = LoggerFactory.getLogger(PredictServiceEbbinghauseUtil.class);
     private static final Comparator<Pair<String, Double>> c = new Cmp();
 
     @Contract(pure = true)

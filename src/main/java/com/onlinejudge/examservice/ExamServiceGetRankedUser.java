@@ -3,9 +3,10 @@ package com.onlinejudge.examservice;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListerUtil;
 import com.onlinejudge.util.Provider;
-import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +19,9 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Integer.getInteger;
 import static java.util.Collections.sort;
 
-@Log4j2
-public class ExamServiceGetRankedUser implements Provider {
 
+public class ExamServiceGetRankedUser implements Provider {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceGetRankedUser.class);
     @NotNull
     private static List<String> getParticipantsID(String examID) {
         return new ListerUtil<String>("select sid from examperm where eid = ?", examID, "UserserviceGetPants").getResultList();
@@ -46,7 +47,7 @@ public class ExamServiceGetRankedUser implements Provider {
                 Map<String, Timestamp> timeMap = new HashMap<>();
                 Set<String> pidSet = new HashSet<>();
                 stmt.setString(2, userID);
-                log.debug(stmt);
+                log.debug(String.valueOf(stmt));
                 res = stmt.executeQuery();
                 while (res.next()) {
                     int score = res.getInt("score");

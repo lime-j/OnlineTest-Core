@@ -2,8 +2,9 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.examservice.ExamServiceGetRating.Participant;
 import com.onlinejudge.util.Settler;
-import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,8 +13,9 @@ import java.util.List;
 import static com.onlinejudge.util.DatabaseUtil.closeConnection;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 public class ExamServiceSetRating implements Settler {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceSetRating.class);
     public static boolean setItem(@NotNull List<Participant> pans, String examID) {
         PreparedStatement stmtExamperm = null;
         PreparedStatement stmtUserinfo = null;
@@ -28,8 +30,8 @@ public class ExamServiceSetRating implements Settler {
                 stmtExamperm.setInt(1, pan.delta);
                 stmtExamperm.setString(4, pan.userID);
                 stmtUserinfo.setInt(1, pan.newRating);
-                log.debug(stmtExamperm);
-                log.debug(stmtUserinfo);
+                log.debug(String.valueOf(stmtExamperm));
+                log.debug(String.valueOf(stmtUserinfo));
                 stmtExamperm.executeUpdate();
                 stmtUserinfo.executeUpdate();
             }

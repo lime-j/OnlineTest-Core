@@ -2,24 +2,20 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.Provider;
-import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
-import static com.onlinejudge.util.DatabaseUtil.closeQuery;
-import static com.onlinejudge.util.DatabaseUtil.getConnection;
-import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
+import static com.onlinejudge.util.DatabaseUtil.*;
 
-@Log4j2
+
 public class ExamServiceGetContestTime implements Provider {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceGetContestTime.class);
     @NotNull
     @Contract("_ -> new")
     public static Pair<Timestamp, Timestamp> getItem(String examID) throws InternalException {
@@ -30,7 +26,7 @@ public class ExamServiceGetContestTime implements Provider {
             conn = getConnection();
             stmt = prepareStatement("select estart, eend, eid from exam where eid = ?");
             stmt.setString(1, examID);
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             res = stmt.executeQuery();
             int cnt = 0;
             Timestamp start = null;

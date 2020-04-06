@@ -4,7 +4,8 @@ import com.onlinejudge.util.ListEvent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,11 +20,11 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
 @Getter
 @Setter
-@Log4j2
+
 @AllArgsConstructor
 public class UserServiceListComment implements ListEvent<CommentDetailBean> {
     private final String examID;
-
+    private static final Logger log = LoggerFactory.getLogger(UserServiceListComment.class);
     @Override
     public void beforeGo() {
         // do nothing
@@ -39,11 +40,11 @@ public class UserServiceListComment implements ListEvent<CommentDetailBean> {
         ResultSet ret = null;
         List<CommentDetailBean> result = new ArrayList<>();
         try {
-            stmt = prepareStatement("select * from comment where eid = ? and facid is not NULL");
+            stmt = prepareStatement("select * from comment where eid = ? and facid is NULL");
             List<CommentDetailBean> faidLst = new ArrayList<>();
             Map<String, List<ReplyDetailBean>> commentLstMap = new HashMap<>();
             stmt.setString(1, examID);
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             ret = stmt.executeQuery();
             while (ret.next()) {
                 var userID = ret.getString("uid");
@@ -57,9 +58,9 @@ public class UserServiceListComment implements ListEvent<CommentDetailBean> {
             }
             ret.close();
             stmt.close();
-            stmt = prepareStatement("select * from comment where eid = ? and facid is NULL");
+            stmt = prepareStatement("select * from comment where eid = ? and facid is not NULL");
             stmt.setString(1, examID);
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             ret = stmt.executeQuery();
             while (ret.next()) {
                 var userID = ret.getString("uid");
@@ -67,9 +68,10 @@ public class UserServiceListComment implements ListEvent<CommentDetailBean> {
                 var ctext = ret.getString("ctext");
                 var uname = ret.getString("uname");
                 var cid = ret.getString("cid");
-                commentLstMap.get(cid).add(new ReplyDetailBean(uname, userID, ctext, time, cid));
+                var facid = ret.getString("facid");
+                commentLstMap.get(facid).add(new ReplyDetailBean(uname, userID, ctext, time, cid));
             }
-            log.debug(faidLst);
+            log.debug(String.valueOf(faidLst));
             return faidLst;
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

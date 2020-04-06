@@ -1,10 +1,11 @@
 package com.onlinejudge.predictservice;
 
 import com.onlinejudge.util.DatabaseUtil;
-import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.sql.PreparedStatement;
@@ -19,12 +20,14 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Log4j2
+
 public class PredictServiceTreeUtil {
+
+    private static final Logger log = LoggerFactory.getLogger(PredictServiceTreeUtil.class);
     // Happy tree friend!
     // (but this is actually a DAG, not tree!
     private static final Map<String, List<Edge>> EDGE = new HashMap<>();
-    private static final String ROOT = "/tree.txt";
+    private static final String ROOT = "/tree.xml";
     private static final Comparator<Pair<String, Double>> c = new PredictServiceEbbinghauseUtil.Cmp();
     private static final int K = 1;
     @NotNull
@@ -48,13 +51,14 @@ public class PredictServiceTreeUtil {
                 log.error(e.getMessage(), e);
             }
         }
-        log.debug(result);
+        log.debug(String.valueOf(result));
         return result;
     }
 
     static  {
         InputStream temp = PredictServiceTreeUtil.class.getResourceAsStream(ROOT);
         Scanner cin = new Scanner(temp);
+        int cnt = 0;
         while (cin.hasNext()) {
             String from = cin.next();
             String to = cin.next();
@@ -65,7 +69,10 @@ public class PredictServiceTreeUtil {
                 edg.add(new Edge(to, val));
                 EDGE.put(from, edg);
             } else EDGE.get(from).add(new Edge(to, val));
+            ++ cnt;
         }
+        log.debug(String.valueOf(cnt));
+
     }
 
     protected static List<Pair<String, Double>> getItem(int throttle, String userID) {

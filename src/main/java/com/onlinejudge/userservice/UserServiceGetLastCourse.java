@@ -1,8 +1,9 @@
 package com.onlinejudge.userservice;
 
 import com.onlinejudge.util.StringEvent;
-import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,10 +12,10 @@ import java.sql.SQLException;
 import static com.onlinejudge.util.DatabaseUtil.closeQuery;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 public class UserServiceGetLastCourse implements StringEvent {
     private final String userID;
-
+    private static final Logger log = LoggerFactory.getLogger(UserServiceGetLastCourse.class);
     public UserServiceGetLastCourse(@NotNull String userID) {
         this.userID = userID;
     }

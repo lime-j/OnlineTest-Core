@@ -42,6 +42,17 @@ public class HandlerFactoryUtil {
         HandlerEnum requestEnum = mp.get(requestType);
         try {
             switch (requestEnum) {
+                case addComment:
+                    handler = new ClassEventHandler(
+                            new UserServiceAddComment(
+                                    jsonObject.getString(USERID),
+                                    jsonObject.getString("examID"),
+                                    jsonObject.getString("text"),
+                                    jsonObject.getString("facID"),
+                                    jsonObject.getString("userName")
+                            )
+                    );
+                    break;
                 case listComment:
                     handler = new ListEventHandler(
                             new UserServiceListComment(

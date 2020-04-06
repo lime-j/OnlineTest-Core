@@ -1,7 +1,8 @@
 package com.onlinejudge.userservice;
 
 import com.onlinejudge.util.Provider;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,17 +10,18 @@ import java.sql.SQLException;
 
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 public class UserServiceGetExamName implements Provider {
+    private static final Logger log = LoggerFactory.getLogger(UserServiceGetExamName.class);
     public static String getExamName(String examID) {
         String examName = null;
         PreparedStatement stmt = null;
         ResultSet ret = null;
         try {
-            prepareStatement("select ename from exam where eid = ?");
+            stmt = prepareStatement("select ename from exam where eid = ?");
             stmt.setString(1, examID);
             ret = stmt.executeQuery();
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             int count = 0;
             while (ret.next()) {
                 ++count;

@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -29,7 +30,8 @@ public class CommentDetailBean {
         this.commentID = commentID;
         this.userID = userID;
         this.content = text;
-        this.createDate = new SimpleDateFormat("yy-MM-dd hh:mm").format(time.toLocalDateTime());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.createDate = formatter.format((new Date(time.getTime())));
         this.nickName = nickName;
         this.replyList = replyList;
     }

@@ -1,7 +1,8 @@
 package com.onlinejudge.userservice;
 
 import com.onlinejudge.util.Settler;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,8 +10,9 @@ import java.sql.SQLException;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 public class UserServiceSetTimeline implements Settler {
+    private static final Logger log = LoggerFactory.getLogger(UserServiceSetTimeline.class);
     public static void setItem(TimelineItem t) {
         PreparedStatement stmt = null;
         try {
@@ -20,7 +22,7 @@ public class UserServiceSetTimeline implements Settler {
             stmt.setString(3, t.getUid());
             stmt.setString(4, t.getName());
             stmt.setString(5, t.getDescription());
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             stmt.executeUpdate();
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

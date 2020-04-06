@@ -2,7 +2,8 @@ package com.onlinejudge.examservice;
 
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 import static com.alibaba.fastjson.JSON.parseArray;
 import static com.alibaba.fastjson.JSON.toJSONString;
 
-@Log4j2
+
 public class ExamServiceListRank implements ListEvent<RankedUser> {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceListRank.class);
     private static final int REFRESH_INTERVAL = 120000;
     private boolean flag = true;
     private List<RankedUser> res = null;

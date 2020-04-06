@@ -2,8 +2,9 @@ package com.onlinejudge.predictservice;
 
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.ListEvent;
-import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,8 +20,9 @@ import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
-@Log4j2
+
 public class PredictServiceListPredictedItem implements ListEvent<String> {
+    private static final Logger log = LoggerFactory.getLogger(PredictServiceListPredictedItem.class);
     private static final int ITEM_VAL = 10;
     private final String userID;
     private int pviot;
@@ -51,11 +53,11 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
         lst = lst.subList(0, min(10, lst.size() - 1));
         double result1 = 0;
         double result2 = 0;
-        log.debug("result1 = {} result2 = {}",result1, result2);
         for (var it : lst) {
             result1 += UserStar.getSimilarity(me, it) * (it.getIsInteresting() / 5.0 - 0.5);
             result2 += UserStar.getSimilarity(me, it) * (it.getIsChallenging() / 5.0 - 0.5);
         }
+        log.debug("result1 = {} result2 = {}",result1, result2);
         return new PredictedItem(pir, result1, result2);
     }
 
@@ -79,7 +81,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
             if (++ cnt >= throttle) break;
             finalRet.add(it.getExamID());
         }
-        log.debug(finalRet);
+        log.debug(String.valueOf(finalRet));
         return finalRet;
     }
 
@@ -92,7 +94,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
         try {
             stmt = prepareStatement("select utype from userinfo where uid = ?");
             stmt.setString(1, userID);
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             ret = stmt.executeQuery();
             int cnt = 0;
             while (ret.next()) {

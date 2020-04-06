@@ -1,24 +1,28 @@
 package com.onlinejudge.userservice;
 
-import com.onlinejudge.util.BooleanEvent;
+import com.alibaba.fastjson.JSONObject;
+import com.onlinejudge.util.ClassEvent;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import static com.onlinejudge.userservice.UserServiceGetExamName.getExamName;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 @Getter
 @Setter
-public class UserServiceAddComment implements BooleanEvent {
+public class UserServiceAddComment implements ClassEvent {
     private final String examID;
     private final String userID;
     private final String text;
@@ -27,7 +31,7 @@ public class UserServiceAddComment implements BooleanEvent {
     private static final int TIMELINE_COMMENT = 3;
     private PreparedStatement stmt = null;
     private ResultSet ret = null;
-
+    private static final Logger log = LoggerFactory.getLogger(UserServiceAddComment.class);
     public UserServiceAddComment(String userID, String examID, String text, String facID, String userName) {
         this.examID = examID;
         this.text = text;
@@ -52,27 +56,33 @@ public class UserServiceAddComment implements BooleanEvent {
 
     }
 
-    private void setComment() throws SQLException {
+    private AddCommentResult setComment() throws SQLException {
         if (facID == null) {
-            stmt = prepareStatement("insert into comment(ctext, cid, uid, eid, time, uname) values(?,?,?,?,?)");
+            stmt = prepareStatement("insert into comment(ctext, cid, uid, eid, time, uname) values(?,?,?,?,?,?)");
         } else {
             stmt = prepareStatement("insert into comment(ctext, cid, uid, eid, time, uname, facid) values(?,?,?,?,?,?,?)");
-            stmt.setString(6, facID);
+            stmt.setString(7, facID);
         }
+        String commentID = UUID.randomUUID().toString().replace("-", "");
+        Timestamp time = new Timestamp(System.currentTimeMillis());
         stmt.setString(1, text);
-        stmt.setString(2, UUID.randomUUID().toString().replace("-", ""));
+        stmt.setString(2, commentID);
         stmt.setString(3, userID);
         stmt.setString(4, examID);
-        stmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
-        log.debug(stmt);
+        stmt.setTimestamp(5, time);
+        stmt.setString(6,userName);
+        stmt.executeUpdate();
+        log.debug(String.valueOf(stmt));
         stmt.close();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return new AddCommentResult(formatter.format((new Date(time.getTime()))), commentID);
     }
 
 
-    public boolean go() {
+    public String go() {
         try {
-            setComment();
-            return true;
+            return JSONObject.toJSONString(setComment());
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             try {
@@ -80,7 +90,7 @@ public class UserServiceAddComment implements BooleanEvent {
             } catch (SQLException ex) {
                 log.error(ex.getMessage(), ex);
             }
-            return false;
+            return "";
         }
     }
 }

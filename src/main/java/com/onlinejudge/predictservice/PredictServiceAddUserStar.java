@@ -2,7 +2,8 @@ package com.onlinejudge.predictservice;
 
 import com.onlinejudge.util.BooleanEvent;
 import com.onlinejudge.util.DatabaseUtil;
-import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +15,10 @@ import static com.onlinejudge.predictservice.UserStar.MAXN;
 import static com.onlinejudge.util.DatabaseUtil.*;
 import static java.lang.String.format;
 
-@Log4j2
+
 public class PredictServiceAddUserStar implements BooleanEvent {
     protected static final Map<String, Integer> examIDMapping = new HashMap<>();
+    private static final Logger log = LoggerFactory.getLogger(PredictServiceAddUserStar.class);
 
     static {
         PreparedStatement stmt = null;

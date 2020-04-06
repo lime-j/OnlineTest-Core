@@ -3,8 +3,9 @@ package com.onlinejudge.examservice;
 import com.onlinejudge.userservice.TimelineItem;
 import com.onlinejudge.userservice.UserServiceSetTimeline;
 import com.onlinejudge.util.BooleanEvent;
-import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,8 +15,9 @@ import static com.onlinejudge.userservice.UserServiceGetExamName.getExamName;
 import static com.onlinejudge.util.DatabaseUtil.closeUpdate;
 import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
 
-@Log4j2
+
 public class ExamServiceJoinContest implements BooleanEvent {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceJoinContest.class);
     private String userID;
     private String examID;
     private int isContest;
@@ -41,7 +43,7 @@ public class ExamServiceJoinContest implements BooleanEvent {
             stmt.setString(1, examID);
             stmt.setString(2, userID);
             stmt.executeUpdate();
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             result = false;

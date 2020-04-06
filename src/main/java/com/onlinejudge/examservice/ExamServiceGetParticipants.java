@@ -3,8 +3,9 @@ package com.onlinejudge.examservice;
 import com.onlinejudge.examservice.ExamServiceGetRating.Participant;
 import com.onlinejudge.util.InternalException;
 import com.onlinejudge.util.Provider;
-import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,12 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.onlinejudge.util.DatabaseUtil.closeQuery;
-import static com.onlinejudge.util.DatabaseUtil.getConnection;
-import static com.onlinejudge.util.DatabaseUtil.prepareStatement;
+import static com.onlinejudge.util.DatabaseUtil.*;
 
-@Log4j2
+
 public class ExamServiceGetParticipants implements Provider {
+    private static final Logger log = LoggerFactory.getLogger(ExamServiceGetParticipants.class);
     private ExamServiceGetParticipants() {
     }
 
@@ -32,7 +32,7 @@ public class ExamServiceGetParticipants implements Provider {
             conn = getConnection();
             stmt = prepareStatement("select uname, sid, utype as old_rating,`rank` from examperm ex, userinfo ui where ex.sid = ui.uid and ex.eid = ?");
             stmt.setString(1, examID);
-            log.debug(stmt);
+            log.debug(String.valueOf(stmt));
             ret = stmt.executeQuery();
             while (ret.next()) {
                 String sid = ret.getString("sid");

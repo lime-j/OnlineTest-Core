@@ -1,7 +1,6 @@
 package com.onlinejudge.problemservice;
 
 import com.onlinejudge.util.ListEvent;
-import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +13,7 @@ import java.util.List;
 
 import static com.onlinejudge.util.DatabaseUtil.*;
 
-@Log4j2
+
 public class ProblemServiceListSubmission implements ListEvent<Submission> {
     private final String examID;
     private final String probID;
@@ -62,12 +61,12 @@ public class ProblemServiceListSubmission implements ListEvent<Submission> {
             }
             return result;
         } catch (SQLException e) {
-            log.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
         } finally {
             try {
                 closeQuery(subTextSet, stmt, conn);
             } catch (SQLException e) {
-                log.error(e.getMessage(), e);
+                logger.error(e.getMessage(), e);
             }
         }
         return new ArrayList<>();

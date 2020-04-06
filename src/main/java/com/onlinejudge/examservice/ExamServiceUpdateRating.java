@@ -17,7 +17,7 @@ import java.util.List;
 import static com.onlinejudge.examservice.ExamServiceGetRating.getItem;
 import static com.onlinejudge.userservice.UserServiceGetExamName.getExamName;
 
-@Log4j2
+
 @Getter
 @Setter
 public class ExamServiceUpdateRating implements BooleanEvent {

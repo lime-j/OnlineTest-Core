@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Log4j2
+
 public class SubjectTreeNode {
     private String examID;
     private List<Edge> to;
