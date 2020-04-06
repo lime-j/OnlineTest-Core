@@ -51,6 +51,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
         lst = lst.subList(0, min(10, lst.size() - 1));
         double result1 = 0;
         double result2 = 0;
+        log.debug("result1 = {} result2 = {}",result1, result2);
         for (var it : lst) {
             result1 += UserStar.getSimilarity(me, it) * (it.getIsInteresting() / 5.0 - 0.5);
             result2 += UserStar.getSimilarity(me, it) * (it.getIsChallenging() / 5.0 - 0.5);
@@ -63,6 +64,8 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
         List<PredictedItem> result = new ArrayList<>();
         List<Pair<String, Double>> ebb = getRecommandList(pviot, userID);
         List<Pair<String, Double>> tree = getItem(ITEM_VAL - pviot, userID);
+        log.debug("ebb = {}", ebb);
+        log.debug("tree = {}", tree);
         for (var it : ebb) {
             result.add(getScore(it.getLeft()));
         }
@@ -76,6 +79,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
             if (++ cnt >= throttle) break;
             finalRet.add(it.getExamID());
         }
+        log.debug(finalRet);
         return finalRet;
     }
 
@@ -88,6 +92,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
         try {
             stmt = prepareStatement("select utype from userinfo where uid = ?");
             stmt.setString(1, userID);
+            log.debug(stmt);
             ret = stmt.executeQuery();
             int cnt = 0;
             while (ret.next()) {
@@ -105,6 +110,7 @@ public class PredictServiceListPredictedItem implements ListEvent<String> {
             }
         }
         me = new UserStar(userID, "114514", userRating, 0, 0, sim);
+
     }
 
     @Override

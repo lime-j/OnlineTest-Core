@@ -22,14 +22,18 @@ public class UserServiceAddComment implements BooleanEvent {
     private final String examID;
     private final String userID;
     private final String text;
+    private final String facID;
+    private final String userName;
     private static final int TIMELINE_COMMENT = 3;
     private PreparedStatement stmt = null;
     private ResultSet ret = null;
 
-    public UserServiceAddComment(String userID, String examID, String text) {
+    public UserServiceAddComment(String userID, String examID, String text, String facID, String userName) {
         this.examID = examID;
         this.text = text;
         this.userID = userID;
+        this.facID = facID;
+        this.userName = userName;
     }
 
     @Override
@@ -49,7 +53,12 @@ public class UserServiceAddComment implements BooleanEvent {
     }
 
     private void setComment() throws SQLException {
-        stmt = prepareStatement("insert into comment values(?,?,?,?,?)");
+        if (facID == null) {
+            stmt = prepareStatement("insert into comment(ctext, cid, uid, eid, time, uname) values(?,?,?,?,?)");
+        } else {
+            stmt = prepareStatement("insert into comment(ctext, cid, uid, eid, time, uname, facid) values(?,?,?,?,?,?,?)");
+            stmt.setString(6, facID);
+        }
         stmt.setString(1, text);
         stmt.setString(2, UUID.randomUUID().toString().replace("-", ""));
         stmt.setString(3, userID);

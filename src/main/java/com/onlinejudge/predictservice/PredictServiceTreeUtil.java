@@ -48,6 +48,7 @@ public class PredictServiceTreeUtil {
                 log.error(e.getMessage(), e);
             }
         }
+        log.debug(result);
         return result;
     }
 
@@ -57,6 +58,7 @@ public class PredictServiceTreeUtil {
         while (cin.hasNext()) {
             String from = cin.next();
             String to = cin.next();
+            log.debug("from = {}, to = {}", from, to);
             double val = cin.nextDouble();
             if (EDGE.getOrDefault(from, null) == null) {
                 List<Edge> edg = new ArrayList<>();
