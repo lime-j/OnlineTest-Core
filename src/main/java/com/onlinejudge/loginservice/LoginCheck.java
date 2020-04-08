@@ -50,7 +50,7 @@ public class LoginCheck implements ClassEvent {
         String uPassword = null;
         int uSex = 0;
         String uName = null;
-        int uType = 1500;
+        int uType = 500;
         try {
             conn = DatabaseUtil.getConnection();
             String sqlIns = "select uname, utype, upassword, usex from userinfo where uid = ?";
